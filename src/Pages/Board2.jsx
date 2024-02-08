@@ -1,6 +1,7 @@
 import React from "react";
 import board2 from "../assets/images/board2.png";
 import logo from "../assets/images/logo.png";
+import { MdOutlineShoppingCart } from "react-icons/md";
 import { useGlobal } from "../context";
 function Board2() {
   const { setPage } = useGlobal();
@@ -21,9 +22,10 @@ function Board2() {
               setPage("signup");
               console.log("hello");
             }}
-            className="px-8 text-[18px] font-[500] py-3 bg-blue-600 rounded-[5px]  "
+            className="px-8 text-[18px] flex items-center justify-center gap-2 font-[500] py-3 bg-blue-600 rounded-[8px]  "
           >
             Start Trading
+            <MdOutlineShoppingCart size={22} />
           </button>
         </div>
       </div>

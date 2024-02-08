@@ -2,6 +2,7 @@ import React from "react";
 import board1 from "../assets/images/board1.png";
 import logo from "../assets/images/logo.png";
 import { useGlobal } from "../context";
+import { FaArrowRight, FaAngleRight } from "react-icons/fa";
 function Board1() {
   const { setPage } = useGlobal();
   return (
@@ -14,9 +15,9 @@ function Board1() {
           onClick={() => {
             setPage("board2");
           }}
-          className="h-[50px] w-[50px] bg-blue-600 rounded-[50%]  "
+          className="h-[50px] flex items-center justify-center w-[50px] bg-blue-600 rounded-[50%]  "
         >
-          L
+          <FaAngleRight size={25} />
         </button>
       </div>
     </div>
