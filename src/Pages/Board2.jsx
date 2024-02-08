@@ -19,6 +19,7 @@ function Board2() {
           <button
             onClick={() => {
               setPage("signup");
+              console.log("hello");
             }}
             className="px-8 text-[18px] font-[500] py-3 bg-blue-600 rounded-[5px]  "
           >
