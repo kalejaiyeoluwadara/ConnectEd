@@ -1,7 +1,9 @@
 import React from "react";
 import board2 from "../assets/images/board2.png";
 import logo from "../assets/images/logo.png";
+import { useGlobal } from "../context";
 function Board2() {
+  const { setPage } = useGlobal();
   return (
     <div className="h-screen w-screen px-8 flex-col bg-black flex items-center justify-between pt-6 pb-12">
       <img className="" src={board2} alt="" />
@@ -13,8 +15,13 @@ function Board2() {
           Discover a wide range of options and easily barter your unwanted
           items.
         </p>
-        <div className="w-full flex items-center justify-center">
-          <button className="px-8 text-[18px] font-[500] py-3 bg-blue-600 rounded-[5px]  ">
+        <div className="w-full mt-2 flex items-center justify-center">
+          <button
+            onClick={() => {
+              setPage("signup");
+            }}
+            className="px-8 text-[18px] font-[500] py-3 bg-blue-600 rounded-[5px]  "
+          >
             Start Trading
           </button>
         </div>
