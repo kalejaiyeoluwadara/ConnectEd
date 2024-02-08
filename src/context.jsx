@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 function AppProvider({ children }) {
   const [board1, setBoard1] = useState(true);
   const [board2, setBoard2] = useState(false);
-  const [signup, setSignup] = useState(true);
+  const [signup, setSignup] = useState(false);
   const [login, setLogin] = useState(false);
   const setPage = (page) => {
     setBoard1(false);

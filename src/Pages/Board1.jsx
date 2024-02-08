@@ -3,6 +3,7 @@ import board1 from "../assets/images/board1.png";
 import logo from "../assets/images/logo.png";
 import { useGlobal } from "../context";
 import { FaArrowRight, FaAngleRight } from "react-icons/fa";
+import { FiChevronRight } from "react-icons/fi";
 function Board1() {
   const { setPage } = useGlobal();
   return (
@@ -17,7 +18,7 @@ function Board1() {
           }}
           className="h-[50px] flex items-center justify-center w-[50px] bg-blue-600 rounded-[50%]  "
         >
-          <FaAngleRight size={25} />
+          <FiChevronRight size={30} />
         </button>
       </div>
     </div>
