@@ -46,9 +46,15 @@ function Login() {
           <span className="px-6 bg-black">or</span>
         </p>
       </div>
-      <button className="font-[600] text-[20px]  py-3 mt-12 w-full rounded-[8px] border-[3px] border-blue-600  ">
+      <button className="font-[600] text-[20px]  py-3 mt-12 w-full rounded-[8px] border-[3px] border-blue-600">
         Sign in with Google
       </button>
+
+      <div className="w-full absolute bottom-8 flex items-center justify-center">
+        <p>
+          Don't have an account?<span className="text-blue-500"> SignUp</span>
+        </p>
+      </div>
     </div>
   );
 }
