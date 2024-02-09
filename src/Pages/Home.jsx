@@ -6,7 +6,7 @@ import Listings from "../Components/Listings";
 
 function Home() {
   return (
-    <div className="h-screen w-screen bg-black flex flex-col ">
+    <div className="min-h-screen pb-10 w-screen bg-black flex flex-col ">
       <Header />
       <Search />
       <Categories />
