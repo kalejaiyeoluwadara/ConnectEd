@@ -14,8 +14,9 @@ body{
 
 }
 .input::placeholder{
-    color: rgba(0, 0, 0, 0.345);
+    /* color: rgba(0, 0, 0, 0.345); */
     opacity: 1;
+    border-radius: 10px;
     text-transform: capitalize;
     font-size: 18px;
     font-weight: 600;
