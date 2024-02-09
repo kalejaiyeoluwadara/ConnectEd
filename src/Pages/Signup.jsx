@@ -31,7 +31,12 @@ function Signup() {
                 type="text"
               />
             </div>
-            <button className="font-[600] text-[20px]  py-3 mt-4 w-full rounded-[8px] bg-blue-600  ">
+            <button
+              onClick={() => {
+                setPage("home");
+              }}
+              className="font-[600] text-[20px]  py-3 mt-4 w-full rounded-[8px] bg-blue-600  "
+            >
               Create Account
             </button>
             <button className="font-[600] text-[20px] py-3  w-full rounded-[8px] border-[3px] border-blue-600  ">

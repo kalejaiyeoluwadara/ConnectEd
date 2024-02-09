@@ -4,14 +4,16 @@ import { useGlobal } from "../context";
 import Board2 from "../Pages/Board2";
 import Signup from "../Pages/Signup";
 import Login from "../Pages/Login";
+import Home from "../Pages/Home";
 function Admin() {
-  const { setPage, board1, board2, login, signup } = useGlobal();
+  const { setPage, board1, board2, login, signup, home } = useGlobal();
   return (
     <div className="text-white bg-black sm:min-h-screen">
       {board1 && <Board1 />}
       {board2 && <Board2 />}
       {signup && <Signup />}
       {login && <Login />}
+      {home && <Home />}
     </div>
   );
 }

@@ -13,6 +13,7 @@ function AppProvider({ children }) {
     setBoard2(false);
     setLogin(false);
     setSignup(false);
+    setHome(false);
     if (page === "board1") {
       setBoard1(true);
     } else if (page === "board2") {
@@ -21,6 +22,8 @@ function AppProvider({ children }) {
       setLogin(true);
     } else if (page === "signup") {
       setSignup(true);
+    } else if (page === "home") {
+      setHome(true);
     } else {
       // setBoard1(true);
       console.log("error");

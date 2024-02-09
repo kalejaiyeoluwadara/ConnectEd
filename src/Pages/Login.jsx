@@ -35,7 +35,12 @@ function Login() {
         <p className="text-right w-full px-2 text-blue-500 font-medium ">
           Forgot Password
         </p>
-        <button className="font-[600] text-[20px]  py-3 mt-4 w-full rounded-[8px] bg-blue-600  ">
+        <button
+          onClick={() => {
+            setPage("home");
+          }}
+          className="font-[600] text-[20px]  py-3 mt-4 w-full rounded-[8px] bg-blue-600  "
+        >
           Log in
         </button>
       </form>
