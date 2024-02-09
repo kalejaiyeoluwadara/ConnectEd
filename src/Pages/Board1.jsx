@@ -11,7 +11,7 @@ function Board1() {
       <img className="" src={board1} alt="" />
       <div className="gap-3 flex flex-col w-full items-center justify-center">
         <img className="" src={logo} alt="" />
-        <p className="text-[20px]  ">Trading made better</p>
+        <p className="text-[20px]  ">Learning made better</p>
         <button
           onClick={() => {
             setPage("board2");

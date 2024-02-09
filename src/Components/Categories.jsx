@@ -2,15 +2,15 @@ import React, { useState } from "react";
 
 function Categories() {
   const [cats, setCats] = useState([
-    "All",
-    "Accessories",
-    "Books",
-    "Tickets",
-    "Shoes",
-    "Shirts",
-    "Fun",
+    "CS",
+    "Nursing",
+    "Mathematics",
+    "Languages",
+    "Sports",
+    "Linguistics",
+    "Medics",
   ]);
-  const [active, setActive] = useState("All");
+  const [active, setActive] = useState("CS");
   return (
     <div className="flex flex-col gap-2 px-8 py-4 ">
       <p className="text-[25px] font-[600] ">Categories</p>
@@ -21,12 +21,12 @@ function Categories() {
               onClick={() => {
                 setActive(cat);
               }}
-              className={`px-2 transition-all cursor-pointer hover:bg-gray-700 hover:rounded-[22px] hover:px-6 hover:font-bold py-2 ${
+              className={`px-2 flex transition-all items-center justify-center cursor-pointer hover:bg-gray-700 hover:rounded-[22px] hover:px-6 hover:font-bold py-2 ${
                 cat === active && "bg-blue-600 rounded-[22px] px-6 font-bold "
               }  `}
               key={id}
             >
-              {cat}
+              <p className="w-full">{cat}</p>
             </div>
           );
         })}
