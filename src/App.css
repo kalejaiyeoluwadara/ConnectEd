@@ -7,13 +7,13 @@ body{
  margin: 0px;
  font-family: poppins,sans-serif;
 }
-input{
+.input{
     background-color: black;
     border-bottom: 3px solid gray;
     outline: none;
 
 }
-input::placeholder{
+.input::placeholder{
     color: rgba(0, 0, 0, 0.345);
     opacity: 1;
     text-transform: capitalize;

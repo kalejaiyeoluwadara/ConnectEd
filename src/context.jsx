@@ -21,7 +21,8 @@ function AppProvider({ children }) {
     } else if (page === "signup") {
       setSignup(true);
     } else {
-      console.log("Page not found.");
+      // setBoard1(true);
+      console.log("error");
     }
   };
   return (
