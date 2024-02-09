@@ -10,7 +10,7 @@ function Board2() {
       <img className="" src={board2} alt="" />
       <div className="gap-3 flex flex-col w-full items-start justify-center">
         <h2 className="text-[35px] font-[600]">
-          Buy what you need, sell what you don't
+          Get what you need, barter what you don't
         </h2>
         <p className="text-[18px] text-start ">
           Discover a wide range of options and easily barter your unwanted
@@ -24,7 +24,7 @@ function Board2() {
             }}
             className="px-8 text-[18px] flex items-center justify-center gap-2 font-[500] py-3 bg-blue-600 rounded-[8px]  "
           >
-            Start Trading
+            Get Started
             <MdOutlineShoppingCart size={22} />
           </button>
         </div>

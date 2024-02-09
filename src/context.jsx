@@ -7,6 +7,7 @@ function AppProvider({ children }) {
   const [board2, setBoard2] = useState(false);
   const [signup, setSignup] = useState(false);
   const [login, setLogin] = useState(false);
+  const [home, setHome] = useState(false);
   const setPage = (page) => {
     setBoard1(false);
     setBoard2(false);
@@ -37,6 +38,7 @@ function AppProvider({ children }) {
         login,
         setLogin,
         setPage,
+        home,
       }}
     >
       {children}

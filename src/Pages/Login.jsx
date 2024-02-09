@@ -51,7 +51,12 @@ function Login() {
       </button>
 
       <div className="w-full absolute bottom-8 flex items-center justify-center">
-        <p>
+        <p
+          onClick={() => {
+            setPage("signup");
+          }}
+          className="cursor-pointer"
+        >
           Don't have an account?<span className="text-blue-500"> SignUp</span>
         </p>
       </div>
