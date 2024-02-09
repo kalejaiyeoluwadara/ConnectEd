@@ -13,6 +13,17 @@ body{
     outline: none;
 
 }
+.sb::-webkit-scrollbar{
+    background-color: rgba(128, 128, 128, 0.13);
+    visibility: hidden;
+}
+.sb::-webkit-scrollbar-thumb {
+    background-color: rgba(128, 128, 128, 0.323);
+    visibility: hidden;
+}
+.sb::-webkit-scrollbar-track{
+    height: 10vh;
+}
 .input::placeholder{
     /* color: rgba(0, 0, 0, 0.345); */
     opacity: 1;
