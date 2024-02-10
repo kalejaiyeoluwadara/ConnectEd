@@ -5,8 +5,9 @@ import Board2 from "../Pages/Board2";
 import Signup from "../Pages/Signup";
 import Login from "../Pages/Login";
 import Home from "../Pages/Home";
+import View from "../Pages/View";
 function Admin() {
-  const { setPage, board1, board2, login, signup, home } = useGlobal();
+  const { setPage, board1, board2, login, signup, home, view } = useGlobal();
   return (
     <div className="text-white bg-black sm:min-h-screen">
       {board1 && <Board1 />}
@@ -14,6 +15,7 @@ function Admin() {
       {signup && <Signup />}
       {login && <Login />}
       {home && <Home />}
+      {view && <View />}
     </div>
   );
 }

@@ -1,11 +1,19 @@
 import React from "react";
 import tochi from "../assets/images/tochi.png";
+import { useGlobal } from "../context";
 function Listings() {
+  const { course, setCourse, setView, setPage } = useGlobal();
   return (
-    <div className="w-full flex flex-col gap-4 px-3 items-center justify-center ">
+    <div className="w-full cursor-pointer flex flex-col gap-4 px-3 items-center justify-center ">
       {[1, 2, 3, 4, 5].map((d) => {
         return (
-          <div className="h-[300px] rounded-[8px] relative w-[90%] sm:w-[300px] bg-gray-800 py-12  ">
+          <div
+            onClick={() => {
+              // setCourse(d);
+              setPage("view");
+            }}
+            className="h-[300px] rounded-[8px] relative w-[90%] sm:w-[300px] bg-gray-800 py-12  "
+          >
             {d == 2 && (
               <div className="absolute right-3 top-3 bg-white px-3 py-[3px] rounede-[5px] text-black font-bold ">
                 Free

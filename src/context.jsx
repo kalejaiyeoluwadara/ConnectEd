@@ -9,6 +9,7 @@ function AppProvider({ children }) {
   const [login, setLogin] = useState(false);
   const [home, setHome] = useState(true);
   const [view, setView] = useState(false);
+  const [course, setCourse] = useState([]);
   const setPage = (page) => {
     setBoard1(false);
     setBoard2(false);
@@ -24,6 +25,8 @@ function AppProvider({ children }) {
       setLogin(true);
     } else if (page === "signup") {
       setSignup(true);
+    } else if (page === "view") {
+      setView(true);
     } else if (page === "home") {
       setHome(true);
     } else {
@@ -34,6 +37,8 @@ function AppProvider({ children }) {
   return (
     <AppContext.Provider
       value={{
+        course,
+        setCourse,
         view,
         board1,
         setBoard1,
