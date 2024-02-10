@@ -1,6 +1,5 @@
 import React, { useContext, useState, useEffect } from "react";
 const AppContext = React.createContext();
-import { motion, AnimatePresence } from "framer-motion";
 
 function AppProvider({ children }) {
   const [board1, setBoard1] = useState(false);
@@ -10,6 +9,10 @@ function AppProvider({ children }) {
   const [home, setHome] = useState(true);
   const [view, setView] = useState(false);
   const [course, setCourse] = useState([]);
+  const [profile, setProfile] = useState(false);
+  const [notifications, setNotifications] = useState(false);
+  const [bookmark, setBookmark] = useState(false);
+  const [search, setSearch] = useState(false);
   const setPage = (page) => {
     setBoard1(false);
     setBoard2(false);
@@ -17,6 +20,10 @@ function AppProvider({ children }) {
     setSignup(false);
     setHome(false);
     setView(false);
+
+    setProfile(false);
+    setNotifications(false);
+    setBookmark(false);
     if (page === "board1") {
       setBoard1(true);
     } else if (page === "board2") {
@@ -29,6 +36,14 @@ function AppProvider({ children }) {
       setView(true);
     } else if (page === "home") {
       setHome(true);
+    } else if (page === "profile") {
+      setProfile(true);
+    } else if (page === "notifications") {
+      setNotifications(true);
+    } else if (page === "bookmark") {
+      setBookmark(true);
+    } else if (page === "search") {
+      setSearch(true);
     } else {
       // setBoard1(true);
       console.log("error");
@@ -37,6 +52,10 @@ function AppProvider({ children }) {
   return (
     <AppContext.Provider
       value={{
+        profile,
+        notifications,
+        bookmark,
+        search,
         course,
         setCourse,
         view,
