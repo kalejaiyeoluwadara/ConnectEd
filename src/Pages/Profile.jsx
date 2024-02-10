@@ -2,8 +2,10 @@ import React from "react";
 import { BsArrowLeft } from "react-icons/bs";
 import { CiMenuKebab, CiLocationOn } from "react-icons/ci";
 import { IoMdLink } from "react-icons/io";
+import { FaW, FaWhatsapp } from "react-icons/fa6";
 import face1 from "../assets/images/face2.png";
 import { useGlobal } from "../context";
+import { LuMail } from "react-icons/lu";
 function Profile() {
   const { setPage } = useGlobal();
   return (
@@ -46,12 +48,15 @@ function Profile() {
           <p className="flex items-center  gap-1">
             {" "}
             <IoMdLink size={21} />{" "}
-            <span className="text-blue-400">
+            <span className="text-blue-400 flex gap-1">
               <a
                 href="https://wa.me/09070934589
 "
               >
-                Whatsapp.me
+                <FaWhatsapp size={20} />
+              </a>
+              <a href="kalejaiyeoluwadara1@gmail.com">
+                <LuMail size={20} />
               </a>
             </span>
           </p>
