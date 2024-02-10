@@ -15,13 +15,21 @@ function Nav() {
       >
         {home ? <BsHouseFill size={25} /> : <BsHouse size={25} />}
       </div>
-      <div>
+      <div
+        onClick={() => {
+          setPage("bookmark");
+        }}
+      >
         {bookmark ? <IoBookmark size={25} /> : <CiBookmark size={25} />}
       </div>
       <div className="h-[60px] w-[60px] flex items-center justify-center bg-blue-600 rounded-[50%] ">
         <BsPlus size={45} />
       </div>
-      <div>
+      <div
+        onClick={() => {
+          setPage("notifications");
+        }}
+      >
         <BsBell size={25} />
       </div>
       <div

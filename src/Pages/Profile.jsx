@@ -6,6 +6,7 @@ import { FaW, FaWhatsapp } from "react-icons/fa6";
 import face1 from "../assets/images/face2.png";
 import { useGlobal } from "../context";
 import { LuMail } from "react-icons/lu";
+import Nav from "../Components/Nav";
 function Profile() {
   const { setPage } = useGlobal();
   return (
@@ -71,6 +72,7 @@ function Profile() {
       </nav>
       {/* items */}
       <div></div>
+      <Nav />
     </div>
   );
 }
