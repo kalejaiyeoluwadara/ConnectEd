@@ -30,7 +30,9 @@ function Profile() {
       <div className="px-4 mt-2">
         {/* desc */}
         <p className="font-[500]">
-          Cs Student | CGPA-4.6 | Willing to help students in need.
+          Computer Science enthusiast with a top-notch CGPA of 4.6, ready to
+          lend a helping hand to fellow students in need. Let's conquer
+          challenges together!
         </p>
         {/* details */}
         <div className="flex w-full mt-4 font-500 text-[16px] justify-start text-gray-300 gap-2 items-center ">
@@ -44,12 +46,24 @@ function Profile() {
           <p className="flex items-center  gap-1">
             {" "}
             <IoMdLink size={21} />{" "}
-            <span className="text-blue-400">link-social.net</span>
+            <span className="text-blue-400">
+              <a
+                href="https://wa.me/09070934589
+"
+              >
+                Whatsapp.me
+              </a>
+            </span>
           </p>
         </div>
       </div>
       {/* Post && Bookmarks */}
-      <nav></nav>
+      <nav className="flex font-[500] text-[18px] justify-around mt-8 ">
+        <p className="border-b-[3px] px-2 transition-all rounded-[5px] border-blue-500 ">
+          Posts
+        </p>
+        <p>Bookmarks</p>
+      </nav>
       {/* items */}
       <div></div>
     </div>
