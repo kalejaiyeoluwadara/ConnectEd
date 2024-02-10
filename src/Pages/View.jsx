@@ -1,15 +1,26 @@
 import React from "react";
 import tochi from "../assets/images/tochi.png";
 // import
+import { FiChevronLeft } from "react-icons/fi";
 import loc from "../assets/images/loc.png";
+// import Home from "../Pages/Home";
+import mark from "../assets/images/mark.png";
+import { useGlobal } from "../context";
 function View() {
+  const { setPage } = useGlobal();
   return (
     <div className="min-h-screen w-screen bg-black  ">
       {/* First section */}
       <div className="flex w-full relative bg-gray-900 rounded-b-[20px] h-[300px] ">
         <section className="flex justify-between px-4 w-full items-start capitalize py-4">
-          <p>back</p>
-          <p>bookmark</p>
+          <FiChevronLeft
+            className="cursor-pointer"
+            onClick={() => {
+              setPage("home");
+            }}
+            size={28}
+          />
+          <img src={mark} alt="" />
         </section>
 
         <section>
@@ -46,7 +57,10 @@ function View() {
         </div>
       </div>
       {/* Third Section */}
-      <div></div>
+      <div className="px-8 mt-4 font-[600] text-[20px]  ">
+        <h2 className="text-center">Related Courses</h2>
+        <div></div>
+      </div>
     </div>
   );
 }
