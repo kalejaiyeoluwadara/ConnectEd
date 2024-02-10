@@ -1,10 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import { BsHouse, BsSearch, BsBell, BsPlus } from "react-icons/bs";
 import face1 from "../assets/images/face2.png";
+import { useGlobal } from "../context";
 function Nav() {
+  const { setPage } = useGlobal();
   return (
-    <footer className="w-screen flex  items-center px-4 justify-between bg-gray-800 z-50 fixed bottom-0 h-[75px] rounded-t-[20px] left-0">
-      <div>
+    <footer className="w-screen cursor-pointer flex  items-center px-4 justify-between bg-gray-800 z-50 fixed bottom-0 h-[75px] rounded-t-[20px] left-0">
+      <div
+        onClick={() => {
+          setPage("home");
+        }}
+      >
         <BsHouse size={25} />
       </div>
       <div>
@@ -16,7 +22,11 @@ function Nav() {
       <div>
         <BsBell size={25} />
       </div>
-      <div>
+      <div
+        onClick={() => {
+          setPage("profile");
+        }}
+      >
         <img className="h-[40px] w-[40px] " src={face1} alt="" />
       </div>
     </footer>
