@@ -3,11 +3,11 @@ const AppContext = React.createContext();
 import { motion, AnimatePresence } from "framer-motion";
 
 function AppProvider({ children }) {
-  const [board1, setBoard1] = useState(true);
+  const [board1, setBoard1] = useState(false);
   const [board2, setBoard2] = useState(false);
   const [signup, setSignup] = useState(false);
   const [login, setLogin] = useState(false);
-  const [home, setHome] = useState(false);
+  const [home, setHome] = useState(true);
   const [view, setView] = useState(false);
   const [course, setCourse] = useState([]);
   const setPage = (page) => {

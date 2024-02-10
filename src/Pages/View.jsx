@@ -1,11 +1,12 @@
 import React from "react";
 import tochi from "../assets/images/tochi.png";
 // import
+import loc from "../assets/images/loc.png";
 function View() {
   return (
     <div className="min-h-screen w-screen bg-black  ">
       {/* First section */}
-      <div className="flex w-full relative bg-gray-800 h-[300px] ">
+      <div className="flex w-full relative bg-gray-900 rounded-b-[20px] h-[300px] ">
         <section className="flex justify-between px-4 w-full items-start capitalize py-4">
           <p>back</p>
           <p>bookmark</p>
@@ -22,6 +23,29 @@ function View() {
         </section>
       </div>
       {/* Second section */}
+      <div className="mt-4 px-8 font-medium ">
+        <div className="flex justify-between items-center">
+          <section className="flex gap-1">
+            <img src={loc} alt="" />
+            <p>Crystal</p>
+          </section>
+          <button className="text-white px-4 py-1 bg-blue-600 font-[600] rounded-[8px] ">
+            Paid
+          </button>
+        </div>
+        <div>
+          <h3 className="text-[22px] text-start  font-[600] mt-4 ">
+            Course Description
+          </h3>
+          <p className=" text-start tracking-wide text-[17px]  ">
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Cumque
+            deleniti soluta quod eveniet dolores, aspernatur minima est eligendi
+            veniam libero voluptas unde tenetur a repellat debitis aperiam
+            quibusdam incidunt necessitatibus.
+          </p>
+        </div>
+      </div>
+      {/* Third Section */}
       <div></div>
     </div>
   );
