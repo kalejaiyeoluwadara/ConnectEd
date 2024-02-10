@@ -1,6 +1,7 @@
 import React from "react";
 import { BsArrowLeft } from "react-icons/bs";
-import { CiMenuKebab } from "react-icons/ci";
+import { CiMenuKebab, CiLocationOn } from "react-icons/ci";
+import { IoMdLink } from "react-icons/io";
 import face1 from "../assets/images/face2.png";
 import { useGlobal } from "../context";
 function Profile() {
@@ -29,14 +30,22 @@ function Profile() {
       <div className="px-4 mt-2">
         {/* desc */}
         <p className="font-[500]">
-          Cs Student | GPA 4.6 | Willing to help a student in need
+          Cs Student | CGPA-4.6 | Willing to help students in need.
         </p>
         {/* details */}
-        <div>
+        <div className="flex w-full mt-4 font-500 text-[16px] justify-start text-gray-300 gap-2 items-center ">
           {/* location */}
-          <p>Crystal</p>
+          <p className="flex gap-1 items-center   ">
+            {" "}
+            <CiLocationOn />
+            Crystal
+          </p>
           {/* link */}
-          <p></p>
+          <p className="flex items-center  gap-1">
+            {" "}
+            <IoMdLink size={21} />{" "}
+            <span className="text-blue-400">link-social.net</span>
+          </p>
         </div>
       </div>
       {/* Post && Bookmarks */}

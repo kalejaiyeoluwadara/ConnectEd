@@ -2,6 +2,7 @@ import React from "react";
 import tochi from "../assets/images/tochi.png";
 // import
 import { FiChevronLeft } from "react-icons/fi";
+import { CiBookmark } from "react-icons/ci";
 import loc from "../assets/images/loc.png";
 // import Home from "../Pages/Home";
 import mark from "../assets/images/mark.png";
@@ -20,7 +21,7 @@ function View() {
             }}
             size={28}
           />
-          <img src={mark} alt="" />
+          <CiBookmark size={25} />
         </section>
 
         <section>
