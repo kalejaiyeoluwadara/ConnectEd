@@ -9,6 +9,7 @@ import View from "../Pages/View";
 import Profile from "../Pages/Profile";
 import Bookmark from "../Pages/Bookmark";
 import Notifications from "../Pages/Notifications";
+import Search from "../Pages/Search";
 function Admin() {
   const {
     setPage,
@@ -21,6 +22,7 @@ function Admin() {
     signup,
     home,
     view,
+    search,
   } = useGlobal();
   return (
     <div className="text-white bg-black sm:min-h-screen">
@@ -33,6 +35,7 @@ function Admin() {
       {profile && <Profile />}
       {bookmark && <Bookmark />}
       {notifications && <Notifications />}
+      {search && <Search />}
     </div>
   );
 }
