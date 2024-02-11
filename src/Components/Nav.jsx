@@ -3,9 +3,11 @@ import { BsHouse, BsHouseFill, BsSearch, BsBell, BsPlus } from "react-icons/bs";
 import face1 from "../assets/images/face2.png";
 import { CiBookmark } from "react-icons/ci";
 import { useGlobal } from "../context";
+import { LiaTimesSolid } from "react-icons/lia";
+import { FaCaretDown, FaBell } from "react-icons/fa";
 import { IoBookmark } from "react-icons/io5";
 function Nav() {
-  const { setPage, home, bookmark } = useGlobal();
+  const { setPage, home, bookmark, uploadPage, notifications } = useGlobal();
   return (
     <footer className="w-screen cursor-pointer flex  items-center px-4 justify-between bg-gray-800 z-50 fixed bottom-0 h-[75px] rounded-t-[20px] left-0">
       <div
@@ -28,14 +30,14 @@ function Nav() {
         }}
         className="h-[60px] w-[60px] flex items-center justify-center bg-blue-600 rounded-[50%] "
       >
-        <BsPlus size={45} />
+        {uploadPage ? <LiaTimesSolid size={35} /> : <BsPlus size={45} />}
       </div>
       <div
         onClick={() => {
           setPage("notifications");
         }}
       >
-        <BsBell size={25} />
+        {notifications ? <FaBell size={25} /> : <BsBell size={25} />}
       </div>
       <div
         onClick={() => {
