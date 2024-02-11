@@ -6,8 +6,11 @@ import { useGlobal } from "../context";
 import { LiaTimesSolid } from "react-icons/lia";
 import { FaCaretDown, FaBell } from "react-icons/fa";
 import { IoBookmark } from "react-icons/io5";
+
 function Nav() {
-  const { setPage, home, bookmark, uploadPage, notifications } = useGlobal();
+  const { setPage, home, bookmark, uploadPage, notifications, userDetails } =
+    useGlobal();
+  const photoURL = userDetails.photoURL || face1;
   return (
     <footer className="w-screen cursor-pointer flex  items-center px-4 justify-between bg-gray-800 z-50 fixed bottom-0 h-[75px] rounded-t-[20px] left-0">
       <div
@@ -44,7 +47,11 @@ function Nav() {
           setPage("profile");
         }}
       >
-        <img className="h-[40px] w-[40px] " src={face1} alt="" />
+        <img
+          className="h-[40px] rounded-[50%] w-[40px] "
+          src={photoURL}
+          alt=""
+        />
       </div>
     </footer>
   );

@@ -25,14 +25,15 @@ function Admin() {
     view,
     search,
     uploadPage,
+    userDetails,
   } = useGlobal();
   return (
     <div className="text-white bg-black sm:min-h-screen">
       {board1 && <Board1 />}
       {board2 && <Board2 />}
-      {signup && <Signup />}
+      {signup && !userDetails && <Signup />}
       {login && <Login />}
-      {home && <Home />}
+      {userDetails && home && <Home />}
       {view && <View />}
       {profile && <Profile />}
       {bookmark && <Bookmark />}

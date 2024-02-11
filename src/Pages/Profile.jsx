@@ -8,7 +8,8 @@ import { useGlobal } from "../context";
 import { LuMail } from "react-icons/lu";
 import Nav from "../Components/Nav";
 function Profile() {
-  const { setPage } = useGlobal();
+  const { setPage, userDetails } = useGlobal();
+  const photoURL = userDetails.photoURL || face1;
   return (
     <div className="h-screen w-screen bg-black">
       {/* Banner */}
@@ -23,19 +24,25 @@ function Profile() {
       </div>
 
       <div className="relative flex flex-col px-3  w-screen ">
-        <img src={face1} className="-top-4 absolute" alt="" />
+        <img
+          src={photoURL}
+          className="-top-4 h-[50px] w-[50px] rounded-[50%] absolute"
+          alt=""
+        />
         <button className="border-[2px] font-[500] border-gray-700 px-[15px] py-1  absolute right-6 top-3 rounded-[20px] ">
           Edit profile
         </button>
-        <p className=" mt-12  text-[25px] font-bold">Tise</p>
+        <p className=" mt-12  text-[20px] font-bold">
+          {userDetails.displayName}
+        </p>
       </div>
       {/* details/description */}
       <div className="px-4 mt-2">
         {/* desc */}
         <p className="font-[500]">
-          Computer Science enthusiast with a top-notch CGPA of 4.6, ready to
-          lend a helping hand to fellow students in need. Let's conquer
-          challenges together!
+          Economics student with a top-notch CGPA of 4.6, ready to lend a
+          helping hand to fellow students in need. Let's conquer challenges
+          together!
         </p>
         {/* details */}
         <div className="flex w-full mt-4 font-500 text-[16px] justify-start text-gray-300 gap-2 items-center ">
@@ -43,7 +50,7 @@ function Profile() {
           <p className="flex gap-1 items-center   ">
             {" "}
             <CiLocationOn />
-            Crystal
+            Babcok, Ogun
           </p>
           {/* link */}
           <p className="flex items-center  gap-1">
@@ -56,7 +63,7 @@ function Profile() {
               >
                 <FaWhatsapp size={20} />
               </a>
-              <a href="kalejaiyeoluwadara1@gmail.com">
+              <a href={userDetails.email}>
                 <LuMail size={20} />
               </a>
             </span>

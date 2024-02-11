@@ -14,6 +14,7 @@ function AppProvider({ children }) {
   const [bookmark, setBookmark] = useState(false);
   const [search, setSearch] = useState(false);
   const [uploadPage, setUploadPage] = useState(false);
+  const [userDetails, setUserDetails] = useState(null);
   const setPage = (page) => {
     setBoard1(false);
     setBoard2(false);
@@ -57,6 +58,8 @@ function AppProvider({ children }) {
     <AppContext.Provider
       value={{
         uploadPage,
+        userDetails,
+        setUserDetails,
         setUploadPage,
         profile,
         notifications,
