@@ -1,9 +1,25 @@
 import React from "react";
 import face1 from "../assets/images/face1.png";
+import { auth, provider } from "../firebase-config";
+import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+
 import { useGlobal } from "../context";
 function Signup() {
   console.log("render");
   const { setPage } = useGlobal();
+  // authentication
+  const [userDetails, setUserDetails] = useState(null);
+  const SignInWithGoogle = async () => {
+    try {
+      const result = await signInWithPopup(auth, new GoogleAuthProvider());
+      const user = result.user;
+      setUserDetails(user);
+      console.log("User signed in", user);
+    } catch (err) {
+      console.log(err.message);
+    }
+  };
+
   return (
     <div className="h-screen relative  bg-black items-start w-screen flex flex-col px-12 py-4">
       <div className="w-full font-[500] text-[18px] text-right ">
@@ -39,7 +55,10 @@ function Signup() {
             >
               Create Account
             </button>
-            <button className="font-[600] text-[20px] py-3  w-full rounded-[8px] border-[3px] border-blue-600  ">
+            <button
+              onClick={SignInWithGoogle}
+              className="font-[600] text-[20px] py-3  w-full rounded-[8px] border-[3px] border-blue-600  "
+            >
               Sign up with Google
             </button>
           </form>

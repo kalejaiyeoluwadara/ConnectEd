@@ -6,7 +6,7 @@ import { IoBookmark } from "react-icons/io5";
 function Listings() {
   const { course, setCourse, setView, setPage } = useGlobal();
   return (
-    <div className="w-full cursor-pointer flex flex-col gap-4 px-3 items-center justify-center ">
+    <div className="w-full cursor-pointer flex flex-col gap-4 items-center justify-center ">
       {[1, 2, 3, 4, 5].map((d) => {
         return (
           <div
@@ -24,7 +24,7 @@ function Listings() {
             <div className="absolute right-3 top-3  px-3 py-[3px] rounded-[5px]  font-bold ">
               <CiBookmark size={25} />
             </div>
-            <div className="flex items-center w-full px-3 justify-center absolute bottom-4 left-3 gap-1 ">
+            <div className="flex items-center w-full px-3 justify-start absolute bottom-4 left-3 gap-1 ">
               <img className="h-[50px] w-[50px] " src={tochi} alt="" />
               <section className="px-2">
                 <h4 className="font-bold text-[20px] ">Tochi Idiong</h4>

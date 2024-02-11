@@ -9,9 +9,9 @@ function Bookmark() {
   const { setPage } = useGlobal();
   return (
     <div className="min-h-screen relative py-4 px-3 bg-black w-screen  ">
+      <h3 className="font-bold  text-[22px]">Your Bookmarks</h3>
       <SearchField />
-      <h3 className="font-bold mt-12 text-[22px]">Your Bookmarks</h3>
-      <div className="flex flex-col items-center mt-4">
+      <div className="flex flex-col items-center mt-8">
         <div
           onClick={() => {
             // setCourse(d);

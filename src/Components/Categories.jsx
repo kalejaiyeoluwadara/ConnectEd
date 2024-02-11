@@ -12,7 +12,7 @@ function Categories() {
   ]);
   const [active, setActive] = useState("CS");
   return (
-    <div className="flex flex-col gap-2 px-8 py-4 ">
+    <div className="flex sticky top-0  bg-black z-40 flex-col gap-2 py-4 ">
       <p className="text-[25px] font-[600] ">Categories</p>
       <div className="flex gap-2  sb overflow-x-scroll  mt-1 h-full ">
         {cats.map((cat, id) => {

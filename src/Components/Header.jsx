@@ -3,7 +3,7 @@ import { BsBellFill } from "react-icons/bs";
 import face1 from "../assets/images/face2.png";
 function Header() {
   return (
-    <div className="w-full flex px-6 py-4 justify-between items-center">
+    <div className="w-full flex  py-4 justify-between items-center">
       <section className="flex gap-2">
         <img src={face1} className="" alt="" />
         <div className="flex flex-col">

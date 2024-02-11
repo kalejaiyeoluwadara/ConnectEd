@@ -2,11 +2,11 @@ import React, { useContext, useState, useEffect } from "react";
 const AppContext = React.createContext();
 
 function AppProvider({ children }) {
-  const [board1, setBoard1] = useState(false);
+  const [board1, setBoard1] = useState(true);
   const [board2, setBoard2] = useState(false);
   const [signup, setSignup] = useState(false);
   const [login, setLogin] = useState(false);
-  const [home, setHome] = useState(true);
+  const [home, setHome] = useState(false);
   const [view, setView] = useState(false);
   const [course, setCourse] = useState([]);
   const [profile, setProfile] = useState(false);
@@ -25,6 +25,7 @@ function AppProvider({ children }) {
     setProfile(false);
     setNotifications(false);
     setBookmark(false);
+    setSearch(false);
     if (page === "board1") {
       setBoard1(true);
     } else if (page === "board2") {
