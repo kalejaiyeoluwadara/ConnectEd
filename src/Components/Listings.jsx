@@ -1,6 +1,8 @@
 import React from "react";
 import tochi from "../assets/images/tochi.png";
 import { useGlobal } from "../context";
+import { CiBookmark } from "react-icons/ci";
+import { IoBookmark } from "react-icons/io5";
 function Listings() {
   const { course, setCourse, setView, setPage } = useGlobal();
   return (
@@ -15,10 +17,13 @@ function Listings() {
             className="h-[300px] rounded-[8px] relative w-[90%] sm:w-[300px] bg-gray-800 py-12  "
           >
             {d == 2 && (
-              <div className="absolute right-3 top-3 bg-white px-3 py-[3px] rounede-[5px] text-black font-bold ">
+              <div className="absolute left-3 top-3 bg-white px-3 py-[3px] rounded-[5px] text-black font-bold ">
                 Free
               </div>
             )}
+            <div className="absolute right-3 top-3  px-3 py-[3px] rounded-[5px]  font-bold ">
+              <CiBookmark size={25} />
+            </div>
             <div className="flex items-center w-full px-3 justify-center absolute bottom-4 left-3 gap-1 ">
               <img className="h-[50px] w-[50px] " src={tochi} alt="" />
               <section className="px-2">

@@ -1,14 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import tochi from "../assets/images/tochi.png";
 // import
 import { FiChevronLeft } from "react-icons/fi";
 import { CiBookmark } from "react-icons/ci";
 import loc from "../assets/images/loc.png";
 // import Home from "../Pages/Home";
-import mark from "../assets/images/mark.png";
 import { useGlobal } from "../context";
 function View() {
   const { setPage } = useGlobal();
+  const [reviews, setReview] = useState([
+    "Tochi definitely has to be the best tutor for NMA, she makes it look as easy as ABC",
+    "I am so grateful for Tochi's help with NMA, she explains everything thoroughly and patiently!",
+    "Tochi is incredibly knowledgeable and supportive, I highly recommend her for NMA tutoring.",
+    "Thanks to Tochi, I feel much more confident about tackling NMA. She is fantastic!",
+  ]);
   return (
     <div className="min-h-screen pb-20 w-screen bg-black  ">
       {/* First section */}
@@ -24,8 +29,8 @@ function View() {
           <CiBookmark size={25} />
         </section>
 
-        <section>
-          <div className="flex items-center w-full px-3 justify-center absolute bottom-4 left-3 gap-1 ">
+        <section className="">
+          <div className="flex items-center w-full px-3 justify-start absolute bottom-4 left-3 gap-1 ">
             <img className="h-[40px] w-[40px] " src={tochi} alt="" />
             <section className="px-2">
               <h4 className="font-bold text-[18px] ">Tochi Idiong</h4>
@@ -35,8 +40,8 @@ function View() {
         </section>
       </div>
       {/* Second section */}
-      <div className="mt-4 px-8 font-medium ">
-        <div className="flex justify-between items-center">
+      <div className="mt-4  font-medium ">
+        <div className="flex px-8 justify-between items-center">
           <section className="flex gap-1">
             <img src={loc} alt="" />
             <p>Crystal</p>
@@ -45,23 +50,56 @@ function View() {
             Paid
           </button>
         </div>
-        <div>
-          <h3 className="text-[22px] text-start  font-[600] mt-4 ">
-            Course Description
+        {/* Description */}
+        <div className=" h-auto w-[90%] px-4 py-3  mt-4 rounded-[8px] ">
+          <h3 className="text-[22px] text-start  font-[600] ">
+            Tutor Description
           </h3>
-          <p className=" text-start tracking-wide text-[17px]  ">
+          <p className=" text-start w-full font-[400] text-[16px]  ">
             Lorem, ipsum dolor sit amet consectetur adipisicing elit. Cumque
             deleniti soluta quod eveniet dolores, aspernatur minima est eligendi
-            veniam libero voluptas unde tenetur a repellat debitis aperiam
-            quibusdam incidunt necessitatibus.
+            veniam libero voluptas.
           </p>
+          {/* Category */}
+          <div className="flex items-start justify-start">
+            <p className="border border-gray-600 rounded-[8px] font-[400] py-1 mt-2 px-4 ">
+              COSC
+            </p>
+          </div>
         </div>
       </div>
-      {/* Third Section */}
+
+      {/* Reviews */}
+      <div className="mt-4 flex flex-col px-6 ">
+        <h3 className="text-[22px] text-start  font-[600] ">Reviews</h3>
+        <div className="flex flex-col gap-3">
+          {reviews.map((review, id) => {
+            return (
+              <div>
+                <section className="flex justify-between">
+                  <div className="flex gap-3 font-[500] items-center capitalize">
+                    <img src={tochi} alt="" />
+                    <p className="text-[17px]">name</p>
+                  </div>
+                </section>
+                <section>
+                  {/* Rating  */}
+                  <div></div>
+                </section>
+                <p>
+                  Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eius
+                  necessitatibus.
+                </p>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+      {/* Fourth Section */}
       <div className="px-8 mt-4 font-[600] text-[20px]  ">
         <h2 className="text-center mb-3 ">Related Courses</h2>
         <div className="grid  grid-cols-1 items-center justify-center gap-3 ">
-          {[1, 2, 3, 4, 5].map((d) => {
+          {[1, 2, 3].map((d) => {
             return (
               <div
                 onClick={() => {
