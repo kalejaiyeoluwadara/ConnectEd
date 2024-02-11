@@ -4,6 +4,7 @@ body{
 }
 *{
  padding: 0px;
+ user-select: none;
  margin: 0px;
  font-family: 'Rubik', sans-serif;
 }

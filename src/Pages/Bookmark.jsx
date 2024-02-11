@@ -4,11 +4,13 @@ import tochi from "../assets/images/tochi.png";
 import { useGlobal } from "../context";
 import { CiBookmark } from "react-icons/ci";
 import { IoBookmark } from "react-icons/io5";
+import SearchField from "../Components/SearchField";
 function Bookmark() {
   const { setPage } = useGlobal();
   return (
-    <div className="min-h-screen py-4 px-3 bg-black w-screen  ">
-      <h3 className="font-bold text-[22px]">Your Bookmarks</h3>
+    <div className="min-h-screen relative py-4 px-3 bg-black w-screen  ">
+      <SearchField />
+      <h3 className="font-bold mt-12 text-[22px]">Your Bookmarks</h3>
       <div className="flex flex-col items-center mt-4">
         <div
           onClick={() => {
