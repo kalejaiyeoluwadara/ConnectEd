@@ -13,6 +13,7 @@ function AppProvider({ children }) {
   const [notifications, setNotifications] = useState(false);
   const [bookmark, setBookmark] = useState(false);
   const [search, setSearch] = useState(false);
+  const [uploadPage, setUploadPage] = useState(false);
   const setPage = (page) => {
     setBoard1(false);
     setBoard2(false);
@@ -20,7 +21,7 @@ function AppProvider({ children }) {
     setSignup(false);
     setHome(false);
     setView(false);
-
+    setUploadPage(false);
     setProfile(false);
     setNotifications(false);
     setBookmark(false);
@@ -44,6 +45,8 @@ function AppProvider({ children }) {
       setBookmark(true);
     } else if (page === "search") {
       setSearch(true);
+    } else if (page === "upload") {
+      setUploadPage(true);
     } else {
       // setBoard1(true);
       console.log("error");
@@ -52,6 +55,8 @@ function AppProvider({ children }) {
   return (
     <AppContext.Provider
       value={{
+        uploadPage,
+        setUploadPage,
         profile,
         notifications,
         bookmark,

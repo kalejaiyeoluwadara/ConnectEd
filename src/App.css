@@ -2,6 +2,9 @@ body{
     overflow-x: hidden;
 
 }
+input{
+    outline: none;
+}
 *{
  padding: 0px;
  user-select: none;

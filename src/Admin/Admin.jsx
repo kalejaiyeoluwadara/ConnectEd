@@ -10,6 +10,7 @@ import Profile from "../Pages/Profile";
 import Bookmark from "../Pages/Bookmark";
 import Notifications from "../Pages/Notifications";
 import Search from "../Pages/Search";
+import UploadPage from "../Pages/UploadPage";
 function Admin() {
   const {
     setPage,
@@ -23,6 +24,7 @@ function Admin() {
     home,
     view,
     search,
+    uploadPage,
   } = useGlobal();
   return (
     <div className="text-white bg-black sm:min-h-screen">
@@ -36,6 +38,7 @@ function Admin() {
       {bookmark && <Bookmark />}
       {notifications && <Notifications />}
       {search && <Search />}
+      {uploadPage && <UploadPage />}
     </div>
   );
 }

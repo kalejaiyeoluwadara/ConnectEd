@@ -22,7 +22,12 @@ function Nav() {
       >
         {bookmark ? <IoBookmark size={25} /> : <CiBookmark size={25} />}
       </div>
-      <div className="h-[60px] w-[60px] flex items-center justify-center bg-blue-600 rounded-[50%] ">
+      <div
+        onClick={() => {
+          setPage("upload");
+        }}
+        className="h-[60px] w-[60px] flex items-center justify-center bg-blue-600 rounded-[50%] "
+      >
         <BsPlus size={45} />
       </div>
       <div
