@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import tochi from "../assets/images/tochi.png";
 // import
 import { FiChevronLeft } from "react-icons/fi";
+import { CiMenuKebab, CiLocationOn } from "react-icons/ci";
 import { CiBookmark } from "react-icons/ci";
 import loc from "../assets/images/loc.png";
 // import Home from "../Pages/Home";
@@ -41,9 +42,9 @@ function View() {
       </div>
       {/* Second section */}
       <div className="mt-4  font-medium ">
-        <div className="flex px-8 justify-between items-center">
-          <section className="flex gap-1">
-            <img src={loc} alt="" />
+        <div className="flex px-4 justify-between items-center">
+          <section className="flex items-center gap-1">
+            <CiLocationOn size={30} />
             <p>Crystal</p>
           </section>
           <button className="text-white px-4 py-1 bg-blue-600 font-[600] rounded-[8px] ">
@@ -80,6 +81,9 @@ function View() {
                   <div className="flex gap-3 font-[500] items-center capitalize">
                     <img src={tochi} alt="" />
                     <p className="text-[17px]">name</p>
+                  </div>
+                  <div>
+                    <CiMenuKebab size={18} />
                   </div>
                 </section>
                 <section>
