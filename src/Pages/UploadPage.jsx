@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Nav from "../Components/Nav";
-
+import ShadowDropdown from "../Components/Dropdown";
+// import
 function UploadPage() {
   const [image, setImage] = useState(null);
   const [courseTitle, setCourseTitle] = useState("");
@@ -27,13 +28,16 @@ function UploadPage() {
   return (
     <div className="w-screen min-h-screen bg-black flex flex-col  text-white">
       <div className="w-full max-w-md  rounded-md p-6">
-        <input
-          type="file"
-          id="imageInput"
-          accept="image/*"
-          onChange={handleImageChange}
-          className="mt-2 bg-transparent  p-2 w-full"
-        />
+        <div className="flex w-full items-center justify-center ">
+          <input
+            type="file"
+            id="imageInput"
+            accept="image/*"
+            onChange={handleImageChange}
+            className="mt-2 p-2 w-full  appearance-none bg-transparent border-none text-white placeholder-gray-400 focus:outline-none focus:border-none"
+          />
+        </div>
+
         <input
           type="text"
           placeholder="Course Title"
@@ -47,16 +51,7 @@ function UploadPage() {
           onChange={handleDescriptionChange}
           className="bg-transparent  p-2 w-full mb-4 resize-none h-32"
         />
-        <label htmlFor="freeCheckbox" className="flex items-center">
-          <input
-            type="checkbox"
-            id="freeCheckbox"
-            checked={isFree}
-            onChange={handleFreeChange}
-            className="mr-2"
-          />
-          Free Session
-        </label>
+        <div></div>
       </div>
       <Nav />
     </div>
