@@ -8,7 +8,7 @@ import SearchField from "../Components/SearchField";
 function Bookmark() {
   const { setPage } = useGlobal();
   return (
-    <div className="min-h-screen relative py-4 px-3 bg-black w-screen  ">
+    <div className="min-h-screen relative py-4 px-3 bg-black w-screen overflow-x-hidden  ">
       <h3 className="font-bold  text-[22px]">Your Bookmarks</h3>
       <SearchField />
       <div className="flex flex-col items-center mt-8">

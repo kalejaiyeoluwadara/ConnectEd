@@ -8,7 +8,6 @@ function Header() {
 
   // Check if userDetails.photoURL exists, if not, use a default image
   const photoURL = userDetails.photoURL || face1;
-  console.log(photoURL);
   return (
     <div className="w-full flex  py-4 justify-between items-center">
       <section className="flex gap-2">
