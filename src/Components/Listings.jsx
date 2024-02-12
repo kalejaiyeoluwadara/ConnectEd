@@ -24,8 +24,8 @@ function Listings() {
             <div className="absolute right-3 top-3  px-3 py-[3px] rounded-[5px]  font-bold ">
               <CiBookmark size={25} />
             </div>
-            <div className="flex items-center w-full px-3 justify-start absolute bottom-4 left-3 gap-1 ">
-              <img className="h-[50px] w-[50px] " src={tochi} alt="" />
+            <div className="flex items-center bg-blue-400 bg-opacity-40 w-full px-2 justify-start absolute bottom-0 rounded-b-[8px] left-0 py-4 gap-1 ">
+              {/* <img className="h-[50px] w-[50px] " src={tochi} alt="" /> */}
               <section className="px-2">
                 <h4 className="font-bold text-[20px] ">Tochi Idiong</h4>
                 <p>Numerical Methods and Analysis</p>

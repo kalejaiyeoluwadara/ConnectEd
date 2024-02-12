@@ -7,7 +7,7 @@ import Nav from "../Components/Nav";
 
 function Home() {
   return (
-    <div className="min-h-screen relative px-4 pb-10 w-screen bg-black flex flex-col ">
+    <div className="min-h-screen relative px-4 pb-40 w-screen bg-black flex flex-col ">
       <Header />
       <SearchComp />
       <Categories />

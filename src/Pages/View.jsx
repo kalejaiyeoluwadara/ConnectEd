@@ -73,7 +73,7 @@ function View() {
       {/* Reviews */}
       <div className="mt-4 flex flex-col px-6 ">
         <h3 className="text-[22px] text-start  font-[600] ">Reviews</h3>
-        <div className="flex flex-col gap-3">
+        <div className="flex flex-col mt-[20px] gap-4">
           {reviews.map((review, id) => {
             return (
               <div>
@@ -100,7 +100,7 @@ function View() {
         </div>
       </div>
       {/* Fourth Section */}
-      <div className="px-8 mt-4 font-[600] text-[20px]  ">
+      <div className="px-8 mt-8 font-[600] text-[20px]  ">
         <h2 className="text-center mb-3 ">Related Courses</h2>
         <div className="grid  grid-cols-1 items-center justify-center gap-3 ">
           {[1, 2, 3].map((d) => {
@@ -117,7 +117,7 @@ function View() {
                     Free
                   </div>
                 )} */}
-                <div className="flex items-center w-full  justify-center left-3 gap-1 ">
+                <div className="flex items-center w-full px-4  justify-start left-3 gap-1 ">
                   <img className="h-[50px] w-[50px] " src={tochi} alt="" />
                   <section className="px-2">
                     <h4 className="font-[600] text-[19px] ">Tochi Idiong</h4>

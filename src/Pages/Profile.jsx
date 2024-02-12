@@ -11,7 +11,7 @@ function Profile() {
   const { setPage, userDetails, localData } = useGlobal();
   const photoURL = localData.photoURL || face1;
   return (
-    <div className="h-screen w-screen bg-black">
+    <div className="min-h-screen w-screen bg-black">
       {/* Banner */}
       <div className="w-full flex justify-between items-start px-3 py-1 bg-gray-800 h-[100px] ">
         <BsArrowLeft
@@ -26,10 +26,10 @@ function Profile() {
       <div className="relative flex flex-col px-3  w-screen ">
         <img
           src={photoURL}
-          className="-top-4 h-[50px] w-[50px] rounded-[50%] absolute"
+          className="-top-4 border-[3px] border-black h-[50px] w-[50px] rounded-[50%] absolute"
           alt=""
         />
-        <button className="border-[2px] font-[500] border-gray-700 px-[15px] py-1  absolute right-6 top-3 rounded-[20px] ">
+        <button className="border-[2px] hover:border-white hover:font-[600] font-[500] border-gray-700 px-[15px] py-1  absolute right-6 top-3 rounded-[20px] ">
           Edit profile
         </button>
         <p className=" mt-12  text-[20px] font-bold">{localData.displayName}</p>
@@ -45,9 +45,9 @@ function Profile() {
         {/* details */}
         <div className="flex w-full mt-4 font-500 text-[16px] justify-start text-gray-300 gap-2 items-center ">
           {/* location */}
-          <p className="flex gap-1 items-center   ">
+          <p className="flex gap-1 items-center justify-center  ">
             {" "}
-            <CiLocationOn />
+            <CiLocationOn size={20} />
             Babcok, Ogun
           </p>
           {/* link */}
@@ -68,15 +68,26 @@ function Profile() {
           </p>
         </div>
       </div>
-      {/* Post && Bookmarks */}
-      <nav className="flex font-[500] text-[18px] justify-around mt-8 ">
-        <p className="border-b-[3px] px-2 transition-all rounded-[5px] border-blue-500 ">
-          Posts
-        </p>
-        <p>Bookmarks</p>
-      </nav>
       {/* items */}
-      <div></div>
+      <div className="w-full flex items-center justify-center gap-4  my-8 px flex-col">
+        <div className="bg-gray-700 relative w-[90%] rounded-[10px] h-[300px] ">
+          <img src="" alt="" />
+          <section className="px-4 w-full rounded-b-[10px] bg-opacity-30 bg-blue-500 py-3 absolute bottom-0 ">
+            <h4 className="font-bold   text-[20px] ">Tochi Idiong</h4>
+            <p>Numerical Methods and Analysis</p>
+          </section>
+        </div>
+      </div>
+
+      <div className="w-full flex items-center justify-center gap-4  my-8 px flex-col">
+        <div className="bg-gray-700 relative w-[90%] rounded-[10px] h-[300px] ">
+          <img src="" alt="" />
+          <section className="px-4 w-full rounded-b-[10px] bg-opacity-30 bg-blue-500 py-3 absolute bottom-0 ">
+            <h4 className="font-bold   text-[20px] ">Tochi Idiong</h4>
+            <p>Numerical Methods and Analysis</p>
+          </section>
+        </div>
+      </div>
       <Nav />
     </div>
   );
