@@ -39,7 +39,7 @@ function Login() {
           onClick={() => {
             setPage("home");
           }}
-          className="font-[600] text-[20px]  py-3 mt-4 w-full rounded-[8px] bg-blue-600  "
+          className="font-[600] text-[20px]  py-3 mt-4 w-full rounded-[8px] bg-blue-500  "
         >
           Log in
         </button>
@@ -51,7 +51,7 @@ function Login() {
           <span className="px-6 bg-black">or</span>
         </p>
       </div>
-      <button className="font-[600] text-[20px]  py-3 mt-12 w-full rounded-[8px] border-[3px] border-blue-600">
+      <button className="font-[600] text-[20px]  py-3 mt-12 w-full rounded-[8px] border-[1px] border-blue-600">
         Sign in with Google
       </button>
 

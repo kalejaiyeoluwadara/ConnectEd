@@ -2,7 +2,7 @@ import React, { useContext, useState, useEffect } from "react";
 const AppContext = React.createContext();
 
 function AppProvider({ children }) {
-  const [board1, setBoard1] = useState(false);
+  const [board1, setBoard1] = useState(true);
   const [board2, setBoard2] = useState(false);
   const [signup, setSignup] = useState(false);
   const [login, setLogin] = useState(false);
@@ -13,7 +13,7 @@ function AppProvider({ children }) {
   const [notifications, setNotifications] = useState(false);
   const [bookmark, setBookmark] = useState(false);
   const [search, setSearch] = useState(false);
-  const [uploadPage, setUploadPage] = useState(true);
+  const [uploadPage, setUploadPage] = useState(false);
   const [userDetails, setUserDetails] = useState(null);
   const [localData, setLocalData] = useState([]);
 

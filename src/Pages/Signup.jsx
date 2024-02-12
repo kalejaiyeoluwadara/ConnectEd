@@ -6,7 +6,7 @@ import {
   GoogleAuthProvider,
   createUserWithEmailAndPassword,
 } from "firebase/auth";
-
+import Logo from "../Components/Logo.jsx";
 import { useGlobal } from "../context";
 
 function Signup() {
@@ -58,37 +58,36 @@ function Signup() {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [name, setName] = useState("");
 
   return (
-    <div className="h-screen relative bg-black items-start w-screen flex flex-col px-12 py-4">
-      <div className="w-full font-[500] text-[18px] text-right ">
-        <p
-          onClick={() => {
-            setPage("login");
-          }}
-        >
-          Login
-        </p>
+    <div className="h-screen relative bg-black items-start w-screen flex flex-col px-6 py-4">
+      <div className="w-full ">
+        <Logo />
       </div>
 
-      <div className="flex flex-col mt-20 w-full gap-3">
-        <img src={face1} className="h-[100px] w-[100px] mb-2 " alt="" />
-        <h2 className="font-[600] text-[35px] leading-[50px] ">
-          Create your <br /> account
-        </h2>
+      <div className="flex flex-col mt-20 text-center w-full gap-3">
+        <h2 className="font-[600] text-[30px]  ">Create New Account</h2>
         <div className="mt-6">
           <div className="gap-4 w-full  flex flex-col" action="">
             <div className="flex flex-col items-start justify-center w-full gap-[24px]">
               <input
+                placeholder="Full Name"
+                className="w-full bg-gray-800 px-4 py-4 rounded-[8px] input"
+                type="text"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+              />
+              <input
                 placeholder="Email"
-                className="w-full input"
+                className="w-full bg-gray-800 px-4 py-4 rounded-[8px] input"
                 type="text"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
               />
               <input
                 placeholder="Password"
-                className="w-full input"
+                className="w-full bg-gray-800 px-4 py-4 rounded-[8px] input"
                 type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
@@ -96,13 +95,13 @@ function Signup() {
             </div>
             <button
               onClick={() => handleSignupWithEmail(email, password)}
-              className="font-[600] text-[20px] py-3 mt-4 w-full rounded-[8px] bg-blue-600  "
+              className="font-[600] text-[20px] py-3 mt-4 w-full rounded-[8px] bg-blue-500  "
             >
               Create Account
             </button>
             <button
               onClick={SignInWithGoogle}
-              className="font-[600] text-[20px] py-3 w-full rounded-[8px] border-[3px] border-blue-600  "
+              className="font-[600] text-[20px] py-3 w-full rounded-[8px] border-[1px] border-blue-600  "
             >
               Sign up with Google
             </button>

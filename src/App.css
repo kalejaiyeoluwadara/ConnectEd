@@ -15,8 +15,8 @@ textarea{
  font-family: 'Rubik', sans-serif;
 }
 .input{
-    background-color: black;
-    border-bottom: 3px solid gray;
+    /* background-color: black; */
+    /* border-bottom: 3px solid gray; */
     outline: none;
 
 }
