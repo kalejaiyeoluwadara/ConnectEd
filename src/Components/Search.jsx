@@ -10,18 +10,17 @@ function SearchComp() {
         onClick={() => {
           setPage("search");
         }}
-        className="bg-gray-700 text-white px-4 flex gap-2 items-center h-[50px] w-[80%] sm:w-[300px] rounded-[8px] "
+        className="bg-gray-700 text-white px-4 flex flex-row-reverse gap-2 items-center h-[50px] w-[100%] sm:w-[300px] rounded-[8px] "
       >
-        <BsSearch size={20} />
+        <BsSearch size={25} />
         <input
-          className="w-[80%] h-full outline-none  bg-transparent"
+          className="w-[100%] h-full outline-none  bg-transparent"
           placeholder="search"
           type="text"
           name=""
           id=""
         />
       </div>
-      <img src={add} alt="" />
     </div>
   );
 }
