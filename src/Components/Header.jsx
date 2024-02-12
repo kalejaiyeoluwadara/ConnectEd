@@ -4,10 +4,10 @@ import face1 from "../assets/images/face2.png";
 import { useGlobal } from "../context";
 
 function Header() {
-  const { userDetails } = useGlobal();
+  const { userDetails, localData } = useGlobal();
 
   // Check if userDetails.photoURL exists, if not, use a default image
-  const photoURL = userDetails.photoURL || face1;
+  const photoURL = localData.photoURL || face1;
   return (
     <div className="w-full flex  py-4 justify-between items-center">
       <section className="flex gap-2">
@@ -18,7 +18,7 @@ function Header() {
         />
         <div className="flex flex-col">
           <h4 className="font-bold text-[18px] ">
-            Welcome, {userDetails.displayName}
+            Welcome, {localData.displayName}
           </h4>
           <p className="text-[13px] font-[500] opacity-[0.7] ">Babcock, Ogun</p>
         </div>

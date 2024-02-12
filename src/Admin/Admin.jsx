@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Board1 from "../Pages/Board1";
 import { useGlobal } from "../context";
 import Board2 from "../Pages/Board2";
@@ -27,7 +27,23 @@ function Admin() {
     search,
     uploadPage,
     userDetails,
+    setLocalData,
+    localData,
   } = useGlobal();
+  const [isSignedIn, setIsSignedIn] = useState(false); // Initialize isSignedIn state
+
+  // Check localStorage on component mount
+  useEffect(() => {
+    const storedIsSignedIn = localStorage.getItem("isSignedIn");
+    if (storedIsSignedIn) {
+      setIsSignedIn(true);
+      console.log("yes");
+      const storedUserDetails = JSON.parse(localStorage.getItem("userDetails"));
+      setLocalData(storedUserDetails);
+      setPage("home");
+    }
+  }, []);
+
   return (
     <div className="text-white bg-black sm:min-h-screen">
       {/* <> */}
@@ -35,7 +51,7 @@ function Admin() {
       {board2 && <Board2 />}
       {signup && !userDetails && <Signup />}
       {login && <Login />}
-      {userDetails && home && <Home />}
+      {home && <Home />}
       {view && <View />}
       {profile && <Profile />}
       {bookmark && <Bookmark />}

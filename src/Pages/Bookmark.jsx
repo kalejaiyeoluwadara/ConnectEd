@@ -6,7 +6,7 @@ import { CiBookmark } from "react-icons/ci";
 import { IoBookmark } from "react-icons/io5";
 import SearchField from "../Components/SearchField";
 function Bookmark() {
-  const { setPage } = useGlobal();
+  const { setPage, localData } = useGlobal();
   return (
     <div className="min-h-screen relative py-4 px-3 bg-black w-screen overflow-x-hidden  ">
       <h3 className="font-bold  text-[22px]">Your Bookmarks</h3>

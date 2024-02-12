@@ -8,8 +8,8 @@ import { useGlobal } from "../context";
 import { LuMail } from "react-icons/lu";
 import Nav from "../Components/Nav";
 function Profile() {
-  const { setPage, userDetails } = useGlobal();
-  const photoURL = userDetails.photoURL || face1;
+  const { setPage, userDetails, localData } = useGlobal();
+  const photoURL = localData.photoURL || face1;
   return (
     <div className="h-screen w-screen bg-black">
       {/* Banner */}
@@ -32,9 +32,7 @@ function Profile() {
         <button className="border-[2px] font-[500] border-gray-700 px-[15px] py-1  absolute right-6 top-3 rounded-[20px] ">
           Edit profile
         </button>
-        <p className=" mt-12  text-[20px] font-bold">
-          {userDetails.displayName}
-        </p>
+        <p className=" mt-12  text-[20px] font-bold">{localData.displayName}</p>
       </div>
       {/* details/description */}
       <div className="px-4 mt-2">
@@ -63,7 +61,7 @@ function Profile() {
               >
                 <FaWhatsapp size={20} />
               </a>
-              <a href={userDetails.email}>
+              <a href={localData.email}>
                 <LuMail size={20} />
               </a>
             </span>

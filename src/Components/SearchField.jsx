@@ -3,8 +3,8 @@ import add from "../assets/images/face2.png";
 import { BsSearch } from "react-icons/bs";
 import { useGlobal } from "../context";
 function SearchField() {
-  const { setPage, userDetails } = useGlobal();
-  const photoURL = userDetails.photoURL || face1;
+  const { setPage, userDetails, localData } = useGlobal();
+  const photoURL = localData.photoURL || add;
   return (
     <div className="w-screen mt-4 px-3 left-0 flex justify-between items-center   ">
       <div>
