@@ -15,6 +15,7 @@ function AppProvider({ children }) {
   const [search, setSearch] = useState(false);
   const [uploadPage, setUploadPage] = useState(false);
   const [userDetails, setUserDetails] = useState(null);
+  const [localData, setLocalData] = useState([]);
   const setPage = (page) => {
     setBoard1(false);
     setBoard2(false);
@@ -57,6 +58,8 @@ function AppProvider({ children }) {
   return (
     <AppContext.Provider
       value={{
+        localData,
+        setLocalData,
         uploadPage,
         userDetails,
         setUserDetails,

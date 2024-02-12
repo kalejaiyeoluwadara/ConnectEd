@@ -11,6 +11,7 @@ import Bookmark from "../Pages/Bookmark";
 import Notifications from "../Pages/Notifications";
 import Search from "../Pages/Search";
 import UploadPage from "../Pages/UploadPage";
+
 function Admin() {
   const {
     setPage,
@@ -29,6 +30,7 @@ function Admin() {
   } = useGlobal();
   return (
     <div className="text-white bg-black sm:min-h-screen">
+      {/* <> */}
       {board1 && <Board1 />}
       {board2 && <Board2 />}
       {signup && !userDetails && <Signup />}
@@ -41,6 +43,8 @@ function Admin() {
       {search && <Search />}
       {uploadPage && <UploadPage />}
     </div>
+
+    // </>
   );
 }
 

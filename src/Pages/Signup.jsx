@@ -10,13 +10,21 @@ import {
 import { useGlobal } from "../context";
 
 function Signup() {
-  const { setPage, userDetails, setUserDetails } = useGlobal();
+  const { setPage, userDetails, setUserDetails, setLocalData } = useGlobal();
   // authentication
 
   const SignInWithGoogle = async () => {
     try {
       const result = await signInWithPopup(auth, new GoogleAuthProvider());
       const user = result.user;
+      const userInfo = {
+        name: user.displayName,
+        img: user.photoURL,
+        email: user.email,
+      };
+      setLocalData(userInfo);
+      localStorage.setItem("userDetails", JSON.stringify(userInfo));
+      localStorage.setItem("isSignedIn", true);
       setUserDetails(user);
       setPage("home");
       console.log("User signed in", user);
@@ -35,6 +43,13 @@ function Signup() {
       const user = result.user;
       setUserDetails(user);
       setPage("home");
+      const userInfo = {
+        name: user.displayName,
+        img: user.photoURL,
+        email: user.email,
+      };
+      localStorage.setItem("userDetails", JSON.stringify(userInfo));
+      localStorage.setItem("isSignedIn", true);
       console.log("User signed up with email", user);
     } catch (err) {
       console.log(err.message);
