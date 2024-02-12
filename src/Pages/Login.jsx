@@ -2,11 +2,18 @@ import React from "react";
 import { MdOutlineShoppingCart } from "react-icons/md";
 import { FiChevronRight, FiChevronLeft } from "react-icons/fi";
 import { useGlobal } from "../context";
+import { auth, provider } from "../firebase-config";
+import {
+  signInWithPopup,
+  GoogleAuthProvider,
+  createUserWithEmailAndPassword,
+} from "firebase/auth";
+import Logo from "../Components/Logo.jsx";
 function Login() {
   const { setPage } = useGlobal();
   return (
     <div className="flex w-screen flex-col px-3 py-2 relative h-screen bg-black ">
-      <div className="w-full absolute text-[20px] font-[500] top-3 flex items-center justify-between ">
+      {/* <div className="w-full absolute text-[20px] font-[500] top-3 flex items-center justify-between ">
         <FiChevronLeft
           onClick={() => {
             setPage("signup");
@@ -16,8 +23,12 @@ function Login() {
         />
         <p>Login</p>
         <p></p>
-      </div>
-      <form className="flex w-full flex-col gap-4 px-4 mt-20" action="">
+      </div> */}
+      <Logo />
+      <div className="flex w-full flex-col gap-4 px-4 mt-10" action="">
+        <h2 className="font-[600] text-center text-[30px] mb-6 ">
+          Account Login
+        </h2>
         <div className="w-full flex px-3 rounded-[8px] items-center justify-center bg-gray-800 h-[54px] ">
           <input
             type="text"
@@ -43,7 +54,7 @@ function Login() {
         >
           Log in
         </button>
-      </form>
+      </div>
 
       <div className="relative">
         <hr className="mt-8 border-[2px] border-gray-800 " />

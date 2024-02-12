@@ -67,7 +67,9 @@ function Signup() {
       </div>
 
       <div className="flex flex-col mt-20 text-center w-full gap-3">
-        <h2 className="font-[600] text-[30px]  ">Create New Account</h2>
+        <h2 className="font-[600] text-center text-[30px]  ">
+          Create New Account
+        </h2>
         <div className="mt-6">
           <div className="gap-4 w-full  flex flex-col" action="">
             <div className="flex flex-col items-start justify-center w-full gap-[24px]">
@@ -107,6 +109,16 @@ function Signup() {
             </button>
           </div>
         </div>
+      </div>
+      <div className="w-full absolute bottom-8 flex items-center justify-center">
+        <p
+          onClick={() => {
+            setPage("login");
+          }}
+          className="cursor-pointer"
+        >
+          Already have an account?<span className="text-blue-500"> Login</span>
+        </p>
       </div>
     </div>
   );
