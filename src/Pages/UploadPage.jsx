@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Nav from "../Components/Nav";
 import ShadowDropdown from "../Components/Dropdown";
-import { FaCaretDown } from "react-icons/fa";
+import { FaCaretDown, FaCaretUp } from "react-icons/fa";
 import { useGlobal } from "../context";
 import { IoIosCheckmark } from "react-icons/io";
 // import
@@ -72,8 +72,62 @@ function UploadPage() {
             className="bg-transparent  border rounded-[8px] border-gray-600 focus:border-white p-2 w-full mb-4 resize-none h-32"
           />
         </div>
+
+        {/* Categories */}
+        <div className="flex mt-4 z-50 relative  flex-col">
+          <h3 className="font-[600] mb-2">Category</h3>
+          <div className="flex w-full items-center justify-center">
+            <p
+              onClick={() => {
+                setIsCat(!isCat);
+              }}
+              className="px-4 flex items-center gap-2 py-2 font-[500]  border rounded-[8px]  border-gray-600"
+            >
+              {category}{" "}
+              {!isCat ? <FaCaretDown size={20} /> : <FaCaretUp size={20} />}
+            </p>
+          </div>
+
+          {/* options */}
+          {isCat && (
+            <div
+              onClick={() => {
+                setIsCat(!isCat);
+              }}
+              className="absolute flex flex-col gap-4 items-start justify-center border border-gray-600 px-6 -top-[150px] capitalize bg-black rounded-[8px] py-3 -right-2"
+            >
+              {[
+                "Cosc",
+                "Economics",
+                "Mathematics",
+                "general",
+                "English",
+                "Tech",
+                "Sports",
+                "other",
+              ].map((d, id) => {
+                return (
+                  <p
+                    key={id}
+                    className="flex gap-1"
+                    onClick={() => {
+                      setCategory(d);
+                    }}
+                  >
+                    <span>{d}</span>
+                    <IoIosCheckmark
+                      size={20}
+                      className={`${category === d ? "visible" : "hidden"}`}
+                    />
+                  </p>
+                );
+              })}
+            </div>
+          )}
+        </div>
+
         {/* Payment plan */}
-        <div className="flex mt-2 relative  flex-col">
+        <div className="flex mt-6 relative  flex-col">
           <h3 className="font-[600] mb-2">Payment plan</h3>
           <div className="flex w-full items-center justify-center">
             <p
@@ -82,7 +136,8 @@ function UploadPage() {
               }}
               className="px-4 flex items-center gap-2 py-2 font-[500]  border rounded-[8px]  border-gray-600"
             >
-              {isFree ? "Free" : "Paid"} <FaCaretDown size={20} />
+              {isFree ? "Free" : "Paid"}{" "}
+              {!banner ? <FaCaretDown size={20} /> : <FaCaretUp size={20} />}
             </p>
           </div>
 
@@ -102,6 +157,7 @@ function UploadPage() {
               >
                 <span>Free</span>
                 <IoIosCheckmark
+                  size={25}
                   className={`${isFree ? "visible" : "hidden"}`}
                 />
               </p>
@@ -113,56 +169,10 @@ function UploadPage() {
               >
                 <span>Paid</span>
                 <IoIosCheckmark
+                  size={25}
                   className={`${!isFree ? "visible" : "hidden"}`}
                 />
               </p>
-            </div>
-          )}
-        </div>
-
-        {/* Categories */}
-        <div className="flex mt-6 relative  flex-col">
-          <h3 className="font-[600] mb-2">Category</h3>
-          <div className="flex w-full items-center justify-center">
-            <p
-              onClick={() => {
-                setIsCat(!isCat);
-              }}
-              className="px-4 flex items-center gap-2 py-2 font-[500]  border rounded-[8px]  border-gray-600"
-            >
-              {category} <FaCaretDown size={20} />
-            </p>
-          </div>
-
-          {/* options */}
-          {isCat && (
-            <div
-              onClick={() => {
-                setIsCat(!isCat);
-              }}
-              className="absolute flex flex-col gap-2 items-center justify-center border border-gray-600 px-6 capitalize bg-black rounded-[8px] py-3 -right-2"
-            >
-              {[
-                "Cosc",
-                "Economics",
-                "Mathematics",
-                "general",
-                "English",
-                "Tech",
-                "Sports",
-                "other",
-              ].map((d, id) => {
-                return (
-                  <p
-                    key={id}
-                    onClick={() => {
-                      setCategory(d);
-                    }}
-                  >
-                    {d}
-                  </p>
-                );
-              })}
             </div>
           )}
         </div>
