@@ -45,7 +45,7 @@ function Admin() {
   }, []);
 
   return (
-    <div className="text-white bg-black sm:min-h-screen">
+    <div className="text-white bg-black ">
       {/* <> */}
       {board1 && <Board1 />}
       {board2 && <Board2 />}

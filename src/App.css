@@ -1,7 +1,7 @@
 body{
     overflow-x: hidden;
-
-}
+    background: #000;
+}   
 input{
     outline: none;
 }
@@ -40,23 +40,5 @@ textarea{
     font-weight: 600;
 }
 @media (max-width: 640px){
-   .diff{
-    position: absolute;
-    box-shadow: 4px 5px 20px 2px #0000000b;
-    bottom: -80px;
-    transform: translateX(-20px);
-    background-color: white;
-    display: flex;
-    width: 100%;
-    justify-content: space-evenly;
-   }
-   .diff2 {
-       background-color: hsl(235, 24%, 19%);
-   }
-   .nav {
-       background-image: url('./assets/bg-mobile-light.jpg');
-   }
-    .nav2 {
-        background-image: url('./assets/bg-mobile-dark.jpg');
-    }
+  
 }

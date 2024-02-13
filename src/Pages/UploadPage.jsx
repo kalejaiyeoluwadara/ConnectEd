@@ -109,6 +109,46 @@ function UploadPage() {
           )}
         </div>
 
+        {/* Categories */}
+        <div className="flex mt-2 relative  flex-col">
+          <h3 className="font-[600] mb-2">Payment plan</h3>
+          <div className="flex w-full items-center justify-center">
+            <p
+              onClick={() => {
+                setBanner(!banner);
+              }}
+              className="px-4 flex items-center gap-2 py-2 font-[500]  border rounded-[8px]  border-gray-600"
+            >
+              {isFree ? "Free" : "Paid"} <FaCaretDown size={20} />
+            </p>
+          </div>
+
+          {/* options */}
+          {banner && (
+            <div
+              onClick={() => {
+                setBanner(false);
+              }}
+              className="absolute flex flex-col gap-2 items-center justify-center border border-gray-600 px-6 bg-black rounded-[8px] py-3 -right-2"
+            >
+              <p
+                onClick={() => {
+                  setIsFree(true);
+                }}
+              >
+                Free
+              </p>
+              <p
+                onClick={() => {
+                  setIsFree(false);
+                }}
+              >
+                Paid
+              </p>
+            </div>
+          )}
+        </div>
+
         <div className="w-full flex justify-between items-center my-12 ">
           <button
             onClick={() => {

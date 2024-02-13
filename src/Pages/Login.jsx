@@ -12,7 +12,7 @@ import Logo from "../Components/Logo.jsx";
 function Login() {
   const { setPage } = useGlobal();
   return (
-    <div className="flex w-screen flex-col px-3 py-2 relative h-screen bg-black ">
+    <div className="flex w-screen flex-col px-3 py-2 relative min-h-screen bg-black ">
       {/* <div className="w-full absolute text-[20px] font-[500] top-3 flex items-center justify-between ">
         <FiChevronLeft
           onClick={() => {

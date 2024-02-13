@@ -26,8 +26,8 @@ function Signup() {
       localStorage.setItem("userDetails", JSON.stringify(userInfo));
       localStorage.setItem("isSignedIn", true);
       setUserDetails(user);
-      setPage("home");
       console.log("User signed in", user);
+      setPage("home");
     } catch (err) {
       console.log(err.message);
     }
@@ -61,7 +61,7 @@ function Signup() {
   const [name, setName] = useState("");
 
   return (
-    <div className="h-screen relative bg-black items-start w-screen flex flex-col px-6 py-4">
+    <div className="min-h-screen mb-0 relative bg-black items-start w-screen flex flex-col px-6 py-4">
       <div className="w-full ">
         <Logo />
       </div>
