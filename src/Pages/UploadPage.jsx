@@ -3,6 +3,7 @@ import Nav from "../Components/Nav";
 import ShadowDropdown from "../Components/Dropdown";
 import { FaCaretDown } from "react-icons/fa";
 import { useGlobal } from "../context";
+import { IoIosCheckmark } from "react-icons/io";
 // import
 function UploadPage() {
   const [image, setImage] = useState(null);
@@ -11,6 +12,8 @@ function UploadPage() {
   const [description, setDescription] = useState("");
   const [isFree, setIsFree] = useState(true);
   const [banner, setBanner] = useState(true);
+  const [category, setCategory] = useState("general");
+  const [isCat, setIsCat] = useState(false);
   const handleImageChange = (e) => {
     const selectedImage = e.target.files[0];
     setImage(selectedImage);
@@ -89,62 +92,77 @@ function UploadPage() {
               onClick={() => {
                 setBanner(false);
               }}
-              className="absolute flex flex-col gap-2 items-center justify-center border border-gray-600 px-6 bg-black rounded-[8px] py-3 -right-2"
+              className="absolute flex flex-col gap-2 items-start justify-center border border-gray-600 w-[100px] px-6 bg-black rounded-[8px] py-3 -right-2"
             >
               <p
                 onClick={() => {
                   setIsFree(true);
                 }}
+                className="flex item-center relative justify-center gap-1 "
               >
-                Free
+                <span>Free</span>
+                <IoIosCheckmark
+                  className={`${isFree ? "visible" : "hidden"}`}
+                />
               </p>
               <p
                 onClick={() => {
                   setIsFree(false);
                 }}
+                className="flex item-center justify-center gap-1 "
               >
-                Paid
+                <span>Paid</span>
+                <IoIosCheckmark
+                  className={`${!isFree ? "visible" : "hidden"}`}
+                />
               </p>
             </div>
           )}
         </div>
 
         {/* Categories */}
-        <div className="flex mt-2 relative  flex-col">
-          <h3 className="font-[600] mb-2">Payment plan</h3>
+        <div className="flex mt-6 relative  flex-col">
+          <h3 className="font-[600] mb-2">Category</h3>
           <div className="flex w-full items-center justify-center">
             <p
               onClick={() => {
-                setBanner(!banner);
+                setIsCat(!isCat);
               }}
               className="px-4 flex items-center gap-2 py-2 font-[500]  border rounded-[8px]  border-gray-600"
             >
-              {isFree ? "Free" : "Paid"} <FaCaretDown size={20} />
+              {category} <FaCaretDown size={20} />
             </p>
           </div>
 
           {/* options */}
-          {banner && (
+          {isCat && (
             <div
               onClick={() => {
-                setBanner(false);
+                setIsCat(!isCat);
               }}
-              className="absolute flex flex-col gap-2 items-center justify-center border border-gray-600 px-6 bg-black rounded-[8px] py-3 -right-2"
+              className="absolute flex flex-col gap-2 items-center justify-center border border-gray-600 px-6 capitalize bg-black rounded-[8px] py-3 -right-2"
             >
-              <p
-                onClick={() => {
-                  setIsFree(true);
-                }}
-              >
-                Free
-              </p>
-              <p
-                onClick={() => {
-                  setIsFree(false);
-                }}
-              >
-                Paid
-              </p>
+              {[
+                "Cosc",
+                "Economics",
+                "Mathematics",
+                "general",
+                "English",
+                "Tech",
+                "Sports",
+                "other",
+              ].map((d, id) => {
+                return (
+                  <p
+                    key={id}
+                    onClick={() => {
+                      setCategory(d);
+                    }}
+                  >
+                    {d}
+                  </p>
+                );
+              })}
             </div>
           )}
         </div>
