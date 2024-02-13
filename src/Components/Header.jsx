@@ -1,13 +1,24 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { BsBellFill } from "react-icons/bs";
 import face1 from "../assets/images/face2.png";
 import { useGlobal } from "../context";
 
 function Header() {
-  const { userDetails, localData } = useGlobal();
-
+  const { userDetails, localData, setIsSignedIn, setLocalData, setImg, img } =
+    useGlobal();
+  // const [image] =
+  useEffect(() => {
+    const storedIsSignedIn = localStorage.getItem("userDetails");
+    if (storedIsSignedIn) {
+      //  setLocalData(storedUserDetails);
+      //  setPage("home");
+      const image = JSON.parse(storedIsSignedIn);
+      setImg(image);
+      console.log(img.name);
+    }
+  }, []);
   // Check if userDetails.photoURL exists, if not, use a default image
-  const photoURL = localData.photoURL || face1;
+  const photoURL = localData.photoURL || img.img;
   return (
     <div className="w-full flex  py-4 justify-between items-center">
       <section className="flex gap-2">
@@ -17,9 +28,7 @@ function Header() {
           alt="img"
         />
         <div className="flex flex-col">
-          <h4 className="font-bold text-[18px] ">
-            Welcome, {localData.displayName}
-          </h4>
+          <h4 className="font-bold text-[18px] ">Welcome, {img.name}</h4>
           <p className="text-[13px] font-[500] opacity-[0.7] ">Babcock, Ogun</p>
         </div>
       </section>

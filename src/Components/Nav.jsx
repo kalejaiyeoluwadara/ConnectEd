@@ -16,8 +16,10 @@ function Nav() {
     notifications,
     userDetails,
     localData,
+    setImg,
+    img,
   } = useGlobal();
-  const photoURL = localData.photoURL || face1;
+  const photoURL = localData.photoURL || img.img;
   return (
     <footer className="w-screen cursor-pointer flex  items-center px-4 justify-between bg-gray-800 z-50 fixed bottom-0 h-[75px] rounded-t-[20px] left-0">
       <div

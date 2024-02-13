@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { BsArrowLeft } from "react-icons/bs";
 import { CiMenuKebab, CiLocationOn } from "react-icons/ci";
 import { IoMdLink } from "react-icons/io";
@@ -8,19 +8,37 @@ import { useGlobal } from "../context";
 import { LuMail } from "react-icons/lu";
 import Nav from "../Components/Nav";
 function Profile() {
-  const { setPage, userDetails, localData } = useGlobal();
-  const photoURL = localData.photoURL || face1;
+  const { setPage, userDetails, localData, setImg, img } = useGlobal();
+  const photoURL = img.img || face1;
+  const [log, setLog] = useState();
   return (
     <div className="min-h-screen w-screen bg-black">
       {/* Banner */}
-      <div className="w-full flex justify-between items-start px-3 py-1 bg-gray-800 h-[100px] ">
+      <div className="w-full flex relative justify-between items-start px-3 py-1 bg-gray-800 h-[100px] ">
         <BsArrowLeft
           onClick={() => {
             setPage("home");
           }}
           size={30}
         />
-        <CiMenuKebab size={25} />
+        <CiMenuKebab
+          onClick={() => {
+            setLog(!log);
+          }}
+          size={25}
+        />
+        {log && (
+          <div
+            onClick={() => {
+              setPage("board1");
+              localStorage.removeItem("isSignedIn");
+              localStorage.removeItem("userDetails");
+            }}
+            className="absolute bottom-4 right-4 bg-black px-4 py-2 rounded-[8px] "
+          >
+            Log Out
+          </div>
+        )}
       </div>
 
       <div className="relative flex flex-col px-3  w-screen ">
@@ -32,7 +50,7 @@ function Profile() {
         <button className="border-[2px] hover:border-white hover:font-[600] font-[500] border-gray-700 px-[15px] py-1  absolute right-6 top-3 rounded-[20px] ">
           Edit profile
         </button>
-        <p className=" mt-12  text-[20px] font-bold">{localData.displayName}</p>
+        <p className=" mt-12  text-[20px] font-bold">{img.name}</p>
       </div>
       {/* details/description */}
       <div className="px-4 mt-2">

@@ -37,7 +37,7 @@ function Admin() {
     const storedIsSignedIn = localStorage.getItem("isSignedIn");
     if (storedIsSignedIn) {
       setIsSignedIn(true);
-      console.log("yes");
+      // console.log("yes");
       const storedUserDetails = JSON.parse(localStorage.getItem("userDetails"));
       setLocalData(storedUserDetails);
       setPage("home");
