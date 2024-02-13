@@ -4,12 +4,12 @@ import { FaCaretDown, FaCaretUp } from "react-icons/fa";
 import { useGlobal } from "../context";
 import { IoIosCheckmark } from "react-icons/io";
 import { collection, addDoc } from "firebase/firestore";
-import { ref, uploadBytes } from "firebase/storage";
+import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { db, storage } from "../firebase-config"; // Importing db and storage from your config file
 
 function UploadPage() {
   const [image, setImage] = useState(null);
-  const { setPage } = useGlobal();
+  const { setPage, img } = useGlobal();
   const [courseTitle, setCourseTitle] = useState("");
   const [description, setDescription] = useState("");
   const [isFree, setIsFree] = useState(true);
@@ -31,10 +31,6 @@ function UploadPage() {
     setDescription(e.target.value);
   };
 
-  const handleFreeChange = (e) => {
-    setIsFree(e.target.checked);
-  };
-
   // Important
   const handleCreateCourse = async () => {
     // Upload image to Firebase Storage
@@ -42,10 +38,10 @@ function UploadPage() {
 
     try {
       // Upload image
-      await uploadBytes(storageRef, image);
+      const snapshot = await uploadBytes(storageRef, image);
 
       // Get image URL
-      const imageUrl = await storageRef.getDownloadURL();
+      const imageUrl = await getDownloadURL(snapshot.ref);
 
       // Add course data to Firestore
       const coursesCollection = collection(db, "courses");
@@ -55,6 +51,11 @@ function UploadPage() {
         description: description,
         isFree: isFree,
         category: category,
+        id: img.id,
+        profileImage: img.img,
+        author: img.name,
+        reviews: [],
+        hall: "Babcock ogun",
       });
 
       console.log("Course added successfully");
