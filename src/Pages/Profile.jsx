@@ -79,7 +79,7 @@ function Profile() {
               >
                 <FaWhatsapp size={20} />
               </a>
-              <a href={localData.email}>
+              <a href={img.email}>
                 <LuMail size={20} />
               </a>
             </span>

@@ -21,6 +21,7 @@ function Signup() {
         name: user.displayName,
         img: user.photoURL,
         email: user.email,
+        id: user.uid,
       };
       setLocalData(userInfo);
       localStorage.setItem("userDetails", JSON.stringify(userInfo));

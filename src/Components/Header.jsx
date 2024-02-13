@@ -14,11 +14,12 @@ function Header() {
       //  setPage("home");
       const image = JSON.parse(storedIsSignedIn);
       setImg(image);
-      console.log(img.name);
+      // console.log(img.name);
+      console.log(photoURL);
     }
   }, []);
   // Check if userDetails.photoURL exists, if not, use a default image
-  const photoURL = localData.photoURL || img.img;
+  const photoURL = img.img || face1;
   return (
     <div className="w-full flex  py-4 justify-between items-center">
       <section className="flex gap-2">
