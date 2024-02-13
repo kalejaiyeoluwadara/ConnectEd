@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import Nav from "../Components/Nav";
-import ShadowDropdown from "../Components/Dropdown";
 import { FaCaretDown, FaCaretUp } from "react-icons/fa";
 import { useGlobal } from "../context";
 import { IoIosCheckmark } from "react-icons/io";
-// import
+import { collection, addDoc } from "firebase/firestore";
+import { ref, uploadBytes } from "firebase/storage";
+import { db, storage } from "../firebase-config"; // Importing db and storage from your config file
+
 function UploadPage() {
   const [image, setImage] = useState(null);
   const { setPage } = useGlobal();
@@ -14,6 +16,8 @@ function UploadPage() {
   const [banner, setBanner] = useState(true);
   const [category, setCategory] = useState("general");
   const [isCat, setIsCat] = useState(false);
+  // const db = firebase.firestore();
+  // const storage = firebase.storage();
   const handleImageChange = (e) => {
     const selectedImage = e.target.files[0];
     setImage(selectedImage);
@@ -31,6 +35,34 @@ function UploadPage() {
     setIsFree(e.target.checked);
   };
 
+  // Important
+  const handleCreateCourse = async () => {
+    // Upload image to Firebase Storage
+    const storageRef = ref(storage, `course_images/${image.name}`);
+
+    try {
+      // Upload image
+      await uploadBytes(storageRef, image);
+
+      // Get image URL
+      const imageUrl = await storageRef.getDownloadURL();
+
+      // Add course data to Firestore
+      const coursesCollection = collection(db, "courses");
+      await addDoc(coursesCollection, {
+        image: imageUrl,
+        title: courseTitle,
+        description: description,
+        isFree: isFree,
+        category: category,
+      });
+
+      console.log("Course added successfully");
+      // Redirect or do something else as needed
+    } catch (error) {
+      console.error("Error adding course: ", error);
+    }
+  };
   return (
     <div className="w-screen min-h-screen items-center justify-center bg-black flex flex-col px-4  text-white">
       <div className="w-full border border-gray-700 mt-8 my-20  max-w-md  rounded-[8px] p-6">
@@ -186,7 +218,10 @@ function UploadPage() {
           >
             Cancel
           </button>
-          <button className="px-4 py-2 font-[600] bg-white text-black rounded-[8px]  ">
+          <button
+            onClick={handleCreateCourse}
+            className="px-4 py-2 font-[600] bg-white text-black rounded-[8px]  "
+          >
             Create
           </button>
         </div>
