@@ -56,8 +56,9 @@ function UploadPage() {
         author: img.name,
         reviews: [],
         hall: "Babcock ogun",
+        posts: "",
       });
-
+      setPage("home");
       console.log("Course added successfully");
       // Redirect or do something else as needed
     } catch (error) {
