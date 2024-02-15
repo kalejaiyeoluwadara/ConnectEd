@@ -19,6 +19,7 @@ function AppProvider({ children }) {
   const [img, setImg] = useState("");
   const [details,setDetails] = useState([]);
   const [active, setActive] = useState("all");
+  const [edit,setEdit] = useState(false);
   const [cats, setCats] = useState([
     "all",
     "cosc",
@@ -42,6 +43,7 @@ function AppProvider({ children }) {
     setNotifications(false);
     setBookmark(false);
     setSearch(false);
+    setEdit(false);
     if (page === "board1") {
       setBoard1(true);
     } else if (page === "board2") {
@@ -64,6 +66,8 @@ function AppProvider({ children }) {
       setSearch(true);
     } else if (page === "upload") {
       setUploadPage(true);
+    } else if (page === "edit") {
+      setEdit(true);
     } else {
       // setBoard1(true);
       console.log("error");
@@ -104,6 +108,8 @@ function AppProvider({ children }) {
         home,
         active,
         setActive,
+        edit,
+        setEdit,
       }}
     >
       {children}

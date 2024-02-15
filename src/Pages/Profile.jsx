@@ -7,6 +7,7 @@ import face1 from "../assets/images/person.svg";
 import { useGlobal } from "../context";
 import { LuMail } from "react-icons/lu";
 import Nav from "../Components/Nav";
+import EditProfile from "./EditProfile";
 function Profile() {
   const { setPage, userDetails, localData, setImg, img } = useGlobal();
   const photoURL = img.img || face1;
@@ -47,7 +48,9 @@ function Profile() {
           className="-top-4 border-[3px] border-black h-[50px] w-[50px] rounded-[50%] absolute"
           alt=""
         />
-        <button className="border-[2px] hover:border-white hover:font-[600] font-[500] border-gray-700 px-[15px] py-1  absolute right-6 top-3 rounded-[20px] ">
+        <button onClick={() =>{
+          setPage('edit');
+        }} className="border-[2px] hover:border-white hover:font-[600] font-[500] border-gray-700 px-[15px] py-1  absolute right-6 top-3 rounded-[20px] ">
           Edit profile
         </button>
         <p className=" mt-12  text-[20px] font-bold">{img.name}</p>

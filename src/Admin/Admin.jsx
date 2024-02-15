@@ -11,6 +11,7 @@ import Bookmark from "../Pages/Bookmark";
 import Notifications from "../Pages/Notifications";
 import Search from "../Pages/Search";
 import UploadPage from "../Pages/UploadPage";
+import EditProfile from "../Pages/EditProfile";
 
 function Admin() {
   const {
@@ -28,7 +29,7 @@ function Admin() {
     uploadPage,
     userDetails,
     setLocalData,
-    localData,
+    localData,edit
   } = useGlobal();
   const [isSignedIn, setIsSignedIn] = useState(false); // Initialize isSignedIn state
 
@@ -58,6 +59,7 @@ function Admin() {
       {notifications && <Notifications />}
       {search && <Search />}
       {uploadPage && <UploadPage />}
+      {edit && <EditProfile/> }
     </div>
 
     // </>
