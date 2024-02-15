@@ -57,7 +57,7 @@ function View() {
             <p>{details.hall}</p>
           </section>
           <button className="text-white px-4 py-1 bg-blue-600 font-[600] rounded-[8px] ">
-            Paid
+            {details.isFree ? 'Free' : 'Paid'}
           </button>
         </div>
         {/* Description */}

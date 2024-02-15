@@ -8,11 +8,11 @@ function SearchField() {
   return (
     <div className="w-screen mt-4 px-3 left-0 flex justify-between items-center   ">
       <div>
-        <img
+        {/* <img
           className="h-[40px] rounded-[50%] w-[40px] "
           src={photoURL}
           alt=""
-        />
+        /> */}
       </div>
       <div className="bg-gray-800 text-white px-4 flex gap-2 items-center h-[50px] w-full sm:w-[300px] rounded-[20px] ">
         <BsSearch size={20} />

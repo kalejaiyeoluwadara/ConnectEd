@@ -1,16 +1,8 @@
 import React, { useState } from "react";
-
+import { useGlobal } from "../context";
 function Categories() {
-  const [cats, setCats] = useState([
-    "CS",
-    "Nursing",
-    "Mathematics",
-    "Languages",
-    "Sports",
-    "Linguistics",
-    "Medics",
-  ]);
-  const [active, setActive] = useState("CS");
+  const {cats, setCats,active,setActive} = useGlobal();
+  
   return (
     <div className="flex sticky top-0  bg-black z-40 flex-col gap-2 py-4 ">
       <p className="text-[25px] font-[600] ">Categories</p>
@@ -21,7 +13,7 @@ function Categories() {
               onClick={() => {
                 setActive(cat);
               }}
-              className={`px-2 flex transition-all items-center justify-center cursor-pointer hover:bg-gray-700 hover:rounded-[22px] hover:px-6 hover:font-bold py-2 ${
+              className={`px-2 capitalize flex transition-all items-center justify-center cursor-pointer hover:bg-gray-700 hover:rounded-[22px] hover:px-6 hover:font-bold py-2 ${
                 cat === active && "bg-blue-600 rounded-[22px] px-6 font-bold "
               }  `}
               key={id}

@@ -18,6 +18,18 @@ function AppProvider({ children }) {
   const [localData, setLocalData] = useState([]);
   const [img, setImg] = useState("");
   const [details,setDetails] = useState([]);
+  const [active, setActive] = useState("all");
+  const [cats, setCats] = useState([
+    "all",
+    "cosc",
+    "economics",
+    "mathematics",
+    "general",
+    "english",
+    "tech",
+    "sports",
+    "others",
+  ]);
   const setPage = (page) => {
     setBoard1(false);
     setBoard2(false);
@@ -61,7 +73,11 @@ function AppProvider({ children }) {
   return (
     <AppContext.Provider
       value={{
-        img,details,setDetails,
+        img,
+        details,
+        setDetails,
+        cats,
+        setCats,
         setImg,
         localData,
         setLocalData,
@@ -86,6 +102,8 @@ function AppProvider({ children }) {
         setLogin,
         setPage,
         home,
+        active,
+        setActive,
       }}
     >
       {children}

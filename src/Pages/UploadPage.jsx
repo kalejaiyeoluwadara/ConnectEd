@@ -9,7 +9,7 @@ import { db, storage } from "../firebase-config"; // Importing db and storage fr
 
 function UploadPage() {
   const [image, setImage] = useState(null);
-  const { setPage, img } = useGlobal();
+  const { setPage, img,cats,setCats } = useGlobal();
   const [courseTitle, setCourseTitle] = useState("");
   const [description, setDescription] = useState("");
   const [isFree, setIsFree] = useState(true);
@@ -115,7 +115,7 @@ function UploadPage() {
               onClick={() => {
                 setIsCat(!isCat);
               }}
-              className="px-4 flex items-center gap-2 py-2 font-[500]  border rounded-[8px]  border-gray-600"
+              className="px-4 flex capitalize items-center gap-2 py-2 font-[500]  border rounded-[8px]  border-gray-600"
             >
               {category}{" "}
               {!isCat ? <FaCaretDown size={20} /> : <FaCaretUp size={20} />}
@@ -130,20 +130,11 @@ function UploadPage() {
               }}
               className="absolute flex flex-col gap-4 items-start justify-center border border-gray-600 px-6 -top-[150px] capitalize bg-black rounded-[8px] py-3 -right-2"
             >
-              {[
-                "Cosc",
-                "Economics",
-                "Mathematics",
-                "general",
-                "English",
-                "Tech",
-                "Sports",
-                "other",
-              ].map((d, id) => {
+              {cats.map((d, id) => {
                 return (
                   <p
                     key={id}
-                    className="flex gap-1"
+                    className="flex capitalize gap-1"
                     onClick={() => {
                       setCategory(d);
                     }}

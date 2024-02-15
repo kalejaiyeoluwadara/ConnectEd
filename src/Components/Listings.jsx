@@ -1,41 +1,67 @@
 import React, { useEffect, useState } from "react";
-import { getFirestore, collection, onSnapshot } from "firebase/firestore";
+import {
+  getFirestore,
+  collection,
+  onSnapshot,
+  query,
+  where,
+  getDocs,
+} from "firebase/firestore";
 import { CiBookmark } from "react-icons/ci";
-import { db } from "../firebase-config";
 import { useGlobal } from "../context";
-const Loading = () =>{
+import { db } from "../firebase-config";
+
+const Loading = () => {
   return (
     <div className="loading-spinner-container">
       <div className="loading-spinner"></div>
     </div>
   );
-}
+};
+
 function Listings() {
   const [courses, setCourses] = useState([]);
   const [loading, setLoading] = useState(true); // Added loading state
-  const {setPage,setDetails,details} = useGlobal();
+  const { setPage, setDetails, active, setActive } = useGlobal();
+
   useEffect(() => {
     const fetchData = async () => {
-      const firestore = getFirestore();
-      const coursesCollection = collection(firestore, "courses");
-      const unsubscribe = onSnapshot(coursesCollection, (snapshot) => {
-        const updatedCourses = snapshot.docs.map((doc) => ({
+      try {
+        const firestore = getFirestore();
+        const coursesCollection = collection(firestore, "courses");
+        let querySnapshot;
+
+        if (active === "all") {
+          querySnapshot = await getDocs(coursesCollection);
+        } else {
+          const filteredQuery = query(
+            coursesCollection,
+            where("category", "==", active)
+          );
+          querySnapshot = await getDocs(filteredQuery);
+        }
+
+        const updatedCourses = querySnapshot.docs.map((doc) => ({
           id: doc.id,
           ...doc.data(),
         }));
         setCourses(updatedCourses);
         setLoading(false); // Set loading to false after data is fetched
-      });
-
-      // Cleanup function to unsubscribe from the listener when the component unmounts
-      return () => unsubscribe();
+      } catch (error) {
+        console.error("Error fetching courses:", error);
+        setLoading(false); // Set loading to false on error
+      }
     };
 
     fetchData();
-  }, []);
+  }, [active]); // Fetch data whenever "active" state changes
 
   if (loading) {
-    return <Loading/>; // Display loading indicator while data is being fetched
+    return <Loading />; // Display loading indicator while data is being fetched
+  }
+
+  if (courses.length === 0) {
+    return <div className="w-full h-full flex items-center justify-center ">No courses found for selected category.</div>;
   }
 
   return (
@@ -43,9 +69,9 @@ function Listings() {
       {courses.map((course) => (
         <div
           key={course.id}
-          onClick={() =>{
+          onClick={() => {
             setDetails(course);
-            setPage('view');
+            setPage("view");
           }}
           className="h-[300px] relative rounded-[8px]  w-[90%] sm:w-[300px] bg-gray-800 py-12"
         >
@@ -63,7 +89,11 @@ function Listings() {
             <CiBookmark size={25} />
           </div>
           <div className="flex items-center card  w-full px-2 justify-start absolute bottom-0 rounded-b-[8px] left-0 py-4 gap-1">
-            <img className="h-[40px] w-[40px] rounded-[50%] " src={course.profileImage} alt="" />
+            <img
+              className="h-[40px] w-[40px] rounded-[50%] "
+              src={course.profileImage}
+              alt=""
+            />
             <section className="px-2">
               <h4 className="font-bold text-[20px] ">{course.author}</h4>
               <p>{course.title}</p>
