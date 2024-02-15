@@ -13,7 +13,7 @@ function UploadPage() {
   const [courseTitle, setCourseTitle] = useState("");
   const [description, setDescription] = useState("");
   const [isFree, setIsFree] = useState(true);
-  const [banner, setBanner] = useState(true);
+  const [banner, setBanner] = useState(false);
   const [category, setCategory] = useState("general");
   const [isCat, setIsCat] = useState(false);
   // const db = firebase.firestore();

@@ -17,6 +17,7 @@ function AppProvider({ children }) {
   const [userDetails, setUserDetails] = useState(null);
   const [localData, setLocalData] = useState([]);
   const [img, setImg] = useState("");
+  const [details,setDetails] = useState([]);
   const setPage = (page) => {
     setBoard1(false);
     setBoard2(false);
@@ -60,7 +61,7 @@ function AppProvider({ children }) {
   return (
     <AppContext.Provider
       value={{
-        img,
+        img,details,setDetails,
         setImg,
         localData,
         setLocalData,

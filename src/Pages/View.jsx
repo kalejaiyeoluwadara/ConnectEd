@@ -8,7 +8,7 @@ import loc from "../assets/images/loc.png";
 // import Home from "../Pages/Home";
 import { useGlobal } from "../context";
 function View() {
-  const { setPage } = useGlobal();
+  const { setPage,details,setDetails } = useGlobal();
   const [reviews, setReview] = useState([
     "Tochi definitely has to be the best tutor for NMA, she makes it look as easy as ABC",
     "I am so grateful for Tochi's help with NMA, she explains everything thoroughly and patiently!",
@@ -21,21 +21,30 @@ function View() {
       <div className="flex w-full relative bg-gray-900 rounded-b-[20px] h-[300px] ">
         <section className="flex justify-between px-4 w-full items-start capitalize py-4">
           <FiChevronLeft
-            className="cursor-pointer"
+            className="cursor-pointer z-40 "
             onClick={() => {
               setPage("home");
             }}
             size={28}
           />
-          <CiBookmark size={25} />
+          <CiBookmark className="z-40" size={25} />
+          <img
+            className="absolute top-0 left-0 w-full h-full "
+            src={details.image}
+            alt=""
+          />
         </section>
 
-        <section className="">
-          <div className="flex items-center w-full px-3 justify-start absolute bottom-4 left-3 gap-1 ">
-            <img className="h-[40px] w-[40px] " src={tochi} alt="" />
+        <section className=" ">
+          <div className="flex rounded-t-[8px] items-center w-full px-4 justify-start absolute bottom-0 py-3 card left-0 gap-1 ">
+            <img
+              className="h-[40px] rounded-[50%] w-[40px] "
+              src={details.profileImage}
+              alt=""
+            />
             <section className="px-2">
-              <h4 className="font-bold text-[18px] ">Tochi Idiong</h4>
-              <p>Numerical Methods and Analysis</p>
+              <h4 className="font-bold text-[18px] ">{details.author}</h4>
+              <p>{details.title}</p>
             </section>
           </div>
         </section>
@@ -45,7 +54,7 @@ function View() {
         <div className="flex px-4 justify-between items-center">
           <section className="flex items-center gap-1">
             <CiLocationOn size={30} />
-            <p>Crystal</p>
+            <p>{details.hall}</p>
           </section>
           <button className="text-white px-4 py-1 bg-blue-600 font-[600] rounded-[8px] ">
             Paid
@@ -57,14 +66,12 @@ function View() {
             Tutor Description
           </h3>
           <p className=" text-start w-full font-[400] text-[16px]  ">
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Cumque
-            deleniti soluta quod eveniet dolores, aspernatur minima est eligendi
-            veniam libero voluptas.
+            {details.description}
           </p>
           {/* Category */}
           <div className="flex items-start justify-start">
             <p className="border border-gray-600 rounded-[8px] font-[400] py-1 mt-2 px-4 ">
-              COSC
+              {details.category}
             </p>
           </div>
         </div>
