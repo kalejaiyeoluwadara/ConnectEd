@@ -12,7 +12,7 @@ import Notifications from "../Pages/Notifications";
 import Search from "../Pages/Search";
 import UploadPage from "../Pages/UploadPage";
 import EditProfile from "../Pages/EditProfile";
-
+import Modal from '../Components/Modal'
 function Admin() {
   const {
     setPage,
@@ -48,6 +48,7 @@ function Admin() {
   return (
     <div className="text-white bg-black ">
       {/* <> */}
+      {true && <Modal/> }
       {board1 && <Board1 />}
       {board2 && <Board2 />}
       {signup && !userDetails && <Signup />}

@@ -1,17 +1,16 @@
 import React, { useState } from "react";
-import face1 from "../assets/images/face1.png";
 import { auth, provider } from "../firebase-config";
 import {
   signInWithPopup,
   GoogleAuthProvider,
   createUserWithEmailAndPassword,
+  fetchSignInMethodsForEmail,
 } from "firebase/auth";
 import Logo from "../Components/Logo.jsx";
 import { useGlobal } from "../context";
 
 function Signup() {
-  const { setPage, userDetails, setUserDetails, setLocalData } = useGlobal();
-  // authentication
+  const { setPage, setUserDetails, setLocalData } = useGlobal();
 
   const SignInWithGoogle = async () => {
     try {
@@ -27,15 +26,21 @@ function Signup() {
       localStorage.setItem("userDetails", JSON.stringify(userInfo));
       localStorage.setItem("isSignedIn", true);
       setUserDetails(user);
-      console.log("User signed in", user);
       setPage("home");
-    } catch (err) {
-      console.log(err.message);
+    } catch (error) {
+      console.error("Google sign-in error:", error.message);
     }
   };
 
-  const handleSignupWithEmail = async (email, password) => {
+  const handleSignupWithEmail = async (email, password, name) => {
     try {
+      // Check if email is already registered
+      const methods = await fetchSignInMethodsForEmail(auth, email);
+      if (methods.length > 0) {
+        throw new Error("Email address is already registered.");
+      }
+
+      // Create user with email and password
       const result = await createUserWithEmailAndPassword(
         auth,
         email,
@@ -45,21 +50,23 @@ function Signup() {
       setUserDetails(user);
       setPage("home");
       const userInfo = {
-        name: user.displayName,
-        img: user.photoURL,
+        name: name,
         email: user.email,
       };
+      setLocalData(userInfo);
       localStorage.setItem("userDetails", JSON.stringify(userInfo));
       localStorage.setItem("isSignedIn", true);
       console.log("User signed up with email", user);
-    } catch (err) {
-      console.log(err.message);
+    } catch (error) {
+      console.error("Signup error:", error.message);
+      // Display error message to the user
+      alert(error.message);
     }
   };
 
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [name, setName] = useState("");
 
   return (
     <div className="min-h-screen mb-0 relative bg-black items-start w-screen flex flex-col px-6 py-4">
@@ -97,7 +104,7 @@ function Signup() {
               />
             </div>
             <button
-              onClick={() => handleSignupWithEmail(email, password)}
+              onClick={() => handleSignupWithEmail(email, password, name)}
               className="font-[600] text-[20px] py-3 mt-4 w-full rounded-[8px] bg-blue-500  "
             >
               Create Account
