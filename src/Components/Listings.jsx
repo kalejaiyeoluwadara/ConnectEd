@@ -45,10 +45,10 @@ function Listings() {
           <div className="absolute right-3 top-3 px-3 py-[3px] rounded-[5px] font-bold">
             <CiBookmark size={25} />
           </div>
-          <div className="flex items-center bg-blue-400 bg-opacity-[0.1] w-full px-2 justify-start absolute bottom-0 rounded-b-[8px] left-0 py-4 gap-1">
+          <div className="flex items-center card  w-full px-2 justify-start absolute bottom-0 rounded-b-[8px] left-0 py-4 gap-1">
             <section className="px-2">
-              <h4 className="font-bold text-[20px] ">{course.title}</h4>
-              <p>{course.description}</p>
+              <h4 className="font-bold text-[20px] ">{course.author}</h4>
+              <p>{course.title}</p>
             </section>
           </div>
         </div>
