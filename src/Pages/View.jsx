@@ -1,21 +1,44 @@
 import React, { useState } from "react";
 import tochi from "../assets/images/tochi.png";
-// import
 import { FiChevronLeft } from "react-icons/fi";
-import { CiMenuKebab, CiLocationOn } from "react-icons/ci";
+import { CiLocationOn } from "react-icons/ci";
 import { CiBookmark } from "react-icons/ci";
-import loc from "../assets/images/loc.png";
-// import Home from "../Pages/Home";
+import { setDoc, doc } from "firebase/firestore";
+import { db } from "../firebase-config";
 import { useGlobal } from "../context";
+
 function View() {
-  const { setPage,details,setDetails } = useGlobal();
-  const [review,setReview] = useState('');
-  const [reviews, setReviews] = useState([
-    "Tochi definitely has to be the best tutor for NMA, she makes it look as easy as ABC",
-    "I am so grateful for Tochi's help with NMA, she explains everything thoroughly and patiently!",
-    "Tochi is incredibly knowledgeable and supportive, I highly recommend her for NMA tutoring.",
-    "Thanks to Tochi, I feel much more confident about tackling NMA. She is fantastic!",
-  ]);
+  const { setPage, details, setDetails, img } = useGlobal();
+  const [review, setReview] = useState("");
+  const [loadingReview, setLoadingReview] = useState(false); // State for review loading
+
+  const handleReviewSubmit = async () => {
+    if (review.trim() !== "") {
+      const newReview = {
+        name: img.name,
+        profileImg: img.img,
+        review: review,
+      };
+      setLoadingReview(true); // Set loading state to true when submitting review
+      try {
+        // Update the document with the new review
+        await setDoc(
+          doc(db, "courses", details.id),
+          { reviews: [...details.reviews, newReview] },
+          { merge: true } // Merge with existing data
+        );
+        // Update state
+        setDetails({ ...details, reviews: [...details.reviews, newReview] });
+        // Clear input field
+        setReview("");
+      } catch (error) {
+        console.error("Error adding review:", error);
+      } finally {
+        setLoadingReview(false); // Reset loading state after review submission
+      }
+    }
+  };
+
   return (
     <div className="min-h-screen pb-20 w-screen bg-black  ">
       {/* First section */}
@@ -58,7 +81,7 @@ function View() {
             <p>{details.hall}</p>
           </section>
           <button className="text-white px-4 py-1 bg-blue-600 font-[600] rounded-[8px] ">
-            {details.isFree ? 'Free' : 'Paid'}
+            {details.isFree ? "Free" : "Paid"}
           </button>
         </div>
         {/* Description */}
@@ -81,39 +104,42 @@ function View() {
       {/* Reviews */}
       <div className="mt-4 flex flex-col px-6 ">
         <h3 className="text-[22px] text-start  font-[600] ">Reviews</h3>
-        <div className="flex flex-col mt-[20px] gap-4">
-          {reviews.map((review, id) => {
-            return (
-              <div>
+        {details.reviews.length === 0 && !loadingReview && (
+          <p className="text-center text-gray-400 mt-4">No reviews available</p>
+        )}
+        {loadingReview && (
+          <p className="text-center text-gray-400 mt-4">Submitting review...</p>
+        )}
+        {details.reviews.length > 0 && (
+          <div className="flex flex-col mt-[20px] gap-4">
+            {details.reviews.map((review, id) => (
+              <div key={id}>
                 <section className="flex justify-between">
                   <div className="flex gap-3 font-[500] items-center capitalize">
-                    <img src={tochi} alt="" />
-                    <p className="text-[17px]">name</p>
-                  </div>
-                  <div>
-                    <CiMenuKebab size={18} />
+                    <img src={review.profileImg} alt="" className="h-[30px] rounded-full" />
+                    <p className="text-[17px]">{review.name}</p>
                   </div>
                 </section>
                 <section>
-                  {/* Rating  */}
-                  <div></div>
+                  <div>{/* Display rating if available */}</div>
                 </section>
-                <p>
-                  Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eius
-                  necessitatibus.
-                </p>
+                <p>{review.review}</p>
               </div>
-            );
-          })}
-        </div>
+            ))}
+          </div>
+        )}
         {/* Input for review */}
         <div>
-          <input type="text" placeholder="Review" onChange={(e) =>{
+          <input
+            className="h-[30px] border-none outline-none bg-black "
+            type="text"
+            placeholder="Review"
+            value={review}
+            onChange={(e) => {
               setReview(e.target.value);
-          }} onClick={() =>{
-            setReview(review);
-            setReviews('');
-          }} />
+            }}
+          />
+          <button onClick={handleReviewSubmit}>send</button>
         </div>
       </div>
       {/* Fourth Section */}

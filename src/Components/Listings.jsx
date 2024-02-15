@@ -44,6 +44,7 @@ function Listings() {
         const updatedCourses = querySnapshot.docs.map((doc) => ({
           id: doc.id,
           ...doc.data(),
+          reviews: doc.data().reviews || [],
         }));
         setCourses(updatedCourses);
         setLoading(false); // Set loading to false after data is fetched
