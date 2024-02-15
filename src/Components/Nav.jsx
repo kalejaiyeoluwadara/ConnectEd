@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { BsHouse, BsHouseFill, BsSearch, BsBell, BsPlus } from "react-icons/bs";
-import face1 from "../assets/images/face2.png";
+import face1 from "../assets/images/person.svg";
 import { CiBookmark } from "react-icons/ci";
 import { useGlobal } from "../context";
 import { LiaTimesSolid } from "react-icons/lia";

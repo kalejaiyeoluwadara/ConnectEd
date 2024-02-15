@@ -1,5 +1,4 @@
 import React from "react";
-import board1 from "../assets/images/board1.png";
 import left from "../assets/images/left.svg";
 import right from "../assets/images/right.svg";
 import { useGlobal } from "../context";

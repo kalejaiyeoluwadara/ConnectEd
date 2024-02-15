@@ -3,7 +3,7 @@ import { BsArrowLeft } from "react-icons/bs";
 import { CiMenuKebab, CiLocationOn } from "react-icons/ci";
 import { IoMdLink } from "react-icons/io";
 import { FaW, FaWhatsapp } from "react-icons/fa6";
-import face1 from "../assets/images/face2.png";
+import face1 from "../assets/images/person.svg";
 import { useGlobal } from "../context";
 import { LuMail } from "react-icons/lu";
 import Nav from "../Components/Nav";

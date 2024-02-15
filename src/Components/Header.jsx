@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { BsBellFill } from "react-icons/bs";
-import face1 from "../assets/images/face2.png";
+import face1 from "../assets/images/person.svg";
 import { useGlobal } from "../context";
 
 function Header() {
@@ -15,7 +15,7 @@ function Header() {
       const image = JSON.parse(storedIsSignedIn);
       setImg(image);
       // console.log(img.name);
-      console.log(photoURL);
+      // console.log(photoURL);
     }
   }, []);
   // Check if userDetails.photoURL exists, if not, use a default image
