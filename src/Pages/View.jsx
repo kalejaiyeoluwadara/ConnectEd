@@ -9,7 +9,8 @@ import loc from "../assets/images/loc.png";
 import { useGlobal } from "../context";
 function View() {
   const { setPage,details,setDetails } = useGlobal();
-  const [reviews, setReview] = useState([
+  const [review,setReview] = useState('');
+  const [reviews, setReviews] = useState([
     "Tochi definitely has to be the best tutor for NMA, she makes it look as easy as ABC",
     "I am so grateful for Tochi's help with NMA, she explains everything thoroughly and patiently!",
     "Tochi is incredibly knowledgeable and supportive, I highly recommend her for NMA tutoring.",
@@ -104,6 +105,15 @@ function View() {
               </div>
             );
           })}
+        </div>
+        {/* Input for review */}
+        <div>
+          <input type="text" placeholder="Review" onChange={(e) =>{
+              setReview(e.target.value);
+          }} onClick={() =>{
+            setReview(review);
+            setReviews('');
+          }} />
         </div>
       </div>
       {/* Fourth Section */}

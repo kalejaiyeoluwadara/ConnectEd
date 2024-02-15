@@ -16,7 +16,7 @@ function Board1() {
       <div className="gap-3 flex flex-col w-full items-center justify-center">
         <div className="flex items-center justify-center gap-4">
           <img src={left} alt="" />
-          <h2 className="text-[45px] leading-[10px]  font-[800] ">ConnectEd</h2>
+          <h2 className="text-[45px] inter leading-[10px]  font-[800] ">ConnectEd</h2>
           <img src={right} alt="" />
         </div>
         <p className="text-[14px] text-center  ">
