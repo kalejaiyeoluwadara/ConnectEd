@@ -129,7 +129,7 @@ function View() {
           </div>
         )}
         {/* Input for review */}
-        <div>
+        <div className="mt-4 flex w-full items-center justify-center ">
           <input
             className="h-[30px] border-none outline-none bg-black "
             type="text"

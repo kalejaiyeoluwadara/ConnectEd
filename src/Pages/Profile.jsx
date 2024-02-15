@@ -56,9 +56,7 @@ function Profile() {
       <div className="px-4 mt-2">
         {/* desc */}
         <p className="font-[500]">
-          Economics student with a top-notch CGPA of 4.6, ready to lend a
-          helping hand to fellow students in need. Let's conquer challenges
-          together!
+         Student at Babcock Univesity.
         </p>
         {/* details */}
         <div className="flex w-full mt-4 font-500 text-[16px] justify-start text-gray-300 gap-2 items-center ">
