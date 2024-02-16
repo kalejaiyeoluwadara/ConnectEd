@@ -46,21 +46,23 @@ function Admin() {
   }, []);
 
   return (
-    <div className="text-white sm:px-[100px] bg-black ">
+    <div className="text-white ">
       {/* <> */}
-      {modal && <Modal/> }
+      {modal && <Modal />}
       {board1 && <Board1 />}
       {board2 && <Board2 />}
       {signup && !userDetails && <Signup />}
       {login && <Login />}
-      {home && <Home />}
-      {view && <View />}
-      {profile && <Profile />}
-      {bookmark && <Bookmark />}
-      {notifications && <Notifications />}
-      {search && <Search />}
-      {uploadPage && <UploadPage />}
-      {edit && <EditProfile/> }
+      <div className="text-white sm:px-[100px] bg-black">
+        {home && <Home />}
+        {view && <View />}
+        {profile && <Profile />}
+        {bookmark && <Bookmark />}
+        {notifications && <Notifications />}
+        {search && <Search />}
+        {uploadPage && <UploadPage />}
+        {edit && <EditProfile />}
+      </div>
     </div>
 
     // </>

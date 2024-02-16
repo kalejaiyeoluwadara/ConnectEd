@@ -21,15 +21,21 @@ function Profile() {
           onClick={() => {
             setPage("home");
           }}
+          className="text-black z-40 "
           size={30}
         />
         <CiMenuKebab
+          className="text-black z-40"
           onClick={() => {
             setLog(!log);
           }}
           size={25}
         />
-        <img className="absolute w-full h-full right-0 object-fill sm:object-cover  " src={bg} alt="" />
+        <img
+          className="absolute w-full h-full right-0 object-fill sm:object-cover  "
+          src={bg}
+          alt=""
+        />
         {log && (
           <div
             onClick={() => {
@@ -50,9 +56,12 @@ function Profile() {
           className="-top-4 border-[3px] border-black h-[50px] w-[50px] rounded-[50%] absolute"
           alt=""
         />
-        <button onClick={() =>{
-          setPage('edit');
-        }} className="border-[2px] sm:absolute sm:right-40 hover:border-white hover:font-[600] font-[500] border-gray-700 px-[15px] py-1  absolute right-6 top-3 rounded-[20px] ">
+        <button
+          onClick={() => {
+            setPage("edit");
+          }}
+          className="border-[2px] sm:absolute sm:right-40 hover:border-white hover:font-[600] font-[500] border-gray-700 px-[15px] py-1  absolute right-6 top-3 rounded-[20px] "
+        >
           Edit profile
         </button>
         <p className=" mt-12  text-[20px] font-bold">{img.name}</p>
@@ -60,9 +69,7 @@ function Profile() {
       {/* details/description */}
       <div className="px-4 mt-2">
         {/* desc */}
-        <p className="font-[500]">
-         Student at Babcock Univesity.
-        </p>
+        <p className="font-[500]">Student at Babcock Univesity.</p>
         {/* details */}
         <div className="flex w-full mt-4 font-500 text-[16px] justify-start text-gray-300 gap-2 items-center ">
           {/* location */}
@@ -100,7 +107,6 @@ function Profile() {
         </div>
       </div>
 
-     
       <Nav />
     </div>
   );

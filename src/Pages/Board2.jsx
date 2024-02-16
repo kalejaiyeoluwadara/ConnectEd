@@ -1,5 +1,5 @@
 import React from "react";
-import board2 from "../assets/images/board2.png";
+import board2 from "../assets/images/cuate.png";
 import logo from "../assets/images/logo.png";
 import { MdOutlineShoppingCart } from "react-icons/md";
 import { useGlobal } from "../context";
@@ -14,7 +14,7 @@ function Board2() {
         <h2 className="text-[30px] font-[600] ">ConnectEd</h2>
         <img src={right} className="h-[25px]  " alt="" />
       </div>
-      <div className="flec items-center justify-center">
+      <div className="flec items-center mt-8 justify-center">
         <img className="" src={board2} alt="" />
       </div>
 
