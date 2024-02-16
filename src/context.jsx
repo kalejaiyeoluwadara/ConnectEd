@@ -31,6 +31,7 @@ function AppProvider({ children }) {
     "sports",
     "others",
   ]);
+  const [modal,setModal] = useState(false)
   const setPage = (page) => {
     setBoard1(false);
     setBoard2(false);
@@ -77,7 +78,7 @@ function AppProvider({ children }) {
   return (
     <AppContext.Provider
       value={{
-        img,
+        img,modal,setModal,
         details,
         setDetails,
         cats,

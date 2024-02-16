@@ -2,11 +2,12 @@ import React, { useState } from "react";
 import { AiOutlineClose } from "react-icons/ai";
 import { CiLocationOn } from "react-icons/ci";
 import { GoLink } from "react-icons/go";
+import { useGlobal } from "../context";
 function EditProfile() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [bio, setBio] = useState("");
-
+  const {setPage}= useGlobal();
   const handleFormSubmit = (e) => {
     e.preventDefault();
     // Add logic to update user profile data
@@ -20,7 +21,9 @@ function EditProfile() {
           <h1 className="text-2xl font-semibold">Edit Profile</h1>
           <button
             className="text-gray-600"
-            onClick={() => window.history.back()}
+            onClick={() => {
+              setPage("profile");
+            }}
           >
             <AiOutlineClose size={24} />
           </button>
@@ -92,8 +95,11 @@ function EditProfile() {
               </div>
             </section>
           </div>
-          <div className="flex justify-between w-full " >
+          <div className="flex justify-between w-full ">
             <button
+              onClick={() => {
+                setPage("profile");
+              }}
               type="submit"
               className="bg-black border border-gray-400 text-white py-2 px-4 rounded-md hover:bg-blue-600 transition duration-300"
             >

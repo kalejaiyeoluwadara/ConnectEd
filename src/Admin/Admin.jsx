@@ -25,7 +25,7 @@ function Admin() {
     signup,
     home,
     view,
-    search,
+    search,modal,setModal,
     uploadPage,
     userDetails,
     setLocalData,
@@ -48,7 +48,7 @@ function Admin() {
   return (
     <div className="text-white bg-black ">
       {/* <> */}
-      {true && <Modal/> }
+      {modal && <Modal/> }
       {board1 && <Board1 />}
       {board2 && <Board2 />}
       {signup && !userDetails && <Signup />}
