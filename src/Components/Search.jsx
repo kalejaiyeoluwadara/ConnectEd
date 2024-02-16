@@ -7,10 +7,10 @@ function SearchComp() {
   return (
     <div className="w-full  flex sm:justify-center items-center  py-2 ">
       <div
-        onClick={() => {
-          setPage("search");
-        }}
-        className="bg-gray-700 text-white px-4 flex flex-row-reverse gap-2 items-center h-[50px] w-[100%] sm:w-[500px] rounded-[8px] "
+        // onClick={() => {
+        //   setPage("search");
+        // }}
+        className="bg-gray-700 text-white px-4 flex flex-row-reverse gap-2 items-center h-[50px] w-[100%] sm:w-[500px] rounded-[22px] "
       >
         <BsSearch size={25} />
         <input

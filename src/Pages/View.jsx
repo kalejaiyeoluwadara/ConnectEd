@@ -40,7 +40,7 @@ function View() {
   };
 
   return (
-    <div className="min-h-screen pb-20 w-screen bg-black  ">
+    <div className="min-h-screen sm:absolute right-0 left-0 pb-20 w-screen bg-black  ">
       {/* First section */}
       <div className="flex w-full relative bg-gray-900 rounded-b-[20px] h-[300px] ">
         <section className="flex justify-between px-4 w-full items-start capitalize py-4">
@@ -53,7 +53,7 @@ function View() {
           />
           <CiBookmark className="z-40" size={25} />
           <img
-            className="absolute top-0 left-0 w-full h-full "
+            className="absolute sm:object-cover top-0 left-0 w-full h-full "
             src={details.image}
             alt=""
           />
@@ -74,7 +74,7 @@ function View() {
         </section>
       </div>
       {/* Second section */}
-      <div className="mt-4  font-medium ">
+      <div className="mt-4 sm:px-4 font-medium ">
         <div className="flex px-4 justify-between items-center">
           <section className="flex items-center gap-1">
             <CiLocationOn size={30} />
@@ -94,7 +94,7 @@ function View() {
           </p>
           {/* Category */}
           <div className="flex items-start justify-start">
-            <p className="border border-gray-600 rounded-[8px] font-[400] py-1 mt-2 px-4 ">
+            <p className="border capitalize border-gray-600 rounded-[8px] font-[400] py-1 mt-2 px-4 ">
               {details.category}
             </p>
           </div>
@@ -102,8 +102,8 @@ function View() {
       </div>
 
       {/* Reviews */}
-      <div className="mt-4 flex flex-col px-6 ">
-        <h3 className="text-[22px] text-start  font-[600] ">Reviews</h3>
+      <div className="mt-4 flex  sm:items-start flex-col px-6 ">
+        <h3 className="text-[22px] text-start sm:px-1  font-[600] ">Reviews</h3>
         {details.reviews.length === 0 && !loadingReview && (
           <p className="text-center text-gray-400 mt-4">No reviews available</p>
         )}
@@ -111,12 +111,16 @@ function View() {
           <p className="text-center text-gray-400 mt-4">Submitting review...</p>
         )}
         {details.reviews.length > 0 && (
-          <div className="flex flex-col mt-[20px] gap-4">
+          <div className="flex flex-col  mt-[20px] gap-4">
             {details.reviews.map((review, id) => (
               <div key={id}>
                 <section className="flex justify-between">
                   <div className="flex gap-3 font-[500] items-center capitalize">
-                    <img src={review.profileImg} alt="" className="h-[30px] rounded-full" />
+                    <img
+                      src={review.profileImg}
+                      alt=""
+                      className="h-[30px] rounded-full"
+                    />
                     <p className="text-[17px]">{review.name}</p>
                   </div>
                 </section>
@@ -129,9 +133,9 @@ function View() {
           </div>
         )}
         {/* Input for review */}
-        <div className="mt-4 flex w-full items-center justify-center ">
+        <div className="mt-4 flex w-full sm:gap-3 items-center justify-center ">
           <input
-            className="h-[30px] border-none outline-none bg-black "
+            className="h-[30px] sm:w-[250px] border-none outline-none bg-black "
             type="text"
             placeholder="Review"
             value={review}
@@ -144,8 +148,8 @@ function View() {
       </div>
       {/* Fourth Section */}
       <div className="px-8 mt-8 font-[600] text-[20px]  ">
-        <h2 className="text-center mb-3 ">Related Courses</h2>
-        <div className="grid  grid-cols-1 items-center justify-center gap-3 ">
+        <h2 className="text-center sm:mt-20 mb-3 ">Related Courses</h2>
+        <div className="grid sm:justify-center grid-cols-1 items-center justify-center gap-3 ">
           {[1, 2, 3].map((d) => {
             return (
               <div
@@ -160,7 +164,7 @@ function View() {
                     Free
                   </div>
                 )} */}
-                <div className="flex items-center w-full px-4  justify-start left-3 gap-1 ">
+                <div className="flex items-center w-full px-4  justify-start  left-3 gap-1 ">
                   <img className="h-[50px] w-[50px] " src={tochi} alt="" />
                   <section className="px-2">
                     <h4 className="font-[600] text-[19px] ">Tochi Idiong</h4>

@@ -7,7 +7,7 @@ function EditProfile() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [bio, setBio] = useState("");
-  const {setPage}= useGlobal();
+  const {setPage,img}= useGlobal();
   const handleFormSubmit = (e) => {
     e.preventDefault();
     // Add logic to update user profile data
@@ -15,12 +15,12 @@ function EditProfile() {
   };
 
   return (
-    <div className="h-screen w-screen bg-black flex justify-center items-center">
+    <div className="h-screen w-screen bg-black sm:pt-40 flex justify-center items-center">
       <div className=" p-8 rounded-lg shadow-md max-w-md w-full">
         <div className="flex justify-between items-center mb-4">
           <h1 className="text-2xl font-semibold">Edit Profile</h1>
           <button
-            className="text-gray-600"
+            className=" hover:text-white transition-all text-gray-600"
             onClick={() => {
               setPage("profile");
             }}
@@ -36,7 +36,7 @@ function EditProfile() {
             <input
               type="text"
               id="name"
-              placeholder=""
+              placeholder={img.name}
               value={name}
               onChange={(e) => setName(e.target.value)}
               className="w-full border bg-black border-gray-600  rounded-md px-3 py-2 focus:outline-none focus:border-blue-500"
@@ -76,6 +76,7 @@ function EditProfile() {
                 <GoLink size={20} />
                 <input
                   type="email"
+                  placeholder="Linkedin Link"
                   className="w-full border bg-black border-gray-600  rounded-md px-3 py-2 focus:outline-none focus:border-blue-500"
                 />
               </div>
@@ -83,6 +84,7 @@ function EditProfile() {
                 <GoLink size={20} />
                 <input
                   type="email"
+                  placeholder="X"
                   className="w-full border bg-black border-gray-600  rounded-md px-3 py-2 focus:outline-none focus:border-blue-500"
                 />
               </div>
@@ -95,7 +97,7 @@ function EditProfile() {
               </div>
             </section>
           </div>
-          <div className="flex justify-between w-full ">
+          <div className="flex justify-between sm:mt-6 w-full ">
             <button
               onClick={() => {
                 setPage("profile");
