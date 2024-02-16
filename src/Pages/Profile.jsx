@@ -4,6 +4,7 @@ import { CiMenuKebab, CiLocationOn } from "react-icons/ci";
 import { IoMdLink } from "react-icons/io";
 import { FaW, FaWhatsapp } from "react-icons/fa6";
 import face1 from "../assets/images/person.svg";
+import bg from "../assets/images/bg.jpg";
 import { useGlobal } from "../context";
 import { LuMail } from "react-icons/lu";
 import Nav from "../Components/Nav";
@@ -28,6 +29,7 @@ function Profile() {
           }}
           size={25}
         />
+        <img className="absolute w-full h-full right-0 object-fill sm:object-cover  " src={bg} alt="" />
         {log && (
           <div
             onClick={() => {
@@ -88,10 +90,10 @@ function Profile() {
         </div>
       </div>
       {/* items */}
-      <div className="w-full flex items-center justify-center gap-4  my-8 px flex-col">
+      <div className="w-full flex  items-center justify-center gap-4  my-8 px flex-col">
         <div className="bg-gray-700 relative sm:w-[300px] w-[90%] rounded-[10px] h-[300px] ">
           <img src="" alt="" />
-          <section className="px-4 w-full rounded-b-[10px] bg-opacity-30 bg-blue-500 py-3 absolute bottom-0 ">
+          <section className="px-4 w-full rounded-b-[10px] bg-opacity-30 card py-3 absolute bottom-0 ">
             <h4 className="font-bold   text-[20px] ">Tochi Idiong</h4>
             <p>Numerical Methods and Analysis</p>
           </section>

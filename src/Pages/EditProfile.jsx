@@ -69,6 +69,15 @@ function EditProfile() {
               className="w-full border bg-black border-gray-600  rounded-md px-3 py-2 focus:outline-none focus:border-blue-500"
             />
           </div>
+          <div className="flex flex-col items-start mb-4 gap-2">
+            <label htmlFor="bio" className="block mb-1 font-bold">
+              Whatsapp number
+            </label>
+            <input
+              type="email"
+              className="w-full border bg-black border-gray-600  rounded-md px-3 py-2 focus:outline-none focus:border-blue-500"
+            />
+          </div>
           <div>
             <h3 className="font-bold">Social Accounts</h3>
             <section className="flex flex-col gap-2 my-3">

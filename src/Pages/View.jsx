@@ -6,6 +6,7 @@ import { CiBookmark } from "react-icons/ci";
 import { setDoc, doc } from "firebase/firestore";
 import { db } from "../firebase-config";
 import { useGlobal } from "../context";
+import {PiPlugsConnectedThin  } from "react-icons/pi";
 
 function View() {
   const { setPage, details, setDetails, img } = useGlobal();
@@ -38,7 +39,11 @@ function View() {
       }
     }
   };
+    const [isExpanded, setIsExpanded] = useState(false);
 
+    const toggleDescription = () => {
+      setIsExpanded(!isExpanded);
+    };
   return (
     <div className="min-h-screen sm:absolute right-0 left-0 pb-20 w-screen bg-black  ">
       {/* First section */}
@@ -76,12 +81,18 @@ function View() {
       {/* Second section */}
       <div className="mt-4 sm:px-4 font-medium ">
         <div className="flex px-4 justify-between items-center">
-          <section className="flex items-center gap-1">
-            <CiLocationOn size={30} />
-            <p>{details.hall}</p>
-          </section>
-          <button className="text-white px-4 py-1 bg-blue-600 font-[600] rounded-[8px] ">
-            {details.isFree ? "Free" : "Paid"}
+          <div className="flex flex-col items-start gap-2">
+            <section className="flex items-center gap-1">
+              <CiLocationOn size={30} />
+              <p>{details.hall}</p>
+            </section>
+            <button className="text-white mt-2 px-4 py-1 bg-black border border-gray-400 font-[600] rounded-[8px] ">
+              {details.isFree ? "Free" : "Paid"}
+            </button>
+          </div>
+          <button className="text-white flex gap-2 px-4 py-1 bg-blue-600 font-[600] itens-center justify-center rounded-[8px] ">
+            <PiPlugsConnectedThin size={20} />
+            <span>Connect</span>
           </button>
         </div>
         {/* Description */}
@@ -89,8 +100,27 @@ function View() {
           <h3 className="text-[22px] text-start  font-[600] ">
             Tutor Description
           </h3>
-          <p className=" text-start w-full font-[400] text-[16px]  ">
-            {details.description}
+          <p className="text-start w-full font-[400] text-[16px] ">
+            {isExpanded
+              ? details.description
+              : details.description.slice(0, 40)}
+            {details.description.length > 40 && !isExpanded && (
+              <span
+                onClick={toggleDescription}
+                className=" text-white font-bold cursor-pointer"
+              >
+                ...More
+              </span>
+            )}
+            {isExpanded && (
+              <span
+                onClick={toggleDescription}
+                className="text-white font-bold cursor-pointer"
+              >
+                {" "}
+                Show Less
+              </span>
+            )}
           </p>
           {/* Category */}
           <div className="flex items-start justify-start">
@@ -148,31 +178,24 @@ function View() {
       </div>
       {/* Fourth Section */}
       <div className="px-8 mt-8 font-[600] text-[20px]  ">
-        <h2 className="text-center sm:mt-20 mb-3 ">Related Courses</h2>
+        {/* <h2 className="text-center sm:mt-20 mb-3 ">Related Courses</h2> */}
         <div className="grid sm:justify-center grid-cols-1 items-center justify-center gap-3 ">
           {[1, 2, 3].map((d) => {
-            return (
-              <div
-                onClick={() => {
-                  // setCourse(d);
-                  setPage("view");
-                }}
-                className="h-auto rounded-[8px] relative w-[90%] sm:w-[300px] bg-gray-800 py-4  "
-              >
-                {/* {d == 2 && (
-                  <div className="absolute right-3 top-3 bg-white px-3 py-[3px] rounede-[5px] text-black font-bold ">
-                    Free
-                  </div>
-                )} */}
-                <div className="flex items-center w-full px-4  justify-start  left-3 gap-1 ">
-                  <img className="h-[50px] w-[50px] " src={tochi} alt="" />
-                  <section className="px-2">
-                    <h4 className="font-[600] text-[19px] ">Tochi Idiong</h4>
-                    <p className="font-[400] text-[15px] ">Maths 203</p>
-                  </section>
-                </div>
+            <div
+              onClick={() => {
+                // setCourse(d);
+                setPage("view");
+              }}
+              className="h-auto rounded-[8px] relative w-[90%] sm:w-[300px] bg-gray-800 py-4  "
+            >
+              <div className="flex items-center w-full px-4  justify-start  left-3 gap-1 ">
+                <img className="h-[50px] w-[50px] " src={tochi} alt="" />
+                <section className="px-2">
+                  <h4 className="font-[600] text-[19px] ">Tochi Idiong</h4>
+                  <p className="font-[400] text-[15px] ">Maths 203</p>
+                </section>
               </div>
-            );
+            </div>;
           })}
         </div>
       </div>
