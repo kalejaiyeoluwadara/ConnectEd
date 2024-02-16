@@ -5,12 +5,12 @@ import { useGlobal } from "../context";
 function SearchComp() {
   const { setPage } = useGlobal();
   return (
-    <div className="w-full flex justify-between items-center  py-2 ">
+    <div className="w-full  flex sm:justify-center items-center  py-2 ">
       <div
         onClick={() => {
           setPage("search");
         }}
-        className="bg-gray-700 text-white px-4 flex flex-row-reverse gap-2 items-center h-[50px] w-[100%] sm:w-[300px] rounded-[8px] "
+        className="bg-gray-700 text-white px-4 flex flex-row-reverse gap-2 items-center h-[50px] w-[100%] sm:w-[500px] rounded-[8px] "
       >
         <BsSearch size={25} />
         <input

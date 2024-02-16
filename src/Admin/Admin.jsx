@@ -46,7 +46,7 @@ function Admin() {
   }, []);
 
   return (
-    <div className="text-white bg-black ">
+    <div className="text-white sm:px-[100px] bg-black ">
       {/* <> */}
       {modal && <Modal/> }
       {board1 && <Board1 />}

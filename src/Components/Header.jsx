@@ -33,7 +33,7 @@ function Header() {
           <p className="text-[13px] font-[500] opacity-[0.7] ">Babcock, Ogun</p>
         </div>
       </section>
-      <section>
+      <section className="sm:absolute right-40 ">
         <BsBellFill size={25} />
       </section>
     </div>

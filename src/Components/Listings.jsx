@@ -66,7 +66,7 @@ function Listings() {
   }
 
   return (
-    <div className="w-full cursor-pointer flex flex-col gap-4 items-center justify-center">
+    <div className="w-full cursor-pointer flex sm:flex-row sm:gap-12 flex-col gap-4 sm:mt-8 items-center justify-center">
       {courses.map((course) => (
         <div
           key={course.id}
@@ -77,7 +77,7 @@ function Listings() {
           className="h-[300px] relative rounded-[8px]  w-[90%] sm:w-[300px] bg-gray-800 py-12"
         >
           {course.isFree && (
-            <div className="absolute left-3 top-3 bg-white px-3 py-[3px] rounded-[5px] text-black font-bold">
+            <div className="absolute left-3 top-3 bg-white px-3 py-[3px] rounded-[8px] text-black font-bold">
               Free
             </div>
           )}
