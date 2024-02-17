@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { auth, provider } from "../firebase-config";
+import { auth, provider,db } from "../firebase-config";
 import {
   signInWithPopup,
   GoogleAuthProvider,
@@ -8,10 +8,35 @@ import {
 } from "firebase/auth";
 import Logo from "../Components/Logo.jsx";
 import { useGlobal } from "../context";
+import { collection, addDoc, getDocs, query, where } from "firebase/firestore";
+
 
 function Signup() {
   const { setPage, setUserDetails, setLocalData } = useGlobal();
+  const handleAddUser = async (user) => {
+    // Check if the document with the given ID exists
+    const usersCollection = collection(db, "users");
+    const userQuery = query(usersCollection, where("id", "==", user.id));
+    const querySnapshot = await getDocs(userQuery);
 
+    if (querySnapshot.empty) {
+      // If the document doesn't exist, add it to the collection
+      await addDoc(collection(db, "users"), {
+        name: user.name,
+        id: user.id,
+        description: user.description || "",
+        img: user.img || "",
+        whatsapp: user.whatsapp || "",
+        linkedin: user.linkedin || "",
+        email: user.email || "",
+        hall: user.hall || "Babcock, Ogun",
+        posts: user.posts || [],
+      });
+    } else {
+      console.log("User with this ID already exists.");
+    }
+  };  
+   
   const SignInWithGoogle = async () => {
     try {
       const result = await signInWithPopup(auth, new GoogleAuthProvider());
@@ -21,7 +46,12 @@ function Signup() {
         img: user.photoURL,
         email: user.email,
         id: user.uid,
+        whatsapp: "",
+        linkedin: "",
+        hall: "Babcock, Ogun",
+        posts: [],
       };
+      handleAddUser(userInfo);
       setLocalData(userInfo);
       localStorage.setItem("userDetails", JSON.stringify(userInfo));
       localStorage.setItem("isSignedIn", true);
@@ -47,12 +77,21 @@ function Signup() {
         password
       );
       const user = result.user;
+      
       setUserDetails(user);
       setPage("home");
       const userInfo = {
-        name: name,
+        name: user.displayName,
+        img: user.photoURL,
+        description: user.description || "Student at Babcock University",
         email: user.email,
+        id: user.uid,
+        whatsapp: "",
+        linkedin: "",
+        hall: "Babcock, Ogun",
+        posts: [],
       };
+      handleAddUser(userInfo);
       setLocalData(userInfo);
       localStorage.setItem("userDetails", JSON.stringify(userInfo));
       localStorage.setItem("isSignedIn", true);
