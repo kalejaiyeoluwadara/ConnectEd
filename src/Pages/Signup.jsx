@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { auth, provider,db } from "../firebase-config";
+import { auth, provider, db } from "../firebase-config";
 import {
   signInWithPopup,
   GoogleAuthProvider,
@@ -10,9 +10,9 @@ import Logo from "../Components/Logo.jsx";
 import { useGlobal } from "../context";
 import { collection, addDoc, getDocs, query, where } from "firebase/firestore";
 
-
 function Signup() {
-  const { setPage, setUserDetails, setLocalData } = useGlobal();
+  const { setPage, setUserDetails, setLocalData, userdb, setUserdb } =
+    useGlobal();
   const handleAddUser = async (user) => {
     // Check if the document with the given ID exists
     const usersCollection = collection(db, "users");
@@ -35,12 +35,13 @@ function Signup() {
     } else {
       console.log("User with this ID already exists.");
     }
-  };  
-   
+  };
+
   const SignInWithGoogle = async () => {
     try {
       const result = await signInWithPopup(auth, new GoogleAuthProvider());
       const user = result.user;
+
       const userInfo = {
         name: user.displayName,
         img: user.photoURL,
@@ -51,7 +52,7 @@ function Signup() {
         hall: "Babcock, Ogun",
         posts: [],
       };
-      handleAddUser(userInfo);
+      // handleAddUser(userInfo);
       setLocalData(userInfo);
       localStorage.setItem("userDetails", JSON.stringify(userInfo));
       localStorage.setItem("isSignedIn", true);
@@ -77,7 +78,7 @@ function Signup() {
         password
       );
       const user = result.user;
-      
+
       setUserDetails(user);
       setPage("home");
       const userInfo = {

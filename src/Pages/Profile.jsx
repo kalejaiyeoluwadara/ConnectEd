@@ -16,16 +16,16 @@ function Profile() {
   return (
     <div className="min-h-screen w-screen bg-black">
       {/* Banner */}
-      <div className="w-full flex relative   justify-between items-start px-3 py-1 bg-gray-800 h-[100px] ">
+      <div className="w-full flex relative   justify-between items-start px-3 py-0 bg-gray-800 h-[100px] ">
         <BsArrowLeft
           onClick={() => {
             setPage("home");
           }}
-          className="text-black z-40 "
+          className="text-black mt-2 z-40 "
           size={30}
         />
         <CiMenuKebab
-          className="text-black z-40"
+          className="text-black mt-2 z-40"
           onClick={() => {
             setLog(!log);
           }}
