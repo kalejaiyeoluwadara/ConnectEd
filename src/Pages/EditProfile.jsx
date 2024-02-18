@@ -3,7 +3,7 @@ import { AiOutlineClose } from "react-icons/ai";
 import { CiLocationOn } from "react-icons/ci";
 import { GoLink } from "react-icons/go";
 import { useGlobal } from "../context";
-import { doc, getDoc, updateDoc, getDocs,collection,query,where } from "firebase/firestore";
+import { doc, getDoc, updateDoc,addDoc, getDocs,collection,query,where } from "firebase/firestore";
 import { db } from "../firebase-config"; // Assuming db is your Firestore instance
 
 
@@ -15,7 +15,7 @@ function EditProfile() {
   const [hall,setHall] = useState();
   const [whatsapp, setWhatsapp] = useState(); // Added state for whatsapp
   const [linkedin, setLinkedin] = useState(""); // Added state for linkedin
-  console.log(localData);
+  // console.log(localData);
   // const handleFormSubmit = async () => {
   //   try {
   //     // Query Firestore to get the user document by ID
@@ -79,6 +79,7 @@ function EditProfile() {
  };
  const handleFormSubmit =() =>{
   handleAddUser(userInfo);
+  setPage('profile')
  }
 // const updateUser = async (id,age) =>{
 // const userDoc = doc(db,"ages",id);
