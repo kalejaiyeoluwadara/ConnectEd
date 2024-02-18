@@ -11,7 +11,7 @@ import { db } from "../firebase-config";
 import Nav from "../Components/Nav";
 
 function Connect() {
-  const { setPage, userDetails, localData, setImg, img } = useGlobal();
+  const { setPage, userDetails, localData, setImg, img,temp } = useGlobal();
   // const photoURL = existingUser.img || face1;
   const [existingUser, setExistingUser] = useState(null);
 
@@ -22,7 +22,7 @@ function Connect() {
         const usersCollection = collection(db, "users");
         const userQuery = query(
           usersCollection,
-          where("id", "==", localData?.id)
+          where("id", "==", temp)
         );
         const querySnapshot = await getDocs(userQuery);
 
@@ -63,29 +63,29 @@ function Connect() {
           alt=""
         /> */}
 
-        <p className=" mt-12  text-[20px] font-bold">{existingUser.name}</p>
+        <p className=" mt-12  text-[20px] font-bold">Name</p>
       </div>
       {/* details/description */}
       <div className="px-4 mt-2">
         {/* desc */}
-        <p className="font-[500]">{existingUser.description || "Student at Babcock University" }</p>
+        <p className="font-[500]">Student at Babcock University</p>
         {/* details */}
         <div className="flex w-full mt-4 font-500 text-[16px] justify-start text-gray-300 gap-2 items-center ">
           {/* location */}
           <p className="flex gap-1 items-center justify-center  ">
             {" "}
             <CiLocationOn size={20} />
-            {existingUser.hall}
+            Babock, Ogun
           </p>
           {/* link */}
           <p className="flex items-center  gap-1">
             {" "}
             <IoMdLink size={21} />{" "}
             <span className="text-blue-400 flex gap-1">
-              <a href={`https://wa.me/${existingUser.whatsapp}`}>
+              <a href={`https://wa.me/`}>
                 <FaWhatsapp size={20} />
               </a>
-              <a href={existingUser.email}>
+              <a href='email'>
                 <LuMail size={20} />
               </a>
             </span>

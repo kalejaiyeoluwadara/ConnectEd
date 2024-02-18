@@ -9,7 +9,7 @@ import { useGlobal } from "../context";
 import {PiPlugsConnectedThin  } from "react-icons/pi";
 
 function View() {
-  const { setPage, details, setDetails, img,connect,setConnect } = useGlobal();
+  const { setPage, details, setDetails, img,connect,setConnect,temp,setTemp } = useGlobal();
   const [review, setReview] = useState("");
   const [loadingReview, setLoadingReview] = useState(false); // State for review loading
 
@@ -92,6 +92,7 @@ function View() {
           </div>
           <button onClick={() =>{
             setPage('connect');
+            setTemp(details.id);
           }}  className="text-white flex gap-2 px-4 py-1 bg-blue-600 font-[600] itens-center justify-center rounded-[8px] ">
             <PiPlugsConnectedThin size={20} />
             <span>Connect</span>

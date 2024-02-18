@@ -67,9 +67,9 @@ function Listings() {
 
   return (
     <div className="w-full cursor-pointer flex sm:flex-row sm:gap-12 flex-col gap-4 sm:mt-8 items-center justify-center">
-      {courses.map((course) => (
+      {courses.map((course,id) => (
         <div
-          key={course.id}
+          key={id}
           onClick={() => {
             setDetails(course);
             setPage("view");
