@@ -13,6 +13,7 @@ import Search from "../Pages/Search";
 import UploadPage from "../Pages/UploadPage";
 import EditProfile from "../Pages/EditProfile";
 import Modal from '../Components/Modal'
+import Connect from "../Pages/Connect";
 function Admin() {
   const {
     setPage,
@@ -29,7 +30,7 @@ function Admin() {
     uploadPage,
     userDetails,
     setLocalData,
-    localData,edit
+    localData,edit,connect,setConnect
   } = useGlobal();
   const [isSignedIn, setIsSignedIn] = useState(false); // Initialize isSignedIn state
 
@@ -62,6 +63,7 @@ function Admin() {
         {search && <Search />}
         {uploadPage && <UploadPage />}
         {edit && <EditProfile />}
+        {connect && <Connect/> }
       </div>
     </div>
 
