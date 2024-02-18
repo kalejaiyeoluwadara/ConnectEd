@@ -30,10 +30,11 @@ function Connect() {
           // If user exists, set existing user data in state
           querySnapshot.forEach((doc) => {
             setExistingUser(doc.data());
-            console.log(existingUser)
+            console.log(doc.data())
           });
         } else {
           // If user doesn't exist, set existing user data to null
+          console.log("Not found");
           setExistingUser(null);
         }
       } catch (error) {
@@ -44,7 +45,7 @@ function Connect() {
     // Fetch existing user data when the component mounts
     fetchExistingUser();
   }, []); // Run effect whenever localData.id changes
-
+  //  console.log(temp)
   return (
     <div className="min-h-screen w-screen bg-black">
       {/* Banner */}
