@@ -1,62 +1,80 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import tochi from "../assets/images/tochi.png";
 import { FiChevronLeft } from "react-icons/fi";
 import { CiLocationOn } from "react-icons/ci";
 import { CiBookmark } from "react-icons/ci";
-import { setDoc, doc } from "firebase/firestore";
+import { setDoc, doc, collection, addDoc, query, where, getDocs } from "firebase/firestore"; // Import additional Firestore functions
+
 import { db } from "../firebase-config";
 import { useGlobal } from "../context";
 import {PiPlugsConnectedThin  } from "react-icons/pi";
 
 function View() {
-  const { setPage, details, setDetails, img,connect,setConnect,temp,setTemp } = useGlobal();
+  const { setPage, details, setDetails, img,connect,localData,setConnect,temp,setTemp } = useGlobal();
+  const [reviewsList, setReviewsList] = useState([]); 
   const [review, setReview] = useState("");
   const [loadingReview, setLoadingReview] = useState(false); // State for review loading
-
-  const handleReviewSubmit = async () => {
-    if (review.trim() !== "") {
-      const newReview = {
-        name: img.name,
-        profileImg: img.img,
-        review: review,
-      };
-      setLoadingReview(true); // Set loading state to true when submitting review
-      try {
-        // Update the document with the new review
-        await setDoc(
-          doc(db, "courses", details.id),
-          { reviews: [...details.reviews, newReview] },
-          { merge: true } // Merge with existing data
-        );
-        // Update state
-        setDetails({ ...details, reviews: [...details.reviews, newReview] });
-        // Clear input field
-        setReview("");
-      } catch (error) {
-        console.error("Error adding review:", error);
-      } finally {
-        setLoadingReview(false); // Reset loading state after review submission
-      }
-    }
-  };
-    const [isExpanded, setIsExpanded] = useState(false);
-
+  const [isExpanded, setIsExpanded] = useState(false);
     const toggleDescription = () => {
       setIsExpanded(!isExpanded);
+    };    
+    const handleReviews = async () => {
+    try {
+      // Create a new review object
+      const newReview = {
+        review: review,
+        msg: details.description,
+        name: localData.name, // Corrected variable name
+        img: localData.img, // Corrected variable name
+      };
+
+      // Add the new review to the Firestore collection "reviews"
+      await addDoc(collection(db, "reviews"), newReview);
+      
+      // Clear the review input field after successfully adding the review
+      setReview("");
+    } catch (error) {
+      console.error("Error adding review:", error.message);
+    }
+  };
+
+  useEffect(() => {
+    const fetchReviews = async () => {
+      try {
+        // Query Firestore for reviews with the same description as the one in the view page
+        const q = query(collection(db, "reviews"), where("msg", "==", details.description));
+        const querySnapshot = await getDocs(q);
+        const reviews = [];
+        querySnapshot.forEach((doc) => {
+          reviews.push(doc.data());
+        });
+        setReviewsList(reviews);
+      } catch (error) {
+        console.error("Error fetching reviews:", error.message);
+      }
     };
+
+    fetchReviews();
+  }, [details.description]); // Run effect whenever the description in details changes
+
+
   return (
     <div className="min-h-screen sm:absolute right-0 left-0 pb-20 w-screen bg-black  ">
       {/* First section */}
       <div className="flex w-full relative bg-gray-900 rounded-b-[20px] h-[300px] ">
-        <section className="flex justify-between px-4 w-full items-start capitalize py-4">
-          <FiChevronLeft
-            className="cursor-pointer z-40 "
-            onClick={() => {
-              setPage("home");
-            }}
-            size={28}
-          />
-          <CiBookmark className="z-40" size={25} />
+        <section className="flex justify-between px-4 w-full items-start capitalize py-2">
+          <div className=" h-[40px] bg-opacity-[0.5] w-[40px] z-40 flex items-center justify-center rounded-[50%] shadow-md bg-gray-400 ">
+            <FiChevronLeft
+              className="cursor-pointer text-white "
+              onClick={() => {
+                setPage("home");
+              }}
+              size={28}
+            />
+          </div>
+          <div className=" h-[40px] bg-opacity-[0.5] w-[40px] z-40 flex items-center justify-center rounded-[50%] shadow-md bg-gray-400 ">
+            <CiBookmark className="z-40" size={25} />
+          </div>
           <img
             className="absolute sm:object-cover top-0 left-0 w-full h-full "
             src={details.image}
@@ -90,10 +108,13 @@ function View() {
               {details.isFree ? "Free" : "Paid"}
             </button>
           </div>
-          <button onClick={() =>{
-            setPage('connect');
-            setTemp(details.id);
-          }}  className="text-white flex gap-2 px-4 py-1 bg-blue-600 font-[600] itens-center justify-center rounded-[8px] ">
+          <button
+            onClick={() => {
+              setPage("connect");
+              setTemp(details.id);
+            }}
+            className="text-white flex gap-2 px-4 py-1 bg-blue-600 font-[600] itens-center justify-center rounded-[8px] "
+          >
             <PiPlugsConnectedThin size={20} />
             <span>Connect</span>
           </button>
@@ -106,8 +127,8 @@ function View() {
           <p className="text-start w-full font-[400] text-[16px] ">
             {isExpanded
               ? details.description
-              : details.description.slice(0, 40)}
-            {details.description.length > 40 && !isExpanded && (
+              : details.description.slice(0, 50)}
+            {details.description.length > 50 && !isExpanded && (
               <span
                 onClick={toggleDescription}
                 className=" text-white font-bold cursor-pointer"
@@ -135,71 +156,24 @@ function View() {
       </div>
 
       {/* Reviews */}
-      <div className="mt-4 flex  sm:items-start flex-col px-6 ">
-        <h3 className="text-[22px] text-start sm:px-1  font-[600] ">Reviews</h3>
-        {details.reviews.length === 0 && !loadingReview && (
-          <p className="text-center text-gray-400 mt-4">No reviews available</p>
-        )}
-        {loadingReview && (
-          <p className="text-center text-gray-400 mt-4">Submitting review...</p>
-        )}
-        {details.reviews.length > 0 && (
-          <div className="flex flex-col  mt-[20px] gap-4">
-            {details.reviews.map((review, id) => (
-              <div key={id}>
-                <section className="flex justify-between">
-                  <div className="flex gap-3 font-[500] items-center capitalize">
-                    <img
-                      src={review.profileImg}
-                      alt=""
-                      className="h-[30px] rounded-full"
-                    />
-                    <p className="text-[17px]">{review.name}</p>
-                  </div>
-                </section>
-                <section>
-                  <div>{/* Display rating if available */}</div>
-                </section>
-                <p>{review.review}</p>
-              </div>
-            ))}
-          </div>
-        )}
-        {/* Input for review */}
-        <div className="mt-4 flex w-full sm:gap-3 items-center justify-center ">
-          <input
-            className="h-[30px] sm:w-[250px] border-none outline-none bg-black "
-            type="text"
-            placeholder="Review"
-            value={review}
-            onChange={(e) => {
-              setReview(e.target.value);
-            }}
-          />
-          <button onClick={handleReviewSubmit}>send</button>
+      <div className="px-4">
+        <h3 className="font-bold">Reviews</h3>
+        {/* content */}
+        <div className="flex flex-col gap-2 items-center justify-center" >
+          {
+          reviewsList.map((rev,id)=>{
+          return(
+          <p className="w-screen border-[2px] border-gray-500   " >{rev.review}</p>
+          )
+          })
+          }
         </div>
-      </div>
-      {/* Fourth Section */}
-      <div className="px-8 mt-8 font-[600] text-[20px]  ">
-        {/* <h2 className="text-center sm:mt-20 mb-3 ">Related Courses</h2> */}
-        <div className="grid sm:justify-center grid-cols-1 items-center justify-center gap-3 ">
-          {[1, 2, 3].map((d) => {
-            <div
-              onClick={() => {
-                // setCourse(d);
-                setPage("view");
-              }}
-              className="h-auto rounded-[8px] relative w-[90%] sm:w-[300px] bg-gray-800 py-4  "
-            >
-              <div className="flex items-center w-full px-4  justify-start  left-3 gap-1 ">
-                <img className="h-[50px] w-[50px] " src={tochi} alt="" />
-                <section className="px-2">
-                  <h4 className="font-[600] text-[19px] ">Tochi Idiong</h4>
-                  <p className="font-[400] text-[15px] ">Maths 203</p>
-                </section>
-              </div>
-            </div>;
-          })}
+        {/* Input */}
+        <div className="fixed bottom-4 bg-black z-40 items-center justify-start w-screen px-4 flex gap-3  " >  
+          <input className="outline-none px-3 focus:border-[2px] rounded-[8px] focus:border-blue-500 bg-transparent border border-gray-600 h-[35px]  " type="text" value={review} onChange={(e) =>{
+            setReview(e.target.value)
+          }} />
+          <button onClick={handleReviews}>Send</button>
         </div>
       </div>
     </div>

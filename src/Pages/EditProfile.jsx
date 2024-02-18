@@ -11,7 +11,7 @@ function EditProfile() {
   const { setPage, img, localData, setLocalData } = useGlobal();
   const [name, setName] = useState(localData.name);
   const [email, setEmail] = useState(localData.email);
-  const [bio, setBio] = useState("Student at Babcok University");
+  const [bio, setBio] = useState("Student at Babcock University");
   const [hall,setHall] = useState();
   const [whatsapp, setWhatsapp] = useState(); // Added state for whatsapp
   const [linkedin, setLinkedin] = useState(""); // Added state for linkedin
@@ -71,7 +71,6 @@ function EditProfile() {
        linkedin: user.linkedin || "",
        email: user.email || "",
        hall: user.hall || "Babcock, Ogun",
-      //  posts: user.posts || [],
      });
    } else {
      console.log("User with this ID already exists.");
@@ -82,11 +81,6 @@ function EditProfile() {
   handleAddUser(userInfo);
   setPage('profile')
  }
-// const updateUser = async (id,age) =>{
-// const userDoc = doc(db,"ages",id);
-//   const newFields = {age:age+1}
-//   await updateDoc(userDoc,newFields)
-// }
   return (
     <div className="h-screen w-screen bg-black sm:pt-40 flex justify-center items-center">
       <div className=" p-8 rounded-lg shadow-md max-w-md w-full">
@@ -170,7 +164,7 @@ function EditProfile() {
                   className="w-full border bg-black border-gray-600  rounded-md px-3 py-2 focus:outline-none focus:border-blue-500"
                 />
               </div>
-              <div className="flex items-center gap-2">
+              {/* <div className="flex items-center gap-2">
                 <GoLink size={20} />
                 <input
                   type="text"
@@ -184,7 +178,7 @@ function EditProfile() {
                   type="text"
                   className="w-full border bg-black border-gray-600  rounded-md px-3 py-2 focus:outline-none focus:border-blue-500"
                 />
-              </div>
+              </div> */}
             </section>
           </div>
           <div className="flex justify-between sm:mt-6 mt-3 w-full ">

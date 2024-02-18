@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import { BsArrowLeft } from "react-icons/bs";
 import { CiMenuKebab, CiLocationOn } from "react-icons/ci";
 import { IoMdLink } from "react-icons/io";
@@ -7,12 +7,42 @@ import face1 from "../assets/images/person.svg";
 import bg from "../assets/images/bg.jpg";
 import { useGlobal } from "../context";
 import { LuMail } from "react-icons/lu";
+import { collection, query, where, getDocs } from "firebase/firestore";
+import { db } from "../firebase-config";
 import Nav from "../Components/Nav";
 import EditProfile from "./EditProfile";
 function Profile() {
   const { setPage, userDetails, localData, setImg, img } = useGlobal();
   const photoURL = img.img || face1;
   const [log, setLog] = useState();
+  const [posts,setPosts] = useState([]);
+  useEffect(() => {
+    const fetchPosts = async () => {
+      try {
+        // Check if the document with the given ID exists
+        const postsCollection = collection(db, "courses");
+        const postsQuery = query(postsCollection, where("id", "==", localData.id));
+        const querySnapshot = await getDocs(postsQuery);
+
+        if (!querySnapshot.empty) {
+          // If posts exist, set posts data in state
+          const postsData = querySnapshot.docs.map((doc) => doc.data());
+          setPosts(postsData);
+          console.log(posts)
+        } else {
+          // If posts don't exist, set posts data to empty array
+          console.log("No posts found");
+          setPosts([]);
+        }
+      } catch (error) {
+        console.error("Error fetching user posts:", error.message);
+      }
+    };
+
+    // Fetch existing user data when the component mounts
+    fetchPosts();
+  }, []); 
+
   return (
     <div className="min-h-screen w-screen bg-black">
       {/* Banner */}
@@ -97,14 +127,21 @@ function Profile() {
         </div>
       </div>
       {/* items */}
-      <div className="w-full flex  items-center justify-center gap-4  my-8 px flex-col">
-        <div className="bg-gray-700 relative sm:w-[300px] w-[90%] rounded-[10px] h-[300px] ">
-          <img src="" alt="" />
+      <div className="w-full flex mb-40  items-center justify-center gap-4  my-8 px flex-col">
+       {/* Logs through posts */}
+       {
+        posts.map((post,id) =>{
+          return(
+             <div key={id} className="bg-gray-700 relative sm:w-[300px] w-[90%] rounded-[10px] h-[300px] ">
+          <img src={post.image} className="absolute h-full w-full top-0 left-0" alt="" />
           <section className="px-4 w-full rounded-b-[10px] bg-opacity-30 card py-3 absolute bottom-0 ">
-            <h4 className="font-bold   text-[20px] ">Tochi Idiong</h4>
-            <p>Numerical Methods and Analysis</p>
+            <h4 className="font-bold   text-[20px] ">{post.author}</h4>
+            <p>{post.title}</p>
           </section>
         </div>
+          )
+        })
+       }
       </div>
 
       <Nav />

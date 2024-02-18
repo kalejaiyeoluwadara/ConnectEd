@@ -10,7 +10,7 @@ import {
 import { CiBookmark } from "react-icons/ci";
 import { useGlobal } from "../context";
 import { db } from "../firebase-config";
-
+import { v4 as uuidv4 } from "uuid"; 
 const Loading = () => {
   return (
     <div className="loading-spinner-container">
@@ -42,7 +42,7 @@ function Listings() {
         }
 
         const updatedCourses = querySnapshot.docs.map((doc) => ({
-          id: doc.id,
+          id: doc.id, 
           ...doc.data(),
           reviews: doc.data().reviews || [],
         }));
@@ -67,11 +67,11 @@ function Listings() {
 
   return (
     <div className="w-full cursor-pointer flex sm:flex-row sm:gap-12 flex-col gap-4 sm:mt-8 items-center justify-center">
-      {courses.map((course,id) => (
+      {courses.map((course, id) => (
         <div
-          key={id}
+          key={uuidv4()}
           onClick={() => {
-            setDetails(course);
+             setDetails({ ...course, uniqueId: uuidv4() });
             setPage("view");
           }}
           className="h-[300px] relative rounded-[8px]  w-[90%] sm:w-[300px] bg-gray-800 py-12"
