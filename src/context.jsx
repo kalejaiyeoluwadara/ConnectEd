@@ -22,6 +22,7 @@ function AppProvider({ children }) {
   const [edit,setEdit] = useState(false);
   const [connect,setConnect] = useState(false);
   const [userdb,setUserdb] = useState();
+  const [temp,setTemp] = useState('');
   const [cats, setCats] = useState([
     "all",
     "cosc",
@@ -83,7 +84,7 @@ function AppProvider({ children }) {
   return (
     <AppContext.Provider
       value={{
-        img,modal,setModal,userdb,setUserdb,
+        img,modal,setModal,userdb,setUserdb,temp,setTemp,
         details,
         setDetails,
         cats,

@@ -46,6 +46,7 @@ function EditProfile() {
     const userInfo = {
       name: name || localData.name,
       img: localData.img,
+      description:bio,
       email: localData.email,
       id: localData.id,
       whatsapp: whatsapp,

@@ -12,7 +12,7 @@ import Nav from "../Components/Nav";
 
 function Connect() {
   const { setPage, userDetails, localData, setImg, img } = useGlobal();
-  const photoURL = img.img || face1;
+  // const photoURL = existingUser.img || face1;
   const [existingUser, setExistingUser] = useState(null);
 
   useEffect(() => {
@@ -43,7 +43,7 @@ function Connect() {
 
     // Fetch existing user data when the component mounts
     fetchExistingUser();
-  }, [localData?.id]); // Run effect whenever localData.id changes
+  }, []); // Run effect whenever localData.id changes
 
   return (
     <div className="min-h-screen w-screen bg-black">
@@ -57,18 +57,18 @@ function Connect() {
       </div>
 
       <div className="relative  flex flex-col px-3  w-screen ">
-        <img
-          src={existingUser.img}
+        {/* <img
+          src={existingUser.profileImage || face1 }
           className="-top-4 border-[3px] border-black h-[50px] w-[50px] rounded-[50%] absolute"
           alt=""
-        />
+        /> */}
 
-        <p className=" mt-12  text-[20px] font-bold">{img.name}</p>
+        <p className=" mt-12  text-[20px] font-bold">{existingUser.name}</p>
       </div>
       {/* details/description */}
       <div className="px-4 mt-2">
         {/* desc */}
-        <p className="font-[500]">{existingUser.description}</p>
+        <p className="font-[500]">{existingUser.description || "Student at Babcock University" }</p>
         {/* details */}
         <div className="flex w-full mt-4 font-500 text-[16px] justify-start text-gray-300 gap-2 items-center ">
           {/* location */}
