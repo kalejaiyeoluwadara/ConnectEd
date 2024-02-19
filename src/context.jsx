@@ -23,6 +23,7 @@ function AppProvider({ children }) {
   const [connect,setConnect] = useState(false);
   const [userdb,setUserdb] = useState();
   const [temp,setTemp] = useState('');
+  const [searchTerm,setSearchterm] = useState('');
   const [cats, setCats] = useState([
     "all",
     "cosc",
@@ -84,7 +85,13 @@ function AppProvider({ children }) {
   return (
     <AppContext.Provider
       value={{
-        img,modal,setModal,userdb,setUserdb,temp,setTemp,
+        img,
+        modal,
+        setModal,
+        userdb,
+        setUserdb,
+        temp,
+        setTemp,
         details,
         setDetails,
         cats,
@@ -117,7 +124,10 @@ function AppProvider({ children }) {
         setActive,
         edit,
         setEdit,
-        connect,setConnect
+        connect,
+        setConnect,
+        searchTerm,
+        setSearchterm,
       }}
     >
       {children}

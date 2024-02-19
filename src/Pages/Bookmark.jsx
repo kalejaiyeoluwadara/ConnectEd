@@ -12,7 +12,7 @@ function Bookmark() {
       <h3 className="font-bold  text-[22px]">Your Bookmarks</h3>
       <SearchField />
       <div className="flex flex-col items-center mt-8">
-        <div
+        {/* <div
           onClick={() => {
             // setCourse(d);
             setPage("view");
@@ -29,7 +29,7 @@ function Bookmark() {
               <p>Numerical Methods and Analysis</p>
             </section>
           </div>
-        </div>
+        </div> */}
       </div>
 
       <Nav />

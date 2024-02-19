@@ -3,7 +3,7 @@ import add from "../assets/images/add.png";
 import { BsSearch } from "react-icons/bs";
 import { useGlobal } from "../context";
 function SearchComp() {
-  const { setPage } = useGlobal();
+  const { setPage, searchTerm, setSearchterm } = useGlobal();
   return (
     <div className="w-full  flex sm:justify-center items-center  py-2 ">
       <div
@@ -16,6 +16,10 @@ function SearchComp() {
         <input
           className="w-[100%] h-full outline-none  bg-transparent"
           placeholder="search"
+          onChange={(e)=>{
+            setSearchterm(e.target.value)
+          }}
+          value={searchTerm}
           type="text"
           name=""
           id=""
