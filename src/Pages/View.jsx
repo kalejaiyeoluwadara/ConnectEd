@@ -2,6 +2,8 @@ import React, { useState,useEffect } from "react";
 import tochi from "../assets/images/tochi.png";
 import { FiChevronLeft } from "react-icons/fi";
 import { CiLocationOn } from "react-icons/ci";
+import { BsSendFill } from "react-icons/bs";
+import { TiStarFullOutline } from "react-icons/ti";
 import { CiBookmark } from "react-icons/ci";
 import { setDoc, doc, collection, addDoc, query, where, getDocs } from "firebase/firestore"; // Import additional Firestore functions
 
@@ -55,7 +57,7 @@ function View() {
     };
 
     fetchReviews();
-  }, [details.description]); // Run effect whenever the description in details changes
+  }, [setReview]); // Run effect whenever the description in details changes
 
 
   return (
@@ -100,10 +102,10 @@ function View() {
       <div className="mt-4 sm:px-4 font-medium ">
         <div className="flex px-4 justify-between items-center">
           <div className="flex flex-col items-start gap-2">
-            <section className="flex items-center gap-1">
+            {/* <section className="flex items-center gap-1">
               <CiLocationOn size={30} />
               <p>{details.hall}</p>
-            </section>
+            </section> */}
             <button className="text-white mt-2 px-4 py-1 bg-black border border-gray-400 font-[600] rounded-[8px] ">
               {details.isFree ? "Free" : "Paid"}
             </button>
@@ -156,24 +158,40 @@ function View() {
       </div>
 
       {/* Reviews */}
-      <div className="px-4">
-        <h3 className="font-bold">Reviews</h3>
+      <div className="px-4 mt-4 ">
+        <h3 className="font-bold text-[20px] mb-2 ">Reviews</h3>
         {/* content */}
-        <div className="flex flex-col gap-2 items-center justify-center" >
+        <div className="flex flex-col gap-8 items-center justify-center" >
           {
           reviewsList.map((rev,id)=>{
-          return(
-          <p className="w-screen border-[2px] border-gray-500   " >{rev.review}</p>
-          )
+          return (
+            <div className="w-full rounded-[12px] border-[1px] px-3 py-4 gap-2 flex flex-col border-gray-600  ">
+              <section className="flex justify-between w-full items-center">
+                <div>
+                  <p className="font-[600]  text-start text-[18px] ">
+                    {rev.name}
+                  </p>
+                </div>
+                <div className="flex">
+                  {[1, 2, 3, 4, 5].map((d, id) => {
+                    return <TiStarFullOutline size={20} className="text-[#FFC727]" />;
+                  })}
+                </div>
+              </section>
+              <p className=" text-center text-[22px]  text-gray-300 ">{rev.review}</p>
+            </div>
+          );
           })
           }
         </div>
         {/* Input */}
-        <div className="fixed bottom-4 bg-black z-40 items-center justify-start w-screen px-4 flex gap-3  " >  
-          <input className="outline-none px-3 focus:border-[2px] rounded-[8px] focus:border-blue-500 bg-transparent border border-gray-600 h-[35px]  " type="text" value={review} onChange={(e) =>{
+        <div className="fixed bottom-4 bg-black z-40 items-center justify-between px-12 w-screen  flex gap-2  " >  
+          <input className="outline-none w-[400px] px-3 focus:border-[2px] rounded-[8px] focus:border-blue-500 bg-transparent border border-gray-600 h-[35px]  " type="text" value={review} onChange={(e) =>{
             setReview(e.target.value)
           }} />
-          <button onClick={handleReviews}>Send</button>
+          <button className="px-3 py-2 flex gap-2 font-bold items-center justify-center bg-blue-500 rounded-[3px]  " onClick={handleReviews}>Send
+          <BsSendFill size={20} />
+          </button>
         </div>
       </div>
     </div>

@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 import { AiOutlineClose } from "react-icons/ai";
 import { CiLocationOn } from "react-icons/ci";
+import { LuMail } from "react-icons/lu";
+import { FaLinkedin } from "react-icons/fa6";
 import { GoLink } from "react-icons/go";
 import { useGlobal } from "../context";
+import { FaW, FaWhatsapp } from "react-icons/fa6";
 import { doc, getDoc, updateDoc,addDoc, getDocs,collection,query,where } from "firebase/firestore";
 import { db } from "../firebase-config"; // Assuming db is your Firestore instance
 
@@ -12,8 +15,8 @@ function EditProfile() {
   const [name, setName] = useState(localData.name);
   const [email, setEmail] = useState(localData.email);
   const [bio, setBio] = useState("Student at Babcock University");
-  const [hall,setHall] = useState();
-  const [whatsapp, setWhatsapp] = useState(); // Added state for whatsapp
+  const [hall,setHall] = useState("");
+  const [whatsapp, setWhatsapp] = useState(""); // Added state for whatsapp
   const [linkedin, setLinkedin] = useState(""); // Added state for linkedin
   // console.log(localData);
   // const handleFormSubmit = async () => {
@@ -79,7 +82,9 @@ function EditProfile() {
  };
  const handleFormSubmit =() =>{
   handleAddUser(userInfo);
-  setPage('profile')
+   setLocalData(userInfo);
+   localStorage.setItem("userDetails", JSON.stringify(userInfo));
+   setPage('profile')
  }
   return (
     <div className="h-screen w-screen bg-black sm:pt-40 flex justify-center items-center">
@@ -110,50 +115,65 @@ function EditProfile() {
             />
           </div>
 
-          <div className="mb-4">
+          <div className="mb-2">
             <label htmlFor="bio" className="block mb-1 font-bold">
               Bio
             </label>
             <textarea
               id="bio"
               placeholder="Brief description"
-              value={bio}
+              value={localData.description}
               onChange={(e) => setBio(e.target.value)}
               className="w-full border bg-black border-gray-600 rounded-md px-3 py-2 focus:outline-none focus:border-blue-500"
               rows="4"
             ></textarea>
           </div>
-          <div className="mb-4 flex items-center gap-2 ">
-            <label htmlFor="email" className="block mb-1 font-medium">
-              <CiLocationOn className="opacity-[0.7]" size={20} />
-            </label>
-            <input
-              type="email"
-              id="email"
-              placeholder="hall name"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              className="w-full border bg-black border-gray-600  rounded-md px-3 py-2 focus:outline-none focus:border-blue-500"
-            />
-          </div>
-          <div className="flex flex-col items-start mb-4 gap-2">
+
+          <div className="mb-4">
             <label htmlFor="bio" className="block mb-1 font-bold">
-              Whatsapp number
+              Hall
             </label>
             <input
-              type="text"
-              value={whatsapp}
-              onChange={(e) => {
-                setWhatsapp(e.target.value);
-              }}
+              id="bio"
+              placeholder="Hall Name"
+              value={localData.hall}
+              onChange={(e) => setHall(e.target.value)}
               className="w-full border bg-black border-gray-600  rounded-md px-3 py-2 focus:outline-none focus:border-blue-500"
-            />
+            ></input>
           </div>
+
           <div>
             <h3 className="font-bold">Social Accounts</h3>
+
             <section className="flex flex-col gap-2 my-3">
+              <div className=" flex items-center gap-2 ">
+                <label htmlFor="email" className="block mb-1 font-medium">
+                  <LuMail className="opacity-[0.7]" size={20} />
+                </label>
+                <input
+                  type="email"
+                  id="email"
+                  placeholder="hall name"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  className="w-full border bg-black border-gray-600  rounded-md px-3 py-2 focus:outline-none focus:border-blue-500"
+                />
+              </div>
+
               <div className="flex items-center gap-2">
-                <GoLink size={20} />
+                <FaWhatsapp size={20} />
+                <input
+                  type="text"
+                  placeholder="Whatsapp number"
+                  value={whatsapp}
+                  onChange={(e) => {
+                    setWhatsapp(e.target.value);
+                  }}
+                  className="w-full border bg-black border-gray-600  rounded-md px-3 py-2 focus:outline-none focus:border-blue-500"
+                />
+              </div>
+              <div className="flex items-center gap-2">
+                <FaLinkedin size={20} />
                 <input
                   type="text"
                   value={linkedin}
@@ -164,21 +184,6 @@ function EditProfile() {
                   className="w-full border bg-black border-gray-600  rounded-md px-3 py-2 focus:outline-none focus:border-blue-500"
                 />
               </div>
-              {/* <div className="flex items-center gap-2">
-                <GoLink size={20} />
-                <input
-                  type="text"
-                  placeholder="X"
-                  className="w-full border bg-black border-gray-600  rounded-md px-3 py-2 focus:outline-none focus:border-blue-500"
-                />
-              </div>
-              <div className="flex items-center gap-2">
-                <GoLink size={20} />
-                <input
-                  type="text"
-                  className="w-full border bg-black border-gray-600  rounded-md px-3 py-2 focus:outline-none focus:border-blue-500"
-                />
-              </div> */}
             </section>
           </div>
           <div className="flex justify-between sm:mt-6 mt-3 w-full ">

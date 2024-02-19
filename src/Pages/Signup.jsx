@@ -46,6 +46,7 @@ function Signup() {
         name: user.displayName,
         img: user.photoURL,
         email: user.email,
+        description:'Student at Babcock University',
         id: user.uid,
         whatsapp: "",
         linkedin: "",

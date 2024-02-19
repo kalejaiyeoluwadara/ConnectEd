@@ -7,6 +7,7 @@ import face1 from "../assets/images/person.svg";
 import bg from "../assets/images/bg.jpg";
 import { useGlobal } from "../context";
 import { collection, query, where, getDocs } from "firebase/firestore";
+import { FaLinkedin } from "react-icons/fa6";
 import { db } from "../firebase-config";
 import Nav from "../Components/Nav";
 
@@ -79,7 +80,7 @@ function Connect() {
 
       <div className="relative flex flex-col px-3  w-screen ">
         <img
-          src={existingUser ? existingUser.img  : face1}
+          src={existingUser ? existingUser.img : face1}
           className="-top-4 border-[3px] border-black h-[50px] w-[50px] rounded-[50%] absolute"
           alt=""
         />
@@ -114,8 +115,11 @@ function Connect() {
               >
                 <FaWhatsapp size={20} />
               </a>
-              <a href={existingUser ? existingUser.email : ""}>
+              <a href={existingUser ? `mailto:${existingUser.email}` : ""}>
                 <LuMail size={20} />
+              </a>
+              <a href={existingUser ? existingUser.linkedin : ""}>
+                <FaLinkedin size={20} />
               </a>
             </span>
           </p>
@@ -123,20 +127,25 @@ function Connect() {
       </div>
       {/* items */}
       <div className="w-full flex mb-40  items-center justify-center gap-4  my-8 px flex-col">
-       {/* Logs through posts */}
-       {
-        posts.map((post,id) =>{
-          return(
-             <div key={id} className="bg-gray-700 relative sm:w-[300px] w-[90%] rounded-[10px] h-[300px] ">
-          <img src={post.image} className="absolute h-full w-full top-0 left-0" alt="" />
-          <section className="px-4 w-full rounded-b-[10px] bg-opacity-30 card py-3 absolute bottom-0 ">
-            <h4 className="font-bold   text-[20px] ">{post.author}</h4>
-            <p>{post.title}</p>
-          </section>
-        </div>
-          )
-        })
-       }
+        {/* Logs through posts */}
+        {posts.map((post, id) => {
+          return (
+            <div
+              key={id}
+              className="bg-gray-700 relative sm:w-[300px] w-[90%] rounded-[10px] h-[300px] "
+            >
+              <img
+                src={post.image}
+                className="absolute h-full w-full top-0 left-0"
+                alt=""
+              />
+              <section className="px-4 w-full rounded-b-[10px] bg-opacity-30 card py-3 absolute bottom-0 ">
+                <h4 className="font-bold   text-[20px] ">{post.author}</h4>
+                <p>{post.title}</p>
+              </section>
+            </div>
+          );
+        })}
       </div>
 
       <Nav />

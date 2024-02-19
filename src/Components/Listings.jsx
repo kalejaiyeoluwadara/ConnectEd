@@ -69,15 +69,15 @@ function Listings() {
     <div className="w-full cursor-pointer flex sm:flex-row sm:gap-12 flex-col gap-4 sm:mt-8 items-center justify-center">
       {courses.map((course, id) => (
         <div
-          key={uuidv4()}
+          key={id}
           onClick={() => {
-             setDetails({ ...course, uniqueId: uuidv4() });
+             setDetails({ ...course, });
             setPage("view");
           }}
           className="h-[300px] relative rounded-[8px]  w-[90%] sm:w-[300px] bg-gray-800 py-12"
         >
           {course.isFree && (
-            <div className="absolute left-3 top-3 bg-white px-3 py-[3px] rounded-[8px] text-black font-bold">
+            <div className="absolute left-3 top-3 bg-white px-3 py-[3px] rounded-[3px] text-black z-40 font-bold">
               Free
             </div>
           )}
@@ -89,7 +89,7 @@ function Listings() {
           <div className="absolute right-3 top-3 px-3 py-[3px] rounded-[5px] font-bold">
             <CiBookmark size={25} />
           </div>
-          <div className="flex items-center card  w-full px-2 justify-start absolute bottom-0 rounded-b-[8px] left-0 py-4 gap-1">
+          <div className="flex items-center card  w-full px-2 justify-start absolute bottom-0  left-0 py-4 gap-1">
             <img
               className="h-[40px] w-[40px] rounded-[50%] "
               src={course.profileImage}

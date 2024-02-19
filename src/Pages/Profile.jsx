@@ -9,6 +9,7 @@ import { useGlobal } from "../context";
 import { LuMail } from "react-icons/lu";
 import { collection, query, where, getDocs } from "firebase/firestore";
 import { db } from "../firebase-config";
+import { FaLinkedin } from "react-icons/fa6";
 import Nav from "../Components/Nav";
 import EditProfile from "./EditProfile";
 function Profile() {
@@ -28,7 +29,7 @@ function Profile() {
           // If posts exist, set posts data in state
           const postsData = querySnapshot.docs.map((doc) => doc.data());
           setPosts(postsData);
-          console.log(posts)
+          // console.log(posts)
         } else {
           // If posts don't exist, set posts data to empty array
           console.log("No posts found");
@@ -82,7 +83,7 @@ function Profile() {
 
       <div className="relative  flex flex-col px-3  w-screen ">
         <img
-          src={photoURL}
+          src={localData.img}
           className="-top-4 border-[3px] border-black h-[50px] w-[50px] rounded-[50%] absolute"
           alt=""
         />
@@ -99,27 +100,28 @@ function Profile() {
       {/* details/description */}
       <div className="px-4 mt-2">
         {/* desc */}
-        <p className="font-[500]">Student at Babcock Univesity.</p>
+        <p className="font-[500]">{localData.description}</p>
         {/* details */}
         <div className="flex w-full mt-4 font-500 text-[16px] justify-start text-gray-300 gap-2 items-center ">
           {/* location */}
           <p className="flex gap-1 items-center justify-center  ">
             {" "}
             <CiLocationOn size={20} />
-            Babcok, Ogun
+            Babcock, Ogun
           </p>
           {/* link */}
           <p className="flex items-center  gap-1">
             {" "}
             <IoMdLink size={21} />{" "}
             <span className="text-blue-400 flex gap-1">
-              <a
-                href="https://wa.me/09070934589
-"
-              >
+              <a href={`https://wa.me/${localData.whatsapp}`}>
                 <FaWhatsapp size={20} />
               </a>
-              <a href={img.email}>
+              <a href={localData.linkedin}>
+                <FaLinkedin size={20} />
+              </a>
+
+              <a href={`mailto:${localData.email}`}>
                 <LuMail size={20} />
               </a>
             </span>
@@ -127,21 +129,26 @@ function Profile() {
         </div>
       </div>
       {/* items */}
-      <div className="w-full flex mb-40  items-center justify-center gap-4  my-8 px flex-col">
-       {/* Logs through posts */}
-       {
-        posts.map((post,id) =>{
-          return(
-             <div key={id} className="bg-gray-700 relative sm:w-[300px] w-[90%] rounded-[10px] h-[300px] ">
-          <img src={post.image} className="absolute h-full w-full top-0 left-0" alt="" />
-          <section className="px-4 w-full rounded-b-[10px] bg-opacity-30 card py-3 absolute bottom-0 ">
-            <h4 className="font-bold   text-[20px] ">{post.author}</h4>
-            <p>{post.title}</p>
-          </section>
-        </div>
-          )
-        })
-       }
+      <div className="w-full sm:flex-row sm:gap-8 sm:w-full  flex mb-40  items-center justify-center gap-4  my-8 px flex-col">
+        {/* Logs through posts */}
+        {posts.map((post, id) => {
+          return (
+            <div
+              key={id}
+              className="bg-gray-700 relative sm:w-[300px] w-[90%]  h-[300px] "
+            >
+              <img
+                src={post.image}
+                className="absolute h-full w-full top-0 left-0"
+                alt=""
+              />
+              <section className="px-4 w-full rounded-b-[0px] bg-opacity-30 card py-3 absolute bottom-0 ">
+                <h4 className="font-bold   text-[20px] ">{post.author}</h4>
+                <p>{post.title}</p>
+              </section>
+            </div>
+          );
+        })}
       </div>
 
       <Nav />
