@@ -49,12 +49,12 @@ function EditProfile() {
     const userInfo = {
       name: name || localData.name,
       img: localData.img,
-      description:bio,
+      description: bio || localData.description,
       email: localData.email,
       id: localData.id,
-      whatsapp: whatsapp,
-      linkedin: linkedin,
-      hall: hall ,
+      whatsapp: whatsapp || localData.whatsapp,
+      linkedin: linkedin || localData.linkedin,
+      hall: hall,
       // posts: [],
     };
  const handleAddUser = async (user) => {
@@ -68,16 +68,26 @@ function EditProfile() {
      await addDoc(collection(db, "users"), {
        name: user.name,
        id: user.id,
+       description: user.description,
+       img: user.img,
+       whatsapp: user.whatsapp,
+       linkedin: user.linkedin,
+       email: user.email,
+       hall: user.hall,
+     });
+   } else {
+     console.log("User with this ID already exists.");
+     // Update the existing document instead of adding a new one
+     const userDoc = querySnapshot.docs[0];
+     await updateDoc(userDoc.ref, {
+       name: user.name,
        description: user.description || "",
-       img: user.img ,
+       img: user.img,
        whatsapp: user.whatsapp || "",
        linkedin: user.linkedin || "",
        email: user.email || "",
        hall: user.hall || "Babcock, Ogun",
      });
-   } else {
-     console.log("User with this ID already exists.");
-     //Write code to delete former data then add new data
    }
  };
  const handleFormSubmit =() =>{
@@ -122,8 +132,8 @@ function EditProfile() {
             <textarea
               id="bio"
               placeholder="Brief description"
-              value={localData.description}
-              onChange={(e) => setBio(e.target.value)}
+              value={bio}
+              onChange={(e) => {setBio(e.target.value)}}
               className="w-full border bg-black border-gray-600 rounded-md px-3 py-2 focus:outline-none focus:border-blue-500"
               rows="4"
             ></textarea>
@@ -134,10 +144,10 @@ function EditProfile() {
               Hall
             </label>
             <input
-              id="bio"
+              id="hall"
               placeholder="Hall Name"
-              value={localData.hall}
-              onChange={(e) => setHall(e.target.value)}
+              // value={localData.hall}
+              onChange={(e) => {setHall(e.target.value)}}
               className="w-full border bg-black border-gray-600  rounded-md px-3 py-2 focus:outline-none focus:border-blue-500"
             ></input>
           </div>

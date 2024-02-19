@@ -107,7 +107,7 @@ function Profile() {
           <p className="flex gap-1 items-center justify-center  ">
             {" "}
             <CiLocationOn size={20} />
-            Babcock, Ogun
+            {localData.hall}
           </p>
           {/* link */}
           <p className="flex items-center  gap-1">

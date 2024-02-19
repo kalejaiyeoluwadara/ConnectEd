@@ -4,7 +4,7 @@ import face1 from "../assets/images/person.svg";
 import { useGlobal } from "../context";
 
 function Header() {
-  const { userDetails, localData, setIsSignedIn, setLocalData, setImg, img } =
+  const { userDetails, setIsSignedIn,setPage,localData, setLocalData, setImg, img } =
     useGlobal();
   // const [image] =
   useEffect(() => {
@@ -29,12 +29,14 @@ function Header() {
           alt="img"
         />
         <div className="flex flex-col">
-          <h4 className="font-bold text-[18px] ">Welcome, {img.name}</h4>
-          <p className="text-[13px] font-[500] opacity-[0.7] ">Babcock, Ogun</p>
+          <h4 className="font-bold text-[18px] ">Welcome, {localData.name}</h4>
+          <p className="text-[13px] font-[500] opacity-[0.7] ">{localData.hall ? localData.hall : "Babcock, ogun" }</p>
         </div>
       </section>
       <section className="sm:absolute right-40 ">
-        <BsBellFill size={25} />
+        <BsBellFill onClick={() =>{
+          setPage('notifications')
+        }} size={25} />
       </section>
     </div>
   );

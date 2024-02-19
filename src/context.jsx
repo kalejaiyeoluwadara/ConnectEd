@@ -9,6 +9,7 @@ function AppProvider({ children }) {
   const [home, setHome] = useState(false);
   const [view, setView] = useState(false);
   const [course, setCourse] = useState([]);
+  const [counts, setCounts] = useState(1);
   const [profile, setProfile] = useState(false);
   const [notifications, setNotifications] = useState(false);
   const [bookmark, setBookmark] = useState(false);
@@ -97,7 +98,7 @@ function AppProvider({ children }) {
         cats,
         setCats,
         setImg,
-        localData,
+        localData,counts,setCounts,
         setLocalData,
         uploadPage,
         userDetails,

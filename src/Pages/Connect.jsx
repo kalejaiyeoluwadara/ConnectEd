@@ -139,7 +139,7 @@ function Connect() {
                 className="absolute h-full w-full top-0 left-0"
                 alt=""
               />
-              <section className="px-4 w-full rounded-b-[10px] bg-opacity-30 card py-3 absolute bottom-0 ">
+              <section className="px-4 w-full  bg-opacity-30 card py-3 absolute bottom-0 ">
                 <h4 className="font-bold   text-[20px] ">{post.author}</h4>
                 <p>{post.title}</p>
               </section>

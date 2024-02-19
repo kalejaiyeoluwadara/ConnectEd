@@ -17,7 +17,7 @@ function Nav() {
     userDetails,
     localData,
     setImg,
-    img,
+    img,counts,setCounts
   } = useGlobal();
   const photoURL = img.img || face1;
   return (
@@ -47,11 +47,12 @@ function Nav() {
       <div
       className="relative"
         onClick={() => {
+          setCounts(0)
           setPage("notifications");
         }}
       >
         {notifications ? <FaBell size={25} /> : <BsBell size={25} />}
-        <span className="h-[20px] absolute -top-2 -right-[8px] w-[20px] flex items-center justify-center bg-red-600 rounded-[50%]  " > 1</span>
+        {counts != 0 && <span className="h-[20px] absolute -top-2 -right-[8px] w-[20px] flex items-center justify-center bg-red-600 rounded-[50%]  " >{counts}</span>}
       </div>
       <div
         onClick={() => {
