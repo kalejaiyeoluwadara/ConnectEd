@@ -45,7 +45,7 @@ function Profile() {
   }, []); 
 
   return (
-    <div className="min-h-screen w-screen bg-black">
+    <div className="min-h-screen w-screen bg-gray-900">
       {/* Banner */}
       <div className="w-full flex relative   justify-between items-start px-3 py-0 bg-gray-800 h-[100px] ">
         <BsArrowLeft

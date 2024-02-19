@@ -66,7 +66,7 @@ function UploadPage() {
     }
   };
   return (
-    <div className="w-screen min-h-screen items-center justify-center bg-black flex flex-col px-4  text-white">
+    <div className="w-screen min-h-screen items-center justify-center bg-gray-900 flex flex-col px-4  text-white">
       <div className="w-full border border-gray-700 mt-8 my-20  max-w-md  rounded-[8px] p-6">
         {/* title */}
         <div>

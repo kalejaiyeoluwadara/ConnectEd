@@ -45,11 +45,13 @@ function Nav() {
         {uploadPage ? <LiaTimesSolid size={35} /> : <BsPlus size={45} />}
       </div>
       <div
+      className="relative"
         onClick={() => {
           setPage("notifications");
         }}
       >
         {notifications ? <FaBell size={25} /> : <BsBell size={25} />}
+        <span className="h-[20px] absolute -top-2 -right-[8px] w-[20px] flex items-center justify-center bg-red-600 rounded-[50%]  " > 1</span>
       </div>
       <div
         onClick={() => {
