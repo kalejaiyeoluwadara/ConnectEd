@@ -80,7 +80,7 @@ function Connect() {
         {/* Banner */}
         <div className="w-full flex relative justify-between items-start px-3 py-1 bg-gray-800 h-[100px] ">
           <img
-            className="absolute w-full h-full right-0 top-0 object-fill sm:object-cover  "
+            className="absolute w-full h-full right-0 object-fill sm:object-cover  "
             src={bg}
             alt=""
           />
@@ -100,7 +100,7 @@ function Connect() {
         {/* details/description */}
         <div className="px-4 mt-2">
           {/* desc */}
-          <p className="font-[500] sm:w-[300px] ">
+          <p className="font-[500]">
             {existingUser ? existingUser.description : ""}
           </p>
           {/* details */}
@@ -126,10 +126,9 @@ function Connect() {
                 <a href={existingUser ? `mailto:${existingUser.email}` : ""}>
                   <LuMail size={20} />
                 </a>
-               { existingUser.linkedin &&
-                <a href={existingUser.linkedin}>
+                <a href={existingUser ? existingUser.linkedin : ""}>
                   <FaLinkedin size={20} />
-                </a>}
+                </a>
               </span>
             </p>
           </div>
@@ -156,8 +155,9 @@ function Connect() {
             );
           })}
         </div>
+
       </motion.div>
-      <Nav />
+        <Nav />
     </>
   );
 }
