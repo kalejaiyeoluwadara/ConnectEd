@@ -30,39 +30,47 @@ function UploadPage() {
   };
 
   // Important
-  const handleCreateCourse = async () => {
-    // Upload image to Firebase Storage
-    const storageRef = ref(storage, `course_images/${image.name}`);
+ const handleCreateCourse = async () => {
+   // Check if all required fields are filled
+   if (!image || !courseTitle || !description) {
+     console.error("Please fill in all required fields");
+     // You can display an error message to the user if needed
+     return;
+   }
 
-    try {
-      // Upload image
-      const snapshot = await uploadBytes(storageRef, image);
+   // Upload image to Firebase Storage
+   const storageRef = ref(storage, `course_images/${image.name}`);
 
-      // Get image URL
-      const imageUrl = await getDownloadURL(snapshot.ref);
+   try {
+     // Upload image
+     const snapshot = await uploadBytes(storageRef, image);
 
-      // Add course data to Firestore
-      const coursesCollection = collection(db, "courses");
-      await addDoc(coursesCollection, {
-        image: imageUrl,
-        title: courseTitle,
-        description: description,
-        isFree: isFree,
-        category: category,
-        id: img.id,
-        profileImage: img.img,
-        author: img.name,
-        reviews: [],
-        hall: "Babcock ogun",
-        posts: "",
-      });
-      setPage("home");
-      console.log("Course added successfully");
-      // Redirect or do something else as needed
-    } catch (error) {
-      console.error("Error adding course: ", error);
-    }
-  };
+     // Get image URL
+     const imageUrl = await getDownloadURL(snapshot.ref);
+
+     // Add course data to Firestore
+     const coursesCollection = collection(db, "courses");
+     await addDoc(coursesCollection, {
+       image: imageUrl,
+       title: courseTitle,
+       description: description,
+       isFree: isFree,
+       category: category,
+       id: img.id,
+       profileImage: img.img,
+       author: img.name,
+       reviews: [],
+       hall: "Babcock ogun",
+       posts: "",
+     });
+     setPage("home");
+     console.log("Course added successfully");
+     // Redirect or do something else as needed
+   } catch (error) {
+     console.error("Error adding course: ", error);
+   }
+ };
+
   return (
     <>
       <motion.div

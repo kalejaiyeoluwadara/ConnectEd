@@ -1,12 +1,15 @@
-import React, { useEffect } from "react";
-import { useGlobal } from "../context";
+import React, { useEffect, useState } from "react";
+import { motion } from "framer-motion";
+import { AiOutlineCheckCircle, AiOutlineCloseCircle } from "react-icons/ai";
 
-function Modal() {
-  const { modal, setModal } = useGlobal();
+function Modal({ msg, success, showModal }) {
+  const [modal, setModal] = useState(false);
 
   useEffect(() => {
-    // Check if modal is true, and set a timer to close it after 3 seconds
-    if (modal) {
+    // When showModal prop changes to true, set modal state to true
+    if (showModal) {
+      setModal(true);
+      // Set a timer to close the modal after 3 seconds
       const timer = setTimeout(() => {
         setModal(false);
       }, 3000);
@@ -14,16 +17,31 @@ function Modal() {
       // Clear the timer when component unmounts or when modal becomes false before the timer expires
       return () => clearTimeout(timer);
     }
-  }, [modal, setModal]);
+  }, [showModal]);
 
   return (
     <>
       {modal && (
-        <div className="absolute mt-4 z-50  w-screen flex items-center justify-center">
-          <div className="bg-blue w-[100px] text-center px-4 rounded-[8px] bg-blue-400 py-2 font-medium">
-            Modal
+        <motion.div
+          initial={{ opacity: 0, y: "-100vh" }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: "-100vh" }}
+          className="fixed top-0 left-0 w-full h-full flex items-center justify-center z-50"
+        >
+          <div className="bg-white p-4 rounded-lg shadow-md">
+            <div className="flex items-center justify-center mb-2">
+              {success ? (
+                <AiOutlineCheckCircle
+                  className="text-green-500 mr-2"
+                  size={24}
+                />
+              ) : (
+                <AiOutlineCloseCircle className="text-red-500 mr-2" size={24} />
+              )}
+              <span className="font-medium">{msg}</span>
+            </div>
           </div>
-        </div>
+        </motion.div>
       )}
     </>
   );
