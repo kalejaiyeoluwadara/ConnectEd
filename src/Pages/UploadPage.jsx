@@ -7,6 +7,7 @@ import { collection, addDoc } from "firebase/firestore";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { db, storage } from "../firebase-config"; // Importing db and storage from your config file
 import { motion } from "framer-motion";
+import Modal from "../Components/Modal";
 function UploadPage() {
   const [image, setImage] = useState(null);
   const { setPage, img,cats,setCats } = useGlobal();
@@ -34,6 +35,7 @@ function UploadPage() {
    // Check if all required fields are filled
    if (!image || !courseTitle || !description) {
      console.error("Please fill in all required fields");
+     <Modal msg={"Please fill in all required fields"} success={false} showModal={true} />;
      // You can display an error message to the user if needed
      return;
    }

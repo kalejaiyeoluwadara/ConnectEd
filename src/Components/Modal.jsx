@@ -21,14 +21,14 @@ function Modal({ msg, success, showModal }) {
 
   return (
     <>
-      {modal && (
+      {true && (
         <motion.div
           initial={{ opacity: 0, y: "-100vh" }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: "-100vh" }}
-          className="fixed top-0 left-0 w-full h-full flex items-center justify-center z-50"
+          className="fixed top-12 left-0 w-full  flex items-center justify-center z-50"
         >
-          <div className="bg-white p-4 rounded-lg shadow-md">
+          <div className="bg-white p-4 text-black  rounded-lg shadow-md">
             <div className="flex items-center justify-center mb-2">
               {success ? (
                 <AiOutlineCheckCircle

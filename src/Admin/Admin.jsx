@@ -48,9 +48,10 @@ function Admin() {
   }, []);
 
   return (
-    <div className="text-white ">
+    <div className="text-white relative ">
       <AnimatePresence>
         {/* <> */}
+        <Modal />
         {board1 && <Board1 />}
         {board2 && <Board2 />}
         {signup && !userDetails && <Signup />}
