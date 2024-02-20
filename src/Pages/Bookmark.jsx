@@ -20,7 +20,10 @@ function Bookmark() {
       >
         <h3 className="font-bold  text-[22px]">Your Bookmarks</h3>
         <SearchField />
-        <div className="flex flex-col items-center mt-8">
+        <div className="flex flex-col items-center mt-20">
+          <div className="">
+            <p>No Bookmarks yet</p>
+          </div>
           {/* <div
           onClick={() => {
             // setCourse(d);
