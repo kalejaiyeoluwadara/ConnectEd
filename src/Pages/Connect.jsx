@@ -100,7 +100,7 @@ function Connect() {
         {/* details/description */}
         <div className="px-4 mt-2">
           {/* desc */}
-          <p className="font-[500]">
+          <p className="font-[500] sm:w-[300px] ">
             {existingUser ? existingUser.description : ""}
           </p>
           {/* details */}
@@ -147,7 +147,7 @@ function Connect() {
                   className="absolute h-full w-full top-0 left-0"
                   alt=""
                 />
-                <section className="px-4 w-full  bg-opacity-30 card py-3 absolute bottom-0 ">
+                <section className="px-4 w-full  bg-opacity-30 card py-3 absolute -bottom-1 ">
                   <h4 className="font-bold   text-[20px] ">{post.author}</h4>
                   <p>{post.title}</p>
                 </section>
