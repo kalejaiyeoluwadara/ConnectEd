@@ -108,26 +108,26 @@ function Connect() {
             {/* location */}
             <p className="flex gap-1 items-center justify-center  ">
               {" "}
-              <CiLocationOn size={20} />
+              <CiLocationOn size={25} />
               {existingUser ? existingUser.hall : ""}
             </p>
             {/* link */}
             <p className="flex items-center  gap-1">
               {" "}
-              <IoMdLink size={21} />{" "}
-              <span className="text-blue-400 flex gap-1">
+              <IoMdLink size={25} />{" "}
+              <span className="text-blue-400 flex ml-2 gap-4">
                 <a
                   href={`https://wa.me/${
                     existingUser ? existingUser.whatsapp : ""
                   }`}
                 >
-                  <FaWhatsapp size={20} />
+                  <FaWhatsapp size={25} />
                 </a>
                 <a href={existingUser ? `mailto:${existingUser.email}` : ""}>
-                  <LuMail size={20} />
+                  <LuMail size={25} />
                 </a>
                 <a href={existingUser ? existingUser.linkedin : ""}>
-                  <FaLinkedin size={20} />
+                  <FaLinkedin size={25} />
                 </a>
               </span>
             </p>

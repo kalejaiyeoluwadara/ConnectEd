@@ -9,7 +9,7 @@ import { IoBookmark } from "react-icons/io5";
 
 function Nav() {
   const {
-    setPage,
+    setPage,page,
     home,
     bookmark,
     uploadPage,

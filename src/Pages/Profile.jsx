@@ -80,7 +80,7 @@ function Profile() {
               onClick={() => {
                 setPage("board1");
                 localStorage.removeItem("isSignedIn");
-                localStorage.removeItem("userDetails");
+                // localStorage.removeItem("userDetails");
               }}
               className="absolute bottom-4 sm:right-[120px] right-4 bg-black px-4 py-2 rounded-[8px] "
             >
@@ -110,7 +110,7 @@ function Profile() {
           {/* desc */}
           <p className="font-[500]">{localData.description}</p>
           {/* details */}
-          <div className="flex w-full mt-4 font-500 text-[16px] justify-start text-gray-300 gap-2 items-center ">
+          <div className="flex w-full mt-4 font-500 text-[16px] justify-start text-gray-300 gap-3 items-center ">
             {/* location */}
             <p className="flex gap-1 items-center justify-center  ">
               {" "}
@@ -121,16 +121,16 @@ function Profile() {
             <p className="flex items-center  gap-1">
               {" "}
               <IoMdLink size={21} />{" "}
-              <span className="text-blue-400 flex gap-1">
+              <span className="text-blue-400 flex gap-4 ml-2 ">
                 <a href={`https://wa.me/${localData.whatsapp}`}>
-                  <FaWhatsapp size={20} />
+                  <FaWhatsapp size={25} />
                 </a>
                 <a href={localData.linkedin}>
-                  <FaLinkedin size={20} />
+                  <FaLinkedin size={25} />
                 </a>
 
                 <a href={`mailto:${localData.email}`}>
-                  <LuMail size={20} />
+                  <LuMail size={25} />
                 </a>
               </span>
             </p>

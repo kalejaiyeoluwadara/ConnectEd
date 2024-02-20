@@ -106,7 +106,7 @@ function UploadPage() {
           <div className="flex mt-2 flex-col">
             <h3 className="font-[600] mb-2">Description</h3>
             <textarea
-              placeholder="Brief description, you change to brag a bit"
+              placeholder="Brief description"
               value={description}
               onChange={handleDescriptionChange}
               className="bg-transparent  border rounded-[8px] border-gray-600 focus:border-white p-2 w-full mb-4 resize-none h-32"

@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { FiChevronLeft } from "react-icons/fi";
-import { CiLocationOn } from "react-icons/ci";
 import { BsSendFill } from "react-icons/bs";
+
 import { TiStarFullOutline } from "react-icons/ti";
-import { CiBookmark } from "react-icons/ci";
+import { CiBookmark, CiMenuKebab, CiLocationOn } from "react-icons/ci";
 import {
   setDoc,
   doc,
@@ -203,30 +203,41 @@ function View() {
         {/* content */}
         <motion.div
           layout
-          className="flex flex-col gap-8 items-center justify-center"
+          className="flex flex-col gap-4 items-center justify-start"
         >
           {reviewsList.length === 0 ? (
             <p>No reviews yet</p>
           ) : (
             reviewsList.map((rev, id) => (
-              <div className="w-[95%] sm:w-[40%] rounded-[12px] border-[1px] px-5 py-4 gap-2 flex flex-col border-gray-600">
+              <div className="w-[95%] sm:w-[40%] rounded-[12px]  px-5 py-4 gap-2 flex flex-col ">
                 <section className="flex justify-between w-full items-center">
-                  <div>
-                    <p className="font-[600] text-start text-[15px]">
-                      {rev.name}
-                    </p>
+                  <div className="flex justify-between w-full items-center ">
+                    <div className="flex gap-1 items-center">
+                      <img
+                        className="h-[40px] w-[40px] rounded-[50%] "
+                        src={rev.img}
+                        alt=""
+                      />
+                      <p className="font-[500] text-start text-[15px]">
+                        {rev.name}
+                      </p>
+                    </div>
+                    <div>
+                      {/* Kebbab */}
+                      <CiMenuKebab size={20} />
+                    </div>
                   </div>
                   <div className="flex">
-                    {[1, 2, 3, 4, 5].map((d, id) => (
+                    {/* {[1, 2, 3, 4, 5].map((d, id) => (
                       <TiStarFullOutline
                         key={id}
                         size={14}
                         className="text-[#FFC727]"
                       />
-                    ))}
+                    ))} */}
                   </div>
                 </section>
-                <p className="text-center text-[14px] text-gray-300">
+                <p className="text-start px-4 text-[16px] text-gray-300">
                   {rev.review}
                 </p>
               </div>
@@ -236,7 +247,7 @@ function View() {
         {/* Input */}
         <div className="fixed sm:bottom-0 bg-gray-900 bottom-0 left-0 pt-6 sm:pt-4 pb-4 z-40 items-center sm:justify-center justify-start sm:px-12 px-4 w-screen  flex gap-2  ">
           <input
-            className="outline-none w-[400px] px-3 focus:border-[2px] rounded-[8px] focus:border-blue-500 bg-transparent border border-gray-600 h-[35px]  "
+            className="outline-none w-[400px] px-3 focus:border-[2px] rounded-[8px]  h-[50px] focus:border-blue-500 bg-transparent border border-gray-600  "
             type="text"
             value={review}
             placeholder="Enter Positive review"

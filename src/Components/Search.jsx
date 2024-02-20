@@ -15,7 +15,7 @@ function SearchComp() {
         <BsSearch size={25} />
         <input
           className="w-[100%] h-full outline-none  bg-transparent"
-          placeholder="search"
+          placeholder="search course title"
           onChange={(e)=>{
             setSearchterm(e.target.value)
           }}
