@@ -1,6 +1,5 @@
 import React from "react";
 import board2 from "../assets/images/cuate.png";
-import logo from "../assets/images/logo.png";
 import { MdOutlineShoppingCart } from "react-icons/md";
 import { useGlobal } from "../context";
 import left from "../assets/images/left.svg";

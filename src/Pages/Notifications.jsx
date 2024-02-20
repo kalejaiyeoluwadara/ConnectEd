@@ -9,7 +9,7 @@ function Notifications() {
 
       {/* Notifications */}
       <section className="flex mt-4 flex-col gap-4 ">
-        <div className="flex items-center bg-gray-800 rounded-[8px] px-4 py-3 justify-center  gap-4  ">
+        <div className="flex sm:items-start sm:justify-start items-center bg-gray-800 rounded-[8px] px-4 py-3 justify-center  sm:w-[70%] gap-4  ">
           <section className="">
             <img
               className="h-[60px] object-cover w-[60px] rounded-[50%] shadow-sm "
@@ -20,7 +20,7 @@ function Notifications() {
           <section className="flex   flex-col">
             <span className="text-gray-300">Welcome Note</span>
             <p className="   text-[18px]">
-              Welcome to ConnectEd{localData.name}
+              Welcome to ConnectEd {localData.name}
             </p>
           </section>
         </div>

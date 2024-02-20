@@ -61,7 +61,7 @@ function View() {
 
 
   return (
-    <div className="min-h-screen sm:absolute right-0 left-0 pb-20 w-screen bg-black  ">
+    <div className="min-h-screen sm:absolute right-0 left-0 pb-20 w-screen bg-gray-900  ">
       {/* First section */}
       <div className="flex w-full relative bg-gray-900 rounded-b-[20px] h-[300px] ">
         <section className="flex justify-between px-4 w-full items-start capitalize py-2">
@@ -165,31 +165,31 @@ function View() {
           {
           reviewsList.map((rev,id)=>{
           return (
-            <div className="w-full rounded-[12px] border-[1px] px-3 py-4 gap-2 flex flex-col border-gray-600  ">
+            <div className="w-[95%] sm:w-[60%] rounded-[12px] border-[1px] px-5 py-4 gap-2 flex flex-col border-gray-600  ">
               <section className="flex justify-between w-full items-center">
                 <div>
-                  <p className="font-[600]  text-start text-[18px] ">
+                  <p className="font-[600]  text-start text-[15px] ">
                     {rev.name}
                   </p>
                 </div>
                 <div className="flex">
                   {[1, 2, 3, 4, 5].map((d, id) => {
-                    return <TiStarFullOutline size={20} className="text-[#FFC727]" />;
+                    return <TiStarFullOutline size={14} className="text-[#FFC727]" />;
                   })}
                 </div>
               </section>
-              <p className=" text-center text-[22px]  text-gray-300 ">{rev.review}</p>
+              <p className=" text-center text-[14px]  text-gray-300 ">{rev.review}</p>
             </div>
           );
           })
           }
         </div>
         {/* Input */}
-        <div className="fixed bottom-4 bg-black z-40 items-center justify-between px-12 w-screen  flex gap-2  " >  
+        <div className="fixed sm:bottom-0 bg-gray-900 bottom-0 left-0 pt-6 sm:pt-4 pb-4 z-40 items-center sm:justify-center justify-between px-12 w-screen  flex gap-2  " >  
           <input className="outline-none w-[400px] px-3 focus:border-[2px] rounded-[8px] focus:border-blue-500 bg-transparent border border-gray-600 h-[35px]  " type="text" value={review} onChange={(e) =>{
             setReview(e.target.value)
           }} />
-          <button className="px-3 py-2 flex gap-2 font-bold items-center justify-center bg-blue-500 rounded-[3px]  " onClick={handleReviews}>Send
+          <button className="px-3 py-2 flex gap-2 font-bold items-center justify-center bg-blue-500 rounded-[8px]  " onClick={handleReviews}>Send
           <BsSendFill size={20} />
           </button>
         </div>
