@@ -29,14 +29,22 @@ function Header() {
           alt="img"
         />
         <div className="flex flex-col">
-          <h4 className="font-bold text-[18px] ">Welcome, {localData.name}</h4>
-          <p className="text-[13px] font-[500] opacity-[0.7] ">{localData.hall ? localData.hall : "Babcock, ogun" }</p>
+          <h4 className="font-bold text-[16px] sm:w-[400px] w-[200px] overflow-hidden whitespace-nowrap overflow-ellipsis sm:text-[18px]">
+            Welcome, {localData.name}
+          </h4>
+
+          <p className="text-[13px] font-[500] opacity-[0.7] ">
+            {localData.hall ? localData.hall : "Babcock, ogun"}
+          </p>
         </div>
       </section>
       <section className="sm:absolute right-40 ">
-        <BsBellFill onClick={() =>{
-          setPage('notifications')
-        }} size={25} />
+        <BsBellFill
+          onClick={() => {
+            setPage("notifications");
+          }}
+          size={25}
+        />
       </section>
     </div>
   );
