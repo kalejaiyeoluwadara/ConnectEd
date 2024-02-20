@@ -8,6 +8,7 @@ import { useGlobal } from "../context";
 import { FaW, FaWhatsapp } from "react-icons/fa6";
 import { doc, getDoc, updateDoc,addDoc, getDocs,collection,query,where } from "firebase/firestore";
 import { db } from "../firebase-config"; // Assuming db is your Firestore instance
+import { motion } from "framer-motion";
 
 
 function EditProfile() {
@@ -97,126 +98,138 @@ function EditProfile() {
    setPage('profile')
  }
   return (
-    <div className="h-screen w-screen bg-black sm:pt-40 flex justify-center items-center">
-      <div className=" p-8 rounded-lg shadow-md max-w-md w-full">
-        <div className="flex justify-between items-center mb-4">
-          <h1 className="text-2xl font-semibold">Edit Profile</h1>
-          <button
-            className=" hover:text-white transition-all text-gray-600"
-            onClick={() => {
-              setPage("profile");
-            }}
-          >
-            <AiOutlineClose size={24} />
-          </button>
-        </div>
-        <div onSubmit={handleFormSubmit}>
-          <div className="mb-4">
-            <label htmlFor="name" className="block mb-1 font-bold">
-              Name
-            </label>
-            <input
-              type="text"
-              id="name"
-              placeholder={img.id}
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              className="w-full border bg-black border-gray-600  rounded-md px-3 py-2 focus:outline-none focus:border-blue-500"
-            />
-          </div>
-
-          <div className="mb-2">
-            <label htmlFor="bio" className="block mb-1 font-bold">
-              Bio
-            </label>
-            <textarea
-              id="bio"
-              placeholder="Brief description"
-              value={bio}
-              onChange={(e) => {setBio(e.target.value)}}
-              className="w-full border bg-black border-gray-600 rounded-md px-3 py-2 focus:outline-none focus:border-blue-500"
-              rows="4"
-            ></textarea>
-          </div>
-
-          <div className="mb-4">
-            <label htmlFor="bio" className="block mb-1 font-bold">
-              Hall
-            </label>
-            <input
-              id="hall"
-              placeholder="Hall Name"
-              // value={localData.hall}
-              onChange={(e) => {setHall(e.target.value)}}
-              className="w-full border bg-black border-gray-600  rounded-md px-3 py-2 focus:outline-none focus:border-blue-500"
-            ></input>
-          </div>
-
-          <div>
-            <h3 className="font-bold">Social Accounts</h3>
-
-            <section className="flex flex-col gap-2 my-3">
-              <div className=" flex items-center gap-2 ">
-                <label htmlFor="email" className="block mb-1 font-medium">
-                  <LuMail className="opacity-[0.7]" size={20} />
-                </label>
-                <input
-                  type="email"
-                  id="email"
-                  placeholder="hall name"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  className="w-full border bg-black border-gray-600  rounded-md px-3 py-2 focus:outline-none focus:border-blue-500"
-                />
-              </div>
-
-              <div className="flex items-center gap-2">
-                <FaWhatsapp size={20} />
-                <input
-                  type="text"
-                  placeholder="Whatsapp number"
-                  value={whatsapp}
-                  onChange={(e) => {
-                    setWhatsapp(e.target.value);
-                  }}
-                  className="w-full border bg-black border-gray-600  rounded-md px-3 py-2 focus:outline-none focus:border-blue-500"
-                />
-              </div>
-              <div className="flex items-center gap-2">
-                <FaLinkedin size={20} />
-                <input
-                  type="text"
-                  value={linkedin}
-                  onChange={(e) => {
-                    setLinkedin(e.target.value);
-                  }}
-                  placeholder="Linkedin Link"
-                  className="w-full border bg-black border-gray-600  rounded-md px-3 py-2 focus:outline-none focus:border-blue-500"
-                />
-              </div>
-            </section>
-          </div>
-          <div className="flex justify-between sm:mt-6 mt-3 w-full ">
+    <>
+      <motion.div
+        initial={{ opacity: 0, y: "-100vh" }}
+        animate={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, y: "100vh" }}
+        transition={{ duration: 0.5 }}
+        className="h-screen w-screen bg-gray-900 sm:pt-40 flex justify-center items-center"
+      >
+        <div className=" p-8 rounded-lg shadow-md max-w-md w-full">
+          <div className="flex justify-between items-center mb-4">
+            <h1 className="text-2xl font-semibold">Edit Profile</h1>
             <button
+              className=" hover:text-white transition-all text-gray-600"
               onClick={() => {
                 setPage("profile");
               }}
-              type="submit"
-              className="bg-black border border-gray-400 text-white py-2 px-4 rounded-md hover:bg-blue-600 transition duration-300"
             >
-              Cancel
-            </button>
-
-            <button
-              onClick={handleFormSubmit}
-              className="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 transition duration-300"
-            >
-              Save Changes
+              <AiOutlineClose size={24} />
             </button>
           </div>
+          <div onSubmit={handleFormSubmit}>
+            <div className="mb-4">
+              <label htmlFor="name" className="block mb-1 font-bold">
+                Name
+              </label>
+              <input
+                type="text"
+                id="name"
+                placeholder={img.id}
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                className="w-full border bg-black border-gray-600  rounded-md px-3 py-2 focus:outline-none focus:border-blue-500"
+              />
+            </div>
+
+            <div className="mb-2">
+              <label htmlFor="bio" className="block mb-1 font-bold">
+                Bio
+              </label>
+              <textarea
+                id="bio"
+                placeholder="Brief description"
+                value={bio}
+                onChange={(e) => {
+                  setBio(e.target.value);
+                }}
+                className="w-full border bg-black border-gray-600 rounded-md px-3 py-2 focus:outline-none focus:border-blue-500"
+                rows="4"
+              ></textarea>
+            </div>
+
+            <div className="mb-4">
+              <label htmlFor="bio" className="block mb-1 font-bold">
+                Hall
+              </label>
+              <input
+                id="hall"
+                placeholder="Hall Name"
+                // value={localData.hall}
+                onChange={(e) => {
+                  setHall(e.target.value);
+                }}
+                className="w-full border bg-black border-gray-600  rounded-md px-3 py-2 focus:outline-none focus:border-blue-500"
+              ></input>
+            </div>
+
+            <div>
+              <h3 className="font-bold">Social Accounts</h3>
+
+              <section className="flex flex-col gap-2 my-3">
+                <div className=" flex items-center gap-2 ">
+                  <label htmlFor="email" className="block mb-1 font-medium">
+                    <LuMail className="opacity-[0.7]" size={20} />
+                  </label>
+                  <input
+                    type="email"
+                    id="email"
+                    placeholder="hall name"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    className="w-full border bg-black border-gray-600  rounded-md px-3 py-2 focus:outline-none focus:border-blue-500"
+                  />
+                </div>
+
+                <div className="flex items-center gap-2">
+                  <FaWhatsapp size={20} />
+                  <input
+                    type="text"
+                    placeholder="Whatsapp number"
+                    value={whatsapp}
+                    onChange={(e) => {
+                      setWhatsapp(e.target.value);
+                    }}
+                    className="w-full border bg-black border-gray-600  rounded-md px-3 py-2 focus:outline-none focus:border-blue-500"
+                  />
+                </div>
+                <div className="flex items-center gap-2">
+                  <FaLinkedin size={20} />
+                  <input
+                    type="text"
+                    value={linkedin}
+                    onChange={(e) => {
+                      setLinkedin(e.target.value);
+                    }}
+                    placeholder="Linkedin Link"
+                    className="w-full border bg-black border-gray-600  rounded-md px-3 py-2 focus:outline-none focus:border-blue-500"
+                  />
+                </div>
+              </section>
+            </div>
+            <div className="flex justify-between sm:mt-6 mt-3 w-full ">
+              <button
+                onClick={() => {
+                  setPage("profile");
+                }}
+                type="submit"
+                className="bg-black border border-gray-400 text-white py-2 px-4 rounded-md hover:bg-blue-600 transition duration-300"
+              >
+                Cancel
+              </button>
+
+              <button
+                onClick={handleFormSubmit}
+                className="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 transition duration-300"
+              >
+                Save Changes
+              </button>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
+      </motion.div>
+    </>
   );
 }
 

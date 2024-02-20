@@ -10,6 +10,7 @@ import { collection, query, where, getDocs } from "firebase/firestore";
 import { FaLinkedin } from "react-icons/fa6";
 import { db } from "../firebase-config";
 import Nav from "../Components/Nav";
+import { motion } from "framer-motion";
 
 function Connect() {
   const { setPage, userDetails, localData, setImg, img, temp } = useGlobal();
@@ -68,88 +69,96 @@ function Connect() {
   // console.log(posts);
 
   return (
-    <div className="min-h-screen w-screen bg-black">
-      {/* Banner */}
-      <div className="w-full flex relative justify-between items-start px-3 py-1 bg-gray-800 h-[100px] ">
-        <img
-          className="absolute w-full h-full right-0 object-fill sm:object-cover  "
-          src={bg}
-          alt=""
-        />
-      </div>
+    <>
+      <motion.div
+        initial={{ opacity: 0, x: "-100vw" }}
+        animate={{ opacity: 1, x: 0 }}
+        exit={{ opacity: 0, x: "100vw" }}
+        transition={{ duration: 0.5 }}
+        className="min-h-screen w-screen bg-gray-900"
+      >
+        {/* Banner */}
+        <div className="w-full flex relative justify-between items-start px-3 py-1 bg-gray-800 h-[100px] ">
+          <img
+            className="absolute w-full h-full right-0 top-0 object-fill sm:object-cover  "
+            src={bg}
+            alt=""
+          />
+        </div>
 
-      <div className="relative flex flex-col px-3  w-screen ">
-        <img
-          src={existingUser ? existingUser.img : face1}
-          className="-top-4 border-[3px] border-black h-[50px] w-[50px] rounded-[50%] absolute"
-          alt=""
-        />
+        <div className="relative flex flex-col px-3  w-screen ">
+          <img
+            src={existingUser ? existingUser.img : face1}
+            className="-top-4 border-[3px] border-black h-[50px] w-[50px] rounded-[50%] absolute"
+            alt=""
+          />
 
-        <p className="mt-12 text-[20px] font-bold">
-          {existingUser ? existingUser.name : ""}
-        </p>
-      </div>
-      {/* details/description */}
-      <div className="px-4 mt-2">
-        {/* desc */}
-        <p className="font-[500]">
-          {existingUser ? existingUser.description : ""}
-        </p>
-        {/* details */}
-        <div className="flex w-full mt-4 font-500 text-[16px] justify-start text-gray-300 gap-2 items-center ">
-          {/* location */}
-          <p className="flex gap-1 items-center justify-center  ">
-            {" "}
-            <CiLocationOn size={20} />
-            {existingUser ? existingUser.hall : ""}
-          </p>
-          {/* link */}
-          <p className="flex items-center  gap-1">
-            {" "}
-            <IoMdLink size={21} />{" "}
-            <span className="text-blue-400 flex gap-1">
-              <a
-                href={`https://wa.me/${
-                  existingUser ? existingUser.whatsapp : ""
-                }`}
-              >
-                <FaWhatsapp size={20} />
-              </a>
-              <a href={existingUser ? `mailto:${existingUser.email}` : ""}>
-                <LuMail size={20} />
-              </a>
-              <a href={existingUser ? existingUser.linkedin : ""}>
-                <FaLinkedin size={20} />
-              </a>
-            </span>
+          <p className="mt-12 text-[20px] font-bold">
+            {existingUser ? existingUser.name : ""}
           </p>
         </div>
-      </div>
-      {/* items */}
-      <div className="w-full flex mb-40  items-center justify-center gap-4  my-8 px flex-col">
-        {/* Logs through posts */}
-        {posts.map((post, id) => {
-          return (
-            <div
-              key={id}
-              className="bg-gray-700 relative sm:w-[300px] w-[90%] rounded-[10px] h-[300px] "
-            >
-              <img
-                src={post.image}
-                className="absolute h-full w-full top-0 left-0"
-                alt=""
-              />
-              <section className="px-4 w-full  bg-opacity-30 card py-3 absolute bottom-0 ">
-                <h4 className="font-bold   text-[20px] ">{post.author}</h4>
-                <p>{post.title}</p>
-              </section>
-            </div>
-          );
-        })}
-      </div>
-
+        {/* details/description */}
+        <div className="px-4 mt-2">
+          {/* desc */}
+          <p className="font-[500] sm:w-[300px] ">
+            {existingUser ? existingUser.description : ""}
+          </p>
+          {/* details */}
+          <div className="flex w-full mt-4 font-500 text-[16px] justify-start text-gray-300 gap-2 items-center ">
+            {/* location */}
+            <p className="flex gap-1 items-center justify-center  ">
+              {" "}
+              <CiLocationOn size={20} />
+              {existingUser ? existingUser.hall : ""}
+            </p>
+            {/* link */}
+            <p className="flex items-center  gap-1">
+              {" "}
+              <IoMdLink size={21} />{" "}
+              <span className="text-blue-400 flex gap-1">
+                <a
+                  href={`https://wa.me/${
+                    existingUser ? existingUser.whatsapp : ""
+                  }`}
+                >
+                  <FaWhatsapp size={20} />
+                </a>
+                <a href={existingUser ? `mailto:${existingUser.email}` : ""}>
+                  <LuMail size={20} />
+                </a>
+               { existingUser.linkedin &&
+                <a href={existingUser.linkedin}>
+                  <FaLinkedin size={20} />
+                </a>}
+              </span>
+            </p>
+          </div>
+        </div>
+        {/* items */}
+        <div className="w-full flex mb-40  sm:flex-row sm:gap-8 items-center justify-center gap-4  my-8 px flex-col">
+          {/* Logs through posts */}
+          {posts.map((post, id) => {
+            return (
+              <div
+                key={id}
+                className="bg-gray-700 relative sm:w-[300px] w-[90%] rounded-[10px] h-[300px] "
+              >
+                <img
+                  src={post.image}
+                  className="absolute h-full w-full top-0 left-0"
+                  alt=""
+                />
+                <section className="px-4 w-full  bg-opacity-30 card py-3 absolute bottom-0 ">
+                  <h4 className="font-bold   text-[20px] ">{post.author}</h4>
+                  <p>{post.title}</p>
+                </section>
+              </div>
+            );
+          })}
+        </div>
+      </motion.div>
       <Nav />
-    </div>
+    </>
   );
 }
 

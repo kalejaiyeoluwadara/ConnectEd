@@ -92,7 +92,13 @@ function View() {
 
 
   return (
-    <motion.div className="min-h-screen sm:absolute right-0 left-0 pb-20 w-screen bg-gray-900  ">
+    <motion.div
+      initial={{ opacity: 0, x: "-100vw" }}
+      animate={{ opacity: 1, x: 0 }}
+      exit={{ opacity: 0, x: "100vw" }}
+      transition={{ duration: 0.5 }}
+      className="min-h-screen sm:absolute right-0 left-0 pb-20 w-screen bg-gray-900  "
+    >
       {/* First section */}
       <div className="flex w-full relative bg-gray-900 rounded-b-[20px] h-[300px] ">
         <section className="flex justify-between px-4 w-full items-start capitalize py-2">
@@ -157,7 +163,10 @@ function View() {
           <h3 className="text-[22px] text-start  font-[600] ">
             Tutor Description
           </h3>
-          <motion.p layout className="text-start w-full font-[400] text-[16px] ">
+          <motion.p
+            layout
+            className="text-start w-full font-[400] text-[16px] "
+          >
             {isExpanded
               ? details.description
               : details.description.slice(0, 50)}
@@ -192,7 +201,10 @@ function View() {
       <div className="px-4 mt-4 ">
         <h3 className="font-bold text-[20px] mb-2 ">Reviews</h3>
         {/* content */}
-        <motion.div layout className="flex flex-col gap-8 items-center justify-center">
+        <motion.div
+          layout
+          className="flex flex-col gap-8 items-center justify-center"
+        >
           {reviewsList.map((rev, id) => {
             return (
               <div className="w-[95%] sm:w-[40%] rounded-[12px] border-[1px] px-5 py-4 gap-2 flex flex-col border-gray-600  ">

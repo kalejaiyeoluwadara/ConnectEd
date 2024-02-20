@@ -5,14 +5,23 @@ import { useGlobal } from "../context";
 import { CiBookmark } from "react-icons/ci";
 import { IoBookmark } from "react-icons/io5";
 import SearchField from "../Components/SearchField";
+import { motion } from "framer-motion";
+
 function Bookmark() {
   const { setPage, localData } = useGlobal();
   return (
-    <div className="min-h-screen relative py-4 px-3 bg-gray-900 w-screen overflow-x-hidden  ">
-      <h3 className="font-bold  text-[22px]">Your Bookmarks</h3>
-      <SearchField />
-      <div className="flex flex-col items-center mt-8">
-        {/* <div
+    <>
+      <motion.div
+        initial={{ opacity: 0, x: "-100vw" }}
+        animate={{ opacity: 1, x: 0 }}
+        exit={{ opacity: 0, x: "100vw" }}
+        transition={{ duration: 0.5 }}
+        className="min-h-screen relative py-4 px-3 bg-gray-900 w-screen overflow-x-hidden  "
+      >
+        <h3 className="font-bold  text-[22px]">Your Bookmarks</h3>
+        <SearchField />
+        <div className="flex flex-col items-center mt-8">
+          {/* <div
           onClick={() => {
             // setCourse(d);
             setPage("view");
@@ -30,10 +39,11 @@ function Bookmark() {
             </section>
           </div>
         </div> */}
-      </div>
+        </div>
 
-      <Nav />
-    </div>
+      </motion.div>
+        <Nav />
+    </>
   );
 }
 
