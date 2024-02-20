@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { FiChevronLeft } from "react-icons/fi";
 import { BsSendFill } from "react-icons/bs";
-
+import { IoBookmark } from "react-icons/io5";
 import { TiStarFullOutline } from "react-icons/ti";
 import { CiBookmark, CiMenuKebab, CiLocationOn } from "react-icons/ci";
 import {
@@ -19,6 +19,51 @@ import { useGlobal } from "../context";
 import { PiPlugsConnectedThin } from "react-icons/pi";
 import { motion } from "framer-motion"; // Import Framer Motion
 
+const ReviewItem = ({ rev }) => {
+  const [rep, setRep] = useState(false);
+
+  return (
+    <div className="w-[95%] sm:w-[40%] rounded-[12px] px-5 py-4 gap-2 flex flex-col">
+      <section className="flex justify-between w-full items-center">
+        <div className="flex justify-between w-full items-center">
+          <div className="flex gap-1 items-center">
+            <img
+              className="h-[40px] w-[40px] rounded-[50%]"
+              src={rev.img}
+              alt=""
+            />
+            <p className="font-[500] text-start text-[15px]">{rev.name}</p>
+          </div>
+          <div className="relative">
+            {/* Kebbab */}
+            <CiMenuKebab onClick={() =>{
+              setRep(!rep)
+            }} size={20} />
+            {rep && (
+              <p onClick={()=>{
+                setRep(false)
+              }} className="bg-gray-800 px-4 py-2 rounded-[8px absolute right-6 top-2]">
+                Report
+              </p>
+            )}
+          </div>
+        </div>
+        <div className="flex">
+          {/* {[1, 2, 3, 4, 5].map((d, id) => (
+            <TiStarFullOutline
+              key={id}
+              size={14}
+              className="text-[#FFC727]"
+            />
+          ))} */}
+        </div>
+      </section>
+      <p className="text-start px-4 text-[16px] text-gray-300">{rev.review}</p>
+    </div>
+  );
+};
+
+
 function View() {
   const {
     setPage,
@@ -35,7 +80,7 @@ function View() {
   const [review, setReview] = useState("");
   const [loadingReview, setLoadingReview] = useState(false);
   const [isExpanded, setIsExpanded] = useState(false);
-
+  const [booked,setBooked] = useState(false)
   const toggleDescription = () => {
     setIsExpanded(!isExpanded);
   };
@@ -111,8 +156,32 @@ function View() {
               size={28}
             />
           </div>
-          <div className=" h-[40px] bg-opacity-[0.5] w-[40px] z-40 flex items-center justify-center rounded-[50%] shadow-md bg-gray-400 ">
-            <CiBookmark className="z-40" size={25} />
+          <div
+            onClick={() => {
+              const existingBookmarks =
+                JSON.parse(localStorage.getItem("bookmarks")) || [];
+              // Check if details.title is already present in bookmarks
+              const isAlreadyBookmarked = existingBookmarks.some(
+                (bookmark) => bookmark.title === details.title
+              );
+              if (!isAlreadyBookmarked) {
+                const updatedBookmarks = [...existingBookmarks, details];
+                localStorage.setItem(
+                  "bookmarks",
+                  JSON.stringify(updatedBookmarks)
+                );
+              } else {
+                console.log("This item is already bookmarked.");
+                setBooked(true);
+              }
+            }}
+            className=" h-[40px] bg-opacity-[0.5] w-[40px] z-40 flex items-center justify-center rounded-[50%] shadow-md bg-gray-400 "
+          >
+            {booked ? (
+              <IoBookmark className="z-40" size={25} />
+            ) : (
+              <CiBookmark size={25} />
+            )}
           </div>
           <img
             className="absolute sm:object-cover top-0 left-0 w-full h-full "
@@ -139,10 +208,6 @@ function View() {
       <div className="mt-4 sm:px-4 font-medium ">
         <div className="flex px-4 justify-between items-center">
           <div className="flex flex-col items-start gap-2">
-            {/* <section className="flex items-center gap-1">
-              <CiLocationOn size={30} />
-              <p>{details.hall}</p>
-            </section> */}
             <button className="text-white mt-2 px-4 py-1 bg-black border border-gray-400 font-[600] rounded-[8px] ">
               {details.isFree ? "Free" : "Paid"}
             </button>
@@ -208,40 +273,9 @@ function View() {
           {reviewsList.length === 0 ? (
             <p>No reviews yet</p>
           ) : (
-            reviewsList.map((rev, id) => (
-              <div className="w-[95%] sm:w-[40%] rounded-[12px]  px-5 py-4 gap-2 flex flex-col ">
-                <section className="flex justify-between w-full items-center">
-                  <div className="flex justify-between w-full items-center ">
-                    <div className="flex gap-1 items-center">
-                      <img
-                        className="h-[40px] w-[40px] rounded-[50%] "
-                        src={rev.img}
-                        alt=""
-                      />
-                      <p className="font-[500] text-start text-[15px]">
-                        {rev.name}
-                      </p>
-                    </div>
-                    <div>
-                      {/* Kebbab */}
-                      <CiMenuKebab size={20} />
-                    </div>
-                  </div>
-                  <div className="flex">
-                    {/* {[1, 2, 3, 4, 5].map((d, id) => (
-                      <TiStarFullOutline
-                        key={id}
-                        size={14}
-                        className="text-[#FFC727]"
-                      />
-                    ))} */}
-                  </div>
-                </section>
-                <p className="text-start px-4 text-[16px] text-gray-300">
-                  {rev.review}
-                </p>
-              </div>
-            ))
+            reviewsList.map((rev, id) => {
+              return <ReviewItem rev={rev} />;
+            })
           )}
         </motion.div>
         {/* Input */}
