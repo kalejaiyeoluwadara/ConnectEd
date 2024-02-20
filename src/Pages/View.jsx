@@ -230,7 +230,7 @@ function View() {
           </h3>
           <motion.p
             layout
-            className="text-start w-full font-[400] text-[16px] "
+            className="text-start w-full sm:w-[300px]  font-[400] text-[16px] "
           >
             {isExpanded
               ? details.description
@@ -268,7 +268,7 @@ function View() {
         {/* content */}
         <motion.div
           layout
-          className="flex flex-col gap-2 items-center justify-start"
+          className="flex flex-col gap-2 items-center sm:items-start justify-start"
         >
           {reviewsList.length === 0 ? (
             <p>No reviews yet</p>

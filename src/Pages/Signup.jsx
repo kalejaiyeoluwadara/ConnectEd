@@ -164,7 +164,7 @@ function Signup() {
           </div>
         </div>
       </div>
-      <div className="w-full absolute sm:bottom-0 sm:mt-2 bottom-8 sm:relative flex items-center justify-center">
+      <div className="w-full absolute sm:bottom-0 sm:mt-8 bottom-8 sm:relative flex items-center justify-center">
         <p
           onClick={() => {
             setPage("login");

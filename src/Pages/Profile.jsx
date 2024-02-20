@@ -14,10 +14,38 @@ import Nav from "../Components/Nav";
 import EditProfile from "./EditProfile";
 import { motion } from "framer-motion";
 function Profile() {
-  const { setPage, userDetails, localData, setImg, img } = useGlobal();
+  const { setPage, userDetails, localData,setLocalData, setImg, img } = useGlobal();
   const photoURL = img.img || face1;
   const [log, setLog] = useState();
   const [posts,setPosts] = useState([]);
+  useEffect(() => {
+    const fetchUser = async () => {
+      try {
+        // Check if the document with the given ID exists
+        const usersCollection = collection(db, "users");
+        const userQuery = query(
+          usersCollection,
+          where("id", "==", localData.id)
+        );
+        const querySnapshot = await getDocs(userQuery);
+
+        if (!querySnapshot.empty) {
+          // If user exists, set user data in localData
+          const userData = querySnapshot.docs[0].data();
+          setLocalData(userData);
+          console.log("User found in Firestore:", userData);
+        } else {
+          // If user doesn't exist in Firestore, use existing localData
+          console.log("User not found in Firestore");
+        }
+      } catch (error) {
+        console.error("Error fetching user data:", error.message);
+      }
+    };
+
+    // Fetch user data when the component mounts
+    fetchUser();
+  }, [localData.id]);
   useEffect(() => {
     const fetchPosts = async () => {
       try {
