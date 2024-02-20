@@ -5,12 +5,13 @@ import {
   onSnapshot,
   query,
   where,
-  getDocs,
 } from "firebase/firestore";
 import { CiBookmark } from "react-icons/ci";
 import { useGlobal } from "../context";
 import { db } from "../firebase-config";
 import { v4 as uuidv4 } from "uuid";
+import { motion } from "framer-motion";
+
 const Loading = () => {
   return (
     <div className="loading-spinner-container">
@@ -21,7 +22,7 @@ const Loading = () => {
 
 function Listings() {
   const [courses, setCourses] = useState([]);
-  const [loading, setLoading] = useState(true); // Added loading state
+  const [loading, setLoading] = useState(true);
   const { setPage, setDetails, active, setActive, searchTerm, setSearchterm } =
     useGlobal();
 
@@ -30,42 +31,42 @@ function Listings() {
       try {
         const firestore = getFirestore();
         const coursesCollection = collection(firestore, "courses");
-        let querySnapshot;
+        let q;
 
         if (active === "all") {
-          querySnapshot = await getDocs(coursesCollection);
+          q = query(coursesCollection);
         } else {
-          const filteredQuery = query(
-            coursesCollection,
-            where("category", "==", active)
-          );
-          querySnapshot = await getDocs(filteredQuery);
+          q = query(coursesCollection, where("category", "==", active));
         }
 
-        const updatedCourses = querySnapshot.docs.map((doc) => ({
-          id: doc.id,
-          ...doc.data(),
-          reviews: doc.data().reviews || [],
-        }));
+        const unsubscribe = onSnapshot(q, (snapshot) => {
+          const updatedCourses = snapshot.docs.map((doc) => ({
+            id: doc.id,
+            ...doc.data(),
+            reviews: doc.data().reviews || [],
+          }));
 
-        // Filtering based on searchTerm
-        const filteredCourses = updatedCourses.filter((course) =>
-          course.title.toLowerCase().includes(searchTerm.toLowerCase())
-        );
+          // Filtering based on searchTerm
+          const filteredCourses = updatedCourses.filter((course) =>
+            course.title.toLowerCase().includes(searchTerm.toLowerCase())
+          );
 
-        setCourses(filteredCourses);
-        setLoading(false); // Set loading to false after data is fetched
+          setCourses(filteredCourses);
+          setLoading(false);
+        });
+
+        return () => unsubscribe();
       } catch (error) {
         console.error("Error fetching courses:", error);
-        setLoading(false); // Set loading to false on error
+        setLoading(false);
       }
     };
 
     fetchData();
-  }, [active, searchTerm]); // Fetch data whenever "active" state or "searchTerm" changes
+  }, [active, searchTerm]);
 
   if (loading) {
-    return <Loading />; // Display loading indicator while data is being fetched
+    return <Loading />;
   }
 
   if (courses.length === 0) {
@@ -77,7 +78,10 @@ function Listings() {
   }
 
   return (
-    <div className="w-full cursor-pointer flex sm:flex-row sm:gap-12 flex-col gap-4 sm:mt-8 items-center justify-center">
+    <motion.div
+      layout
+      className="w-full cursor-pointer flex sm:flex-row sm:gap-12 flex-col gap-4 sm:mt-8 items-center justify-center"
+    >
       {courses.map((course, id) => (
         <div
           key={id}
@@ -88,24 +92,45 @@ function Listings() {
           className="h-[300px] relative rounded-[8px]  w-[90%] sm:w-[300px] bg-gray-800 py-12"
         >
           {course.isFree ? (
-            <div className="absolute left-3 top-3 bg-white px-3 py-[3px] rounded-[3px] text-black z-40 font-bold">
+            <motion.div
+              initial={{
+                x: "-40px",
+                opacity: 0,
+              }}
+              transition={{
+                duration: 0.5,
+              }}
+              whileInView={{
+                x: 0,
+                opacity: 1,
+              }}
+              className="absolute left-3 top-3 bg-white px-3 py-[3px] rounded-[3px] text-black z-40 font-bold"
+            >
               Free
-            </div>
+            </motion.div>
           ) : (
-            <div className="absolute left-3 top-3 bg-blue-500 text-white px-3 py-[3px] rounded-[3px]  z-40 font-bold">
+            <motion.div
+              initial={{
+                x: "-40px",
+                opacity: 0,
+              }}
+              transition={{
+                duration: 0.5,
+              }}
+              whileInView={{
+                x: 0,
+                opacity: 1,
+              }}
+              className="absolute left-3 top-3 bg-blue-500 text-white px-3 py-[3px] rounded-[3px]  z-40 font-bold"
+            >
               Paid
-            </div>
+            </motion.div>
           )}
           <img
             className=" h-full absolute top-0 left-0 w-full "
             src={course.image}
             alt="course_images"
           />
-          {/* <div onClick={() =>{
-            console.log("Hello")
-          }}  className="absolute z-40  right-3 top-3 px-3 py-[3px] rounded-[5px] font-bold">
-            <CiBookmark size={25} />
-          </div> */}
           <div className="flex items-center card  w-full px-2 justify-start absolute bottom-0  left-0 py-4 gap-1">
             <img
               className="h-[40px] w-[40px] rounded-[50%] "
@@ -119,7 +144,7 @@ function Listings() {
           </div>
         </div>
       ))}
-    </div>
+    </motion.div>
   );
 }
 

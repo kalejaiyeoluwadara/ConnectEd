@@ -21,7 +21,7 @@ function Board1() {
   useEffect(() => {
     controls.start({
       x: 0,
-      transition: { duration: 0.5, type: "spring", stiffness: 120 },
+      transition: { duration: 0.6, type: "spring", stiffness: 120 },
     });
   }, [controls]);
 
