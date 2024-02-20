@@ -45,7 +45,7 @@ function Profile() {
   }, []); 
 
   return (
-    <div className="min-h-screen w-screen bg-gray-900">
+    <div className="min-h-screen  w-screen bg-gray-900">
       {/* Banner */}
       <div className="w-full flex relative   justify-between items-start px-3 py-0 bg-gray-800 h-[100px] ">
         <BsArrowLeft
@@ -56,7 +56,7 @@ function Profile() {
           size={30}
         />
         <CiMenuKebab
-          className="text-black mt-2 z-40"
+          className="text-black sm:mr-[120px] mt-2 z-40"
           onClick={() => {
             setLog(!log);
           }}
@@ -74,7 +74,7 @@ function Profile() {
               localStorage.removeItem("isSignedIn");
               localStorage.removeItem("userDetails");
             }}
-            className="absolute bottom-4 right-4 bg-black px-4 py-2 rounded-[8px] "
+            className="absolute bottom-4 sm:right-[120px] right-4 bg-black px-4 py-2 rounded-[8px] "
           >
             Log Out
           </div>

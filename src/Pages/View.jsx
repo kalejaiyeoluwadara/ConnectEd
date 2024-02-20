@@ -1,5 +1,4 @@
 import React, { useState,useEffect } from "react";
-import tochi from "../assets/images/tochi.png";
 import { FiChevronLeft } from "react-icons/fi";
 import { CiLocationOn } from "react-icons/ci";
 import { BsSendFill } from "react-icons/bs";

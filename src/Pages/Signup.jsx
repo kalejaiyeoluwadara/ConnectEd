@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { auth, provider, db } from "../firebase-config";
+import { FcGoogle } from "react-icons/fc";
 import {
   signInWithPopup,
   GoogleAuthProvider,
@@ -115,13 +116,16 @@ function Signup() {
         <Logo />
       </div>
 
-      <div className="flex flex-col mt-20 text-center w-full gap-3">
+      <div className="flex flex-col sm:mt-10 mt-20 text-center w-full gap-3">
         <h2 className="font-[600] text-center text-[30px]  ">
           Create New Account
         </h2>
         <div className="mt-6">
-          <div className="gap-4 w-full  flex flex-col" action="">
-            <div className="flex flex-col items-start justify-center w-full gap-[24px]">
+          <div
+            className="gap-4 w-full sm:justify-center sm:items-center  flex flex-col"
+            action=""
+          >
+            <div className="flex flex-col items-start sm:gap-4 sm:w-[60%] justify-center w-full gap-[24px]">
               <input
                 placeholder="Full Name"
                 className="w-full bg-gray-800 px-4 py-4 rounded-[8px] input"
@@ -146,20 +150,21 @@ function Signup() {
             </div>
             <button
               onClick={() => handleSignupWithEmail(email, password, name)}
-              className="font-[600] text-[20px] py-3 mt-4 w-full rounded-[8px] bg-blue-500  "
+              className="font-[600] text-[20px] py-3 mt-4 sm:w-[60%] w-full rounded-[8px] bg-blue-500  "
             >
               Create Account
             </button>
             <button
               onClick={SignInWithGoogle}
-              className="font-[600] text-[20px] py-3 w-full rounded-[8px] border-[1px] border-blue-600  "
+              className="font-[600] text-[20px] py-3 sm:w-[60%] w-full rounded-[8px] border-[1px] border-blue-600 flex gap-2 items-center justify-center  "
             >
-              Sign up with Google
+              Sign up with Google <FcGoogle size={30} />
+             
             </button>
           </div>
         </div>
       </div>
-      <div className="w-full absolute bottom-8 flex items-center justify-center">
+      <div className="w-full absolute sm:bottom-0 sm:mt-2 bottom-8 sm:relative flex items-center justify-center">
         <p
           onClick={() => {
             setPage("login");

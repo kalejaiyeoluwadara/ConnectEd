@@ -14,6 +14,7 @@ import UploadPage from "../Pages/UploadPage";
 import EditProfile from "../Pages/EditProfile";
 import Modal from '../Components/Modal'
 import Connect from "../Pages/Connect";
+import { motion,AnimatePresence } from "framer-motion";
 function Admin() {
   const {
     setPage,
@@ -48,23 +49,25 @@ function Admin() {
 
   return (
     <div className="text-white ">
-      {/* <> */}
-      {modal && <Modal />}
-      {board1 && <Board1 />}
-      {board2 && <Board2 />}
-      {signup && !userDetails && <Signup />}
-      {login && <Login />}
-      <div className="text-white sm:px-[100px] bg-black">
-        {home && <Home />}
-        {view && <View />}
-        {profile && <Profile />}
-        {bookmark && <Bookmark />}
-        {notifications && <Notifications />}
-        {search && <Search />}
-        {uploadPage && <UploadPage />}
-        {edit && <EditProfile />}
-        {connect && <Connect/> }
-      </div>
+      <AnimatePresence>
+        {/* <> */}
+        {modal && <Modal />}
+        {board1 && <Board1 />}
+        {board2 && <Board2 />}
+        {signup && !userDetails && <Signup />}
+        {login && <Login />}
+        <div className="text-white sm:px-[100px] bg-black">
+          {home && <Home />}
+          {view && <View />}
+          {profile && <Profile />}
+          {bookmark && <Bookmark />}
+          {notifications && <Notifications />}
+          {search && <Search />}
+          {uploadPage && <UploadPage />}
+          {edit && <EditProfile />}
+          {connect && <Connect />}
+        </div>
+      </AnimatePresence>
     </div>
 
     // </>

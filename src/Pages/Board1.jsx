@@ -1,11 +1,30 @@
-import React from "react";
+import React, { useEffect } from "react";
 import left from "../assets/images/left.svg";
 import right from "../assets/images/right.svg";
 import { useGlobal } from "../context";
-import { FaArrowRight, FaAngleRight } from "react-icons/fa";
 import { FiChevronRight } from "react-icons/fi";
+import { motion, useAnimation } from "framer-motion";
+
 function Board1() {
   const { setPage } = useGlobal();
+  const controls = useAnimation();
+
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      setPage("board2");
+    }, 3000);
+
+    // Clean up the timeout to avoid memory leaks
+    return () => clearTimeout(timeout);
+  }, [setPage]);
+
+  useEffect(() => {
+    controls.start({
+      x: 0,
+      transition: { duration: 0.5, type: "spring", stiffness: 120 },
+    });
+  }, [controls]);
+
   return (
     <div
       onClick={() => {
@@ -13,10 +32,17 @@ function Board1() {
       }}
       className="h-screen w-screen px-8 flex-col bg-black flex items-center justify-center py-20"
     >
-      <div className="gap-3 flex flex-col w-full items-center justify-center">
+      <motion.div
+        initial={{ x: "-100vw" }}
+        animate={controls}
+        exit={{ x: "-100vw" }}
+        className="gap-3 flex flex-col w-full items-center justify-center"
+      >
         <div className="flex items-center justify-center gap-4">
           <img src={left} alt="" />
-          <h2 className="text-[45px] inter leading-[10px]  font-[800] ">ConnectEd</h2>
+          <h2 className="text-[45px] inter leading-[10px]  font-[800] ">
+            ConnectEd
+          </h2>
           <img src={right} alt="" />
         </div>
         <p className="text-[14px] text-center  ">
@@ -30,7 +56,7 @@ function Board1() {
         >
           <FiChevronRight size={30} />
         </button> */}
-      </div>
+      </motion.div>
     </div>
   );
 }
