@@ -108,7 +108,7 @@ function Profile() {
         {/* details/description */}
         <div className="px-4 mt-2">
           {/* desc */}
-          <p className="font-[500]">{localData.description}</p>
+          <p className="font-[500] sm:w-[300px] ">{localData.description}</p>
           {/* details */}
           <div className="flex w-full mt-4 font-500 text-[16px] justify-start text-gray-300 gap-3 items-center ">
             {/* location */}

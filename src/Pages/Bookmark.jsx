@@ -33,7 +33,7 @@ function Bookmark() {
       >
         <h3 className="font-bold  text-[22px]">Your Bookmarks</h3>
         {/* <SearchField /> */}
-        <div className="flex flex-col items-center mt-10 gap-6 ">
+        <div className="flex flex-col sm:flex-row sm:gap-8 sm:justify-center sm:mt-12 items-center mt-10 gap-6 ">
           {bookmarks.length === 0 ? (
             <div className="">
               <p>No Bookmarks yet</p>
@@ -61,9 +61,9 @@ function Bookmark() {
                   onClick={handleDeleteBookmark}
                   className="absolute left-3 top-3  px-3 py-[3px] rounded-[5px]  font-bold "
                 >
-                  <BsTrash3 className="shadow-md" size={25} />
+                  <BsTrash3 className="text-gray-600  " size={25} />
                 </div>
-                <div className="flex items-center card  w-full px-2 justify-start absolute bottom-0  left-0 py-4 gap-1">
+                <div className="flex items-center card  w-full px-2 justify-start absolute -bottom-1  left-0 py-4 gap-1">
                   <img
                     className="h-[40px] w-[40px] rounded-[50%] "
                     src={bookmark.profileImage}

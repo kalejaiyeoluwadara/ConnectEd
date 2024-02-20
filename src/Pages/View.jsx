@@ -23,10 +23,10 @@ const ReviewItem = ({ rev }) => {
   const [rep, setRep] = useState(false);
 
   return (
-    <div className="w-[95%] sm:w-[40%] rounded-[12px] px-5 py-4 gap-2 flex flex-col">
+    <div className="w-[95%] sm:w-[40%] rounded-[12px] px-5 py-2 gap-2 flex flex-col">
       <section className="flex justify-between w-full items-center">
         <div className="flex justify-between w-full items-center">
-          <div className="flex gap-1 items-center">
+          <div className="flex gap-1 justify-center items-center">
             <img
               className="h-[40px] w-[40px] rounded-[50%]"
               src={rev.img}
@@ -42,7 +42,7 @@ const ReviewItem = ({ rev }) => {
             {rep && (
               <p onClick={()=>{
                 setRep(false)
-              }} className="bg-gray-800 px-4 py-2 rounded-[8px absolute right-6 top-2]">
+              }} className="bg-gray-800 px-4 py-2 rounded-[8px] absolute right-6 top-2">
                 Report
               </p>
             )}
@@ -58,7 +58,7 @@ const ReviewItem = ({ rev }) => {
           ))} */}
         </div>
       </section>
-      <p className="text-start px-4 text-[16px] text-gray-300">{rev.review}</p>
+      <p className="text-start pl-6 text-[16px] text-gray-300">{rev.review}</p>
     </div>
   );
 };
@@ -268,7 +268,7 @@ function View() {
         {/* content */}
         <motion.div
           layout
-          className="flex flex-col gap-4 items-center justify-start"
+          className="flex flex-col gap-2 items-center justify-start"
         >
           {reviewsList.length === 0 ? (
             <p>No reviews yet</p>

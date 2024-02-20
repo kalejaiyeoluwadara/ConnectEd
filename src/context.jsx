@@ -29,11 +29,13 @@ function AppProvider({ children }) {
     "all",
     "cosc",
     "economics",
+    "tech",
     "mathematics",
     "general",
+    "geds",
     "english",
-    "tech",
     "sports",
+    "services",
     "others",
   ]);
   const [modal,setModal] = useState(false)

@@ -64,9 +64,9 @@ function Admin() {
           {notifications && <Notifications />}
           {search && <Search />}
           {uploadPage && <UploadPage />}
-          {edit && <EditProfile />}
           {connect && <Connect />}
         </div>
+          {edit && <EditProfile />}
       </AnimatePresence>
     </div>
 

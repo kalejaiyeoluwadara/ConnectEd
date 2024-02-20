@@ -84,7 +84,7 @@ function Signup() {
       setUserDetails(user);
       setPage("home");
       const userInfo = {
-        name: user.displayName,
+        name: name || 'New user' ,
         img: user.photoURL,
         description: user.description || "Student at Babcock University",
         email: user.email,
@@ -111,7 +111,7 @@ function Signup() {
   const [password, setPassword] = useState("");
 
   return (
-    <div className="min-h-screen mb-0 relative bg-black items-start w-screen flex flex-col px-6 py-4">
+    <div className="min-h-screen mb-0 relative bg-gray-900 items-start w-screen flex flex-col px-6 py-4">
       <div className="w-full ">
         <Logo />
       </div>
