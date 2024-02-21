@@ -26,37 +26,40 @@ function Board2() {
         <h2 className="text-[30px] font-[600] ">ConnectEd</h2>
         <img src={right} className="h-[25px]  " alt="" />
       </motion.div>
-      <div className="flec items-center mt-8 justify-center">
-        <img className="sm:h-[300px]" src={board2} alt="" />
-      </div>
 
-      <motion.div
-        initial={{
-          y: "500px",
-        }}
-        animate={{
-          y: 0,
-        }}
-        transition={{
-          delay: 0.8,
-          duration: 0.5,
-        }}
-        className="bg-white sm:h-[170px] px-6 pt-7  sm:px-12 font-[500] text-[18px] absolute rounded-t-[40px] h-[270px] w-full left-0 -bottom-3 "
-      >
-        <p className="text-black">
-          Where Learners meet experts, connect, learn and grow together. Join a
-          vibrant community where knowledge is shared, skills are honed,and
-          aspirations are realised. Your pathway to success starts here.
-        </p>
-        <button
-          onClick={() => {
-            setPage("signup");
+      <div className="sm:flex sm:items-center sm:justify-center sm:gap-20 sm:mt-8 sm:flex-row ">
+        <div className="flex items-center mt-8 justify-center">
+          <img className="sm:h-[300px]" src={board2} alt="" />
+        </div>
+
+        <motion.div
+          initial={{
+            y: "500px",
           }}
-          className="bg-blue-500 mt-4 font-[600] text-[20pz] w-full py-3 rounded-[8px] px-4 "
+          animate={{
+            y: 0,
+          }}
+          transition={{
+            delay: 0.8,
+            duration: 0.5,
+          }}
+          className="bg-white sm:bg-gray-900 sm:h-[170px] px-6 pt-7  sm:px-12 font-[500] text-[18px] sm:w-[50%] sm:relative sm:bottom-0 absolute rounded-t-[40px] h-[270px] w-full left-0 -bottom-3 "
         >
-          Explore
-        </button>
-      </motion.div>
+          <p className="text-black sm:text-white ">
+            Where Learners meet experts, connect, learn and grow together. Join
+            a vibrant community where knowledge is shared, skills are honed,and
+            aspirations are realised. Your pathway to success starts here.
+          </p>
+          <motion.button
+            onClick={() => {
+              setPage("signup");
+            }}
+            className="bg-blue-500 mt-4 font-[600] sm:w-[90%] text-[20pz] w-full py-3 sm:py-3 rounded-[8px] px-4 "
+          >
+            Explore
+          </motion.button>
+        </motion.div>
+      </div>
     </div>
   );
 }

@@ -5,7 +5,7 @@ import { useGlobal } from "../context";
 function SearchComp() {
   const { setPage, searchTerm, setSearchterm } = useGlobal();
   return (
-    <div className="w-full  flex sm:justify-center items-center  py-2 ">
+    <div className="w-full  flex sm:justify-start  items-center  py-2 ">
       <div
         // onClick={() => {
         //   setPage("search");
