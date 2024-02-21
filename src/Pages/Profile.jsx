@@ -167,28 +167,31 @@ function Profile() {
         {/* items */}
         <div className="w-full sm:flex-row sm:gap-8 sm:w-full  flex mb-40  items-center justify-center gap-4  my-8 px flex-col">
           {/* Logs through posts */}
-          {posts.map((post, id) => {
-            return (
-              <div
-                key={id}
-                className="bg-gray-700 relative sm:w-[300px] w-[90%]  h-[300px] "
-              >
-                <img
-                  src={post.image}
-                  className="absolute h-full w-full top-0 left-0"
-                  alt=""
-                />
-                <section className="px-4 w-full rounded-b-[0px] bg-opacity-30 card py-3 absolute bottom-0 ">
-                  <h4 className="font-bold   text-[20px] ">{post.author}</h4>
-                  <p>{post.title}</p>
-                </section>
-              </div>
-            );
-          })}
+          {posts.length === 0 ? (
+            <p className="text-center mt-12 w-full">No posts yet</p>
+          ) : (
+            posts.map((post, id) => {
+              return (
+                <div
+                  key={id}
+                  className="bg-gray-700 relative sm:w-[300px] w-[90%]  h-[300px] "
+                >
+                  <img
+                    src={post.image}
+                    className="absolute h-full w-full top-0 left-0"
+                    alt=""
+                  />
+                  <section className="px-4 w-full rounded-b-[0px] bg-opacity-30 card py-3 absolute bottom-0 ">
+                    <h4 className="font-bold   text-[20px] ">{post.author}</h4>
+                    <p>{post.title}</p>
+                  </section>
+                </div>
+              );
+            })
+          )}
         </div>
-
       </motion.div>
-        <Nav />
+      <Nav />
     </>
   );
 }
