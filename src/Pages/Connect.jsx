@@ -3,6 +3,7 @@ import { CiLocationOn } from "react-icons/ci";
 import { IoMdLink } from "react-icons/io";
 import { FaWhatsapp } from "react-icons/fa";
 import { LuMail } from "react-icons/lu";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 import face1 from "../assets/images/person.svg";
 import bg from "../assets/images/bg.jpg";
 import { useGlobal } from "../context";
@@ -17,7 +18,7 @@ function Connect() {
   // const photoURL = existingUser.img || face1;
   const [existingUser, setExistingUser] = useState(null);
   const [posts, setPosts] = useState([]);
-
+  const [view,setView] = useState(false);
   useEffect(() => {
     const fetchExistingUser = async () => {
       try {
@@ -132,9 +133,27 @@ function Connect() {
               </span>
             </p>
           </div>
+          <section className="mt-4 h-[50px] flex ">
+            <div
+              onClick={() => {
+                setView(!view);
+              }}
+            >
+              {view ? <FaEyeSlash /> : <FaEye />}
+            </div>
+            {view && (
+              <div className="flex ml-6 flex-col">
+                <p>
+                  Whatsapp Number: {existingUser ? existingUser.whatsapp : ""}{" "}
+                </p>
+                <p>Email: {existingUser ? existingUser.email : ""} </p>
+                <p>LinkedIn: {existingUser ? existingUser.linkedin : ""} </p>
+              </div>
+            )}
+          </section>
         </div>
         {/* items */}
-        <div className="w-full flex mb-40  sm:flex-row sm:gap-8 items-center justify-center gap-4  my-8 px flex-col">
+        <div className="w-full flex mb-40  sm:flex-row sm:gap-8 items-center justify-center gap-4 mt-0 my-8 px flex-col">
           {/* Logs through posts */}
           {posts.length === 0 ? (
             <p>No posts found</p>
