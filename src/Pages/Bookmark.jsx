@@ -35,8 +35,8 @@ function Bookmark() {
         {/* <SearchField /> */}
         <div className="flex flex-col sm:flex-row sm:gap-8 sm:justify-start sm:mt-12 items-center mt-10 gap-6 ">
           {bookmarks.length === 0 ? (
-            <div className="">
-              <p>No Bookmarks yet</p>
+            <div className="sm:w-full">
+              <p className=" sm:mt-8 sm:text-center">No Bookmarks yet</p>
             </div>
           ) : (
             bookmarks.map((bookmark, index) => (

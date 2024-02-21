@@ -65,7 +65,7 @@ function Login() {
   const [password, setPassword] = useState("");
 
   return (
-    <div className="flex w-screen flex-col px-3 py-2 relative min-h-screen bg-black ">
+    <div className="flex w-screen flex-col px-3 py-2 relative min-h-screen bg-gray-900 ">
       <Logo />
       <div
         className="flex w-full flex-col sm:items-center sm:justify-center gap-4 px-4 mt-10"
@@ -106,7 +106,7 @@ function Login() {
       <div className="relative">
         <hr className="mt-8 border-[2px] border-gray-800 " />
         <p className=" absolute z-40 top-[22px] flex items-center justify-center w-full">
-          <span className="px-6 bg-black">or</span>
+          <span className="px-6 bg-gray-900">or</span>
         </p>
       </div>
       <div className="sm:w-screen sm:flex sm:items-center sm:justify-center">
@@ -119,7 +119,7 @@ function Login() {
         </button>
       </div>
 
-      <div className="w-full sm:relative sm:bottom-0 sm:mt-8 absolute bottom-8 flex items-center justify-center">
+      <div className="w-full sm:relative sm:bottom-0 sm:mt-8 mt-20 bottom-8 flex items-center justify-center">
         <p
           onClick={() => {
             setPage("signup");

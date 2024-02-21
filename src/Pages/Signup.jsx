@@ -116,15 +116,25 @@ function Signup() {
         <Logo />
       </div>
 
-      <div className="flex flex-col sm:mt-10 mt-20 text-center w-full gap-3">
+      <div className="flex flex-col sm:mt-10 mt-[45px] text-center w-full gap-3">
         <h2 className="font-[600] text-center text-[30px]  ">
           Create New Account
         </h2>
+
         <div className="mt-6">
-          <div
-            className="gap-4 w-full sm:justify-center sm:items-center  flex flex-col"
-            action=""
-          >
+          <div className="gap-4 w-full sm:justify-center sm:items-center  flex flex-col">
+            <button
+              onClick={SignInWithGoogle}
+              className="font-[600] text-[20px] py-3 sm:w-[60%] w-full rounded-[8px] border-[1px] border-blue-600 flex gap-2 items-center justify-center  "
+            >
+              Sign up with Google <FcGoogle size={30} />
+            </button>
+            <div className="relative sm:flex sm:items-center sm:justify-center sm:w-full ">
+              <hr className="my-8 sm:my-8 sm:w-[40%] border-[2px] border-gray-800 " />
+              <p className=" absolute z-40 top-[22px] flex items-center justify-center w-full">
+                <span className="px-6 bg-gray-900">or</span>
+              </p>
+            </div>
             <div className="flex flex-col items-start sm:gap-4 sm:w-[60%] justify-center w-full gap-[24px]">
               <input
                 placeholder="Full Name"
@@ -154,17 +164,10 @@ function Signup() {
             >
               Create Account
             </button>
-            <button
-              onClick={SignInWithGoogle}
-              className="font-[600] text-[20px] py-3 sm:w-[60%] w-full rounded-[8px] border-[1px] border-blue-600 flex gap-2 items-center justify-center  "
-            >
-              Sign up with Google <FcGoogle size={30} />
-             
-            </button>
           </div>
         </div>
       </div>
-      <div className="w-full absolute sm:bottom-0 sm:mt-8 bottom-8 sm:relative flex items-center justify-center">
+      <div className="w-full mt-12 sm:bottom-0 sm:mt-8 bottom-8 sm:relative flex items-center justify-center">
         <p
           onClick={() => {
             setPage("login");
