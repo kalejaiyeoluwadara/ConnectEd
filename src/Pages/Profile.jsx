@@ -7,7 +7,7 @@ import face1 from "../assets/images/person.svg";
 import bg from "../assets/images/bg.jpg";
 import { useGlobal } from "../context";
 import { LuMail } from "react-icons/lu";
-import { collection, query, where, getDocs } from "firebase/firestore";
+import { collection, query, where, getDocs,doc,deleteDoc } from "firebase/firestore";
 import { db } from "../firebase-config";
 import { FaLinkedin } from "react-icons/fa6";
 import Nav from "../Components/Nav";
@@ -73,6 +73,20 @@ function Profile() {
     fetchPosts();
   }, []); 
 
+   const handleDeletePost = async (postId) => {
+     try {
+       // Construct reference to the post document
+       const postRef = doc(db, "courses", postId);
+
+       // Delete the post document from Firestore
+       await deleteDoc(postRef);
+
+       // Remove the deleted post from the local state
+       setPosts(posts.filter((post) => post.id !== postId));
+     } catch (error) {
+       console.error("Error deleting post:", error.message);
+     }
+   };
   return (
     <>
       <motion.div
@@ -185,6 +199,7 @@ function Profile() {
                     <h4 className="font-bold   text-[20px] ">{post.author}</h4>
                     <p>{post.title}</p>
                   </section>
+                  
                 </div>
               );
             })

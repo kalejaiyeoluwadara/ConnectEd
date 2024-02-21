@@ -230,7 +230,7 @@ function View() {
           </h3>
           <motion.p
             layout
-            className="text-start w-full sm:w-[300px]  font-[400] text-[16px] "
+            className="text-start w-full sm:w-[500px]  font-[400] text-[16px] "
           >
             {isExpanded
               ? details.description
