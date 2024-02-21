@@ -71,7 +71,7 @@ function Listings() {
 
   if (courses.length === 0) {
     return (
-      <div className="w-full h-full flex items-center justify-center ">
+      <div className="w-full mt-12 h-full flex items-center justify-center ">
         No courses found for selected category.
       </div>
     );

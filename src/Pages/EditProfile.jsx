@@ -214,7 +214,7 @@ function EditProfile() {
                   setPage("profile");
                 }}
                 type="submit"
-                className="bg-black border border-gray-400 text-white py-2 px-4 rounded-md hover:bg-blue-600 transition duration-300"
+                className="bg-black border border-gray-400 text-white py-2 px-4 rounded-md hover:bg-blue-600 hover:border-none transition duration-300"
               >
                 Cancel
               </button>

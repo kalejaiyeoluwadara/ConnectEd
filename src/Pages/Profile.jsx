@@ -168,7 +168,7 @@ function Profile() {
         <div className="w-full sm:flex-row sm:gap-8 sm:w-full  flex mb-40  items-center justify-center gap-4  my-8 px flex-col">
           {/* Logs through posts */}
           {posts.length === 0 ? (
-            <p className="text-center mt-12 w-full">No posts yet</p>
+            <p className="text-center mt-12 w-full">You haven't posted any course yet.</p>
           ) : (
             posts.map((post, id) => {
               return (

@@ -136,28 +136,35 @@ function Connect() {
         {/* items */}
         <div className="w-full flex mb-40  sm:flex-row sm:gap-8 items-center justify-center gap-4  my-8 px flex-col">
           {/* Logs through posts */}
-          {posts.map((post, id) => {
-            return (
-              <div
-                key={id}
-                className="bg-gray-700 relative sm:w-[300px] w-[90%] rounded-[10px] h-[300px] "
-              >
-                <img
-                  src={post.image}
-                  className="absolute h-full w-full top-0 left-0"
-                  alt=""
-                />
-                <section className="px-4 w-full  bg-opacity-30 card py-3 absolute -bottom-1 ">
-                  <h4 className="font-bold   text-[20px] ">{post.author}</h4>
-                  <p>{post.title}</p>
-                </section>
-              </div>
-            );
-          })}
+          {posts.length === 0 ? (
+            <p>No posts found</p>
+          ) : (
+            <div className="w-full flex mb-40  sm:flex-row sm:gap-8 items-center justify-center gap-4  my-8 px flex-col">
+              {posts.map((post, id) => {
+                return (
+                  <div
+                    key={id}
+                    className="bg-gray-700 relative sm:w-[300px] w-[90%] rounded-[10px] h-[300px] "
+                  >
+                    <img
+                      src={post.image}
+                      className="absolute h-full w-full top-0 left-0"
+                      alt=""
+                    />
+                    <section className="px-4 w-full  bg-opacity-30 card py-3 absolute -bottom-1 ">
+                      <h4 className="font-bold   text-[20px] ">
+                        {post.author}
+                      </h4>
+                      <p>{post.title}</p>
+                    </section>
+                  </div>
+                );
+              })}
+            </div>
+          )}
         </div>
-
       </motion.div>
-        <Nav />
+      <Nav />
     </>
   );
 }

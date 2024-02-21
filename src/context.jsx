@@ -28,9 +28,9 @@ function AppProvider({ children }) {
   const [cats, setCats] = useState([
     "all",
     "cosc",
-    "economics",
-    "tech",
     "mathematics",
+    "tech",
+    "economics",
     "general",
     "geds",
     "english",
