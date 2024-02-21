@@ -153,12 +153,12 @@ function Connect() {
           </section>
         </div>
         {/* items */}
-        <div className="w-full flex mb-40  sm:flex-row sm:gap-8 items-center justify-center gap-4 mt-0 my-8 px flex-col">
+        <div className="w-full flex mb-40  sm:flex-row sm:gap-8 items-center justify-center  gap-4 mt-0 my-8 px flex-col">
           {/* Logs through posts */}
           {posts.length === 0 ? (
             <p>No posts found</p>
           ) : (
-            <div className="w-full flex mb-40  sm:flex-row sm:gap-8 items-center justify-center gap-4  my-8 px flex-col">
+            <div className="w-full flex mb-40  sm:flex-row sm:gap-8 items-center justify-center gap-4 sm:justify-start my-8 px flex-col">
               {posts.map((post, id) => {
                 return (
                   <div
