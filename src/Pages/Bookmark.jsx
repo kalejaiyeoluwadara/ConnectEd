@@ -33,7 +33,7 @@ function Bookmark() {
       >
         <h3 className="font-bold  text-[22px]">Your Bookmarks</h3>
         {/* <SearchField /> */}
-        <div className="flex flex-col sm:flex-row sm:gap-8 sm:justify-center sm:mt-12 items-center mt-10 gap-6 ">
+        <div className="flex flex-col sm:flex-row sm:gap-8 sm:justify-start sm:mt-12 items-center mt-10 gap-6 ">
           {bookmarks.length === 0 ? (
             <div className="">
               <p>No Bookmarks yet</p>
@@ -42,14 +42,14 @@ function Bookmark() {
             bookmarks.map((bookmark, index) => (
               <div
                 key={index}
-                onClick={() => {
-                  // setCourse(d);
-                  setPage("view");
-                  setDetails(bookmark);
-                }}
                 className="h-[300px] text-white  rounded-[8px] relative w-[90%] sm:w-[300px] bg-gray-800 py-12  "
               >
                 <img
+                  onClick={() => {
+                    // setCourse(d);
+                    setPage("view");
+                    setDetails(bookmark);
+                  }}
                   src={bookmark.image}
                   className="absolute top-0 left-0 h-full w-full"
                   alt=""
@@ -59,7 +59,7 @@ function Bookmark() {
                 </div>
                 <div
                   onClick={handleDeleteBookmark}
-                  className="absolute left-3 top-3  px-3 py-[3px] rounded-[5px]  font-bold "
+                  className="absolute cursor-pointer left-3 top-3  px-3 py-[3px] rounded-[5px]  font-bold "
                 >
                   <BsTrash3 className="text-gray-600  " size={25} />
                 </div>
