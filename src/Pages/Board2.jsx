@@ -27,7 +27,7 @@ function Board2() {
         <img src={right} className="h-[25px]  " alt="" />
       </motion.div>
 
-      <div className="sm:flex sm:items-center sm:justify-center sm:gap-20 sm:mt-8 sm:flex-row ">
+      <div className="sm:flex sm:items-center sm:justify-center sm:gap-20 sm:mt-8 sm:flex-row-reverse ">
         <div className="flex items-center mt-8 justify-center">
           <img className="sm:h-[300px]" src={board2} alt="" />
         </div>
@@ -45,7 +45,7 @@ function Board2() {
           }}
           className="bg-white sm:bg-gray-900 sm:h-[170px] px-6 pt-7  sm:px-12 font-[500] text-[18px] sm:w-[50%] sm:relative sm:bottom-0 absolute rounded-t-[40px] h-[270px] w-full left-0 -bottom-3 "
         >
-          <p className="text-black sm:text-white ">
+          <p className="text-black text-start sm:text-white ">
             Where Learners meet experts, connect, learn and grow together. Join
             a vibrant community where knowledge is shared, skills are honed,and
             aspirations are realised. Your pathway to success starts here.
@@ -54,7 +54,7 @@ function Board2() {
             onClick={() => {
               setPage("signup");
             }}
-            className="bg-blue-500 mt-4 font-[600] sm:w-[90%] text-[20pz] w-full py-3 sm:py-3 rounded-[8px] px-4 "
+            className="bg-blue-500 mt-4 font-[600] sm:w-[60%] text-[20pz] w-full py-3 sm:py-3 rounded-[8px] px-4 "
           >
             Explore
           </motion.button>

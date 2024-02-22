@@ -6,7 +6,7 @@ import { useGlobal } from "../context";
 import { LiaTimesSolid } from "react-icons/lia";
 import { FaCaretDown, FaBell } from "react-icons/fa";
 import { IoBookmark } from "react-icons/io5";
-
+import { motion } from "framer-motion";
 function Nav() {
   const {
     setPage,page,
@@ -22,49 +22,63 @@ function Nav() {
   const photoURL = img.img || face1;
   return (
     <footer className="w-screen cursor-pointer flex  items-center px-4 justify-between bg-gray-800 z-50 fixed sm:top-0 sm:left-0 sm:h-screen sm:flex-col sm:py-6 sm:rounded-none rounded-r-none sm:w-[100px] bottom-0 h-[75px] rounded-t-[20px] left-0">
-      <div
+      <motion.div
+        whileHover={{ scale: 1.1 }}
+        whileTap={{ scale: 0.9 }}
         onClick={() => {
           setPage("home");
         }}
       >
         {home ? <BsHouseFill size={25} /> : <BsHouse size={25} />}
-      </div>
-      <div
+      </motion.div>
+      <motion.div
+        whileHover={{ scale: 1.1 }}
+        whileTap={{ scale: 0.9 }}
         onClick={() => {
           setPage("bookmark");
         }}
       >
         {bookmark ? <IoBookmark size={25} /> : <CiBookmark size={25} />}
-      </div>
-      <div
+      </motion.div>
+      <motion.div
+        whileHover={{ scale: 1.1 }}
+        whileTap={{ scale: 0.9 }}
         onClick={() => {
           setPage("upload");
         }}
         className="h-[60px] w-[60px] flex items-center justify-center bg-blue-500 rounded-[50%] "
       >
         {uploadPage ? <LiaTimesSolid size={35} /> : <BsPlus size={45} />}
-      </div>
-      <div
-      className="relative"
+      </motion.div>
+      <motion.div
+        whileHover={{ scale: 1.1 }}
+        whileTap={{ scale: 0.9 }}
+        className="relative"
         onClick={() => {
-          setCounts(0)
+          setCounts(0);
           setPage("notifications");
         }}
       >
         {notifications ? <FaBell size={25} /> : <BsBell size={25} />}
-        {counts != 0 && <span className="h-[20px] absolute -top-2 -right-[8px] w-[20px] flex items-center justify-center bg-red-600 rounded-[50%]  " >{counts}</span>}
-      </div>
-      <div
+        {counts != 0 && (
+          <span className="h-[20px] absolute -top-2 -right-[8px] w-[20px] flex items-center justify-center bg-red-600 rounded-[50%]  ">
+            {counts}
+          </span>
+        )}
+      </motion.div>
+      <motion.div
         onClick={() => {
           setPage("profile");
         }}
       >
-        <img
+        <motion.img
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
           className="h-[40px] rounded-[50%] w-[40px] "
           src={photoURL}
           alt=""
         />
-      </div>
+      </motion.div>
     </footer>
   );
 }

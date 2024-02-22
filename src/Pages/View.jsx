@@ -49,13 +49,7 @@ const ReviewItem = ({ rev }) => {
           </div>
         </div>
         <div className="flex">
-          {/* {[1, 2, 3, 4, 5].map((d, id) => (
-            <TiStarFullOutline
-              key={id}
-              size={14}
-              className="text-[#FFC727]"
-            />
-          ))} */}
+        
         </div>
       </section>
       <p className="text-start pl-6 text-[16px] text-gray-300">{rev.review}</p>
@@ -264,11 +258,11 @@ function View() {
 
       {/* Reviews */}
       <div className="px-4 mt-4 ">
-        <h3 className="font-bold text-[20px] mb-2 ">Reviews</h3>
+        <h3 className="font-bold sm:text-center text-[20px] mb-2 ">Reviews</h3>
         {/* content */}
         <motion.div
           layout
-          className="flex flex-col gap-2 items-center sm:items-start justify-start"
+          className="flex flex-col gap-2 mb-12 items-center sm:items-center justify-start"
         >
           {reviewsList.length === 0 ? (
             <p>No reviews yet</p>

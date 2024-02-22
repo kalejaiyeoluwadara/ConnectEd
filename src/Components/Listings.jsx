@@ -89,7 +89,7 @@ function Listings() {
             setDetails({ ...course });
             setPage("view");
           }}
-          className="h-[300px] relative rounded-[8px]  w-[90%] sm:w-[300px] bg-gray-800 py-12"
+          className="h-[300px] relative overflow-hidden rounded-[8px]  w-[90%] sm:w-[300px] bg-gray-800 py-12"
         >
           {course.isFree ? (
             <motion.div
@@ -127,7 +127,7 @@ function Listings() {
             </motion.div>
           )}
           <img
-            className=" h-full absolute top-0 left-0 w-full "
+            className=" h-full transition-all hover:scale-[1.8] absolute top-0 left-0 w-full "
             src={course.image}
             alt="course_images"
           />

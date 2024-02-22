@@ -10,7 +10,7 @@ import {
 import Logo from "../Components/Logo.jsx";
 import { useGlobal } from "../context";
 import { collection, addDoc, getDocs, query, where } from "firebase/firestore";
-
+import { motion } from "framer-motion";
 function Signup() {
   const { setPage, setUserDetails, setLocalData, userdb, setUserdb } =
     useGlobal();
@@ -123,12 +123,23 @@ function Signup() {
 
         <div className="mt-6">
           <div className="gap-4 w-full sm:justify-center sm:items-center  flex flex-col">
-            <button
+            <motion.button
+              initial={{
+                y: "10px",
+                opacity: 0,
+              }}
+              animate={{
+                y: "0px",
+                opacity: 1,
+              }}
+              transition={{
+                duration: 0.5,
+              }}
               onClick={SignInWithGoogle}
               className="font-[600] text-[20px] py-3 sm:w-[60%] w-full rounded-[8px] border-[1px] border-blue-600 flex gap-2 items-center justify-center  "
             >
               Sign up with Google <FcGoogle size={30} />
-            </button>
+            </motion.button>
             <div className="relative sm:flex sm:items-center sm:justify-center sm:w-full ">
               <hr className="my-8 sm:my-8 sm:w-[40%] border-[2px] border-gray-800 " />
               <p className=" absolute z-40 top-[22px] flex items-center justify-center w-full">
@@ -158,12 +169,23 @@ function Signup() {
                 onChange={(e) => setPassword(e.target.value)}
               />
             </div>
-            <button
+            <motion.button
+              initial={{
+                y: "10px",
+                opacity: 0,
+              }}
+              animate={{
+                y: "0px",
+                opacity: 1,
+              }}
+              transition={{
+                duration: 0.5,
+              }}
               onClick={() => handleSignupWithEmail(email, password, name)}
               className="font-[600] text-[20px] py-3 mt-4 sm:w-[60%] w-full rounded-[8px] bg-blue-500  "
             >
               Create Account
-            </button>
+            </motion.button>
           </div>
         </div>
       </div>
