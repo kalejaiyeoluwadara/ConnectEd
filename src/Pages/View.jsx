@@ -88,6 +88,23 @@ function View() {
   const toggleDescription = () => {
     setIsExpanded(!isExpanded);
   };
+  const handleBookmarkClick = () => {
+    const existingBookmarks =
+      JSON.parse(localStorage.getItem("bookmarks")) || [];
+    const isAlreadyBookmarked = existingBookmarks.some(
+      (bookmark) => bookmark.title === details.title
+    );
+
+    if (!isAlreadyBookmarked) {
+      const updatedBookmarks = [...existingBookmarks, details];
+      localStorage.setItem("bookmarks", JSON.stringify(updatedBookmarks));
+    } else {
+      console.log("This item is already bookmarked.");
+    }
+
+    // Update the state immediately after the click
+    setBooked(!isAlreadyBookmarked);
+  };
 
  const handleReviews = async () => {
    try {
@@ -161,25 +178,8 @@ function View() {
             />
           </div>
           <div
-            onClick={() => {
-              const existingBookmarks =
-                JSON.parse(localStorage.getItem("bookmarks")) || [];
-              // Check if details.title is already present in bookmarks
-              const isAlreadyBookmarked = existingBookmarks.some(
-                (bookmark) => bookmark.title === details.title
-              );
-              if (!isAlreadyBookmarked) {
-                const updatedBookmarks = [...existingBookmarks, details];
-                localStorage.setItem(
-                  "bookmarks",
-                  JSON.stringify(updatedBookmarks)
-                );
-              } else {
-                console.log("This item is already bookmarked.");
-                setBooked(true);
-              }
-            }}
-            className=" h-[40px] bg-opacity-[0.5] w-[40px] z-40 flex items-center justify-center rounded-[50%] shadow-md bg-gray-400 "
+            onClick={handleBookmarkClick}
+            className=" h-[40px] bg-opacity-[0.5] w-[40px] z-40 flex items-center justify-center rounded-[50%] sm:mr-4 shadow-md bg-gray-400 "
           >
             {booked ? (
               <IoBookmark className="z-40" size={25} />
@@ -216,7 +216,9 @@ function View() {
               {details.isFree ? "Free" : "Paid"}
             </button>
           </div>
-          <button
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
             onClick={() => {
               setPage("connect");
               setTemp(details.id);
@@ -225,7 +227,7 @@ function View() {
           >
             <PiPlugsConnectedThin size={20} />
             <span>Connect</span>
-          </button>
+          </motion.button>
         </div>
         {/* Description */}
         <div className=" h-auto w-[90%] px-4 py-3  mt-4 rounded-[8px] ">
