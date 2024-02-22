@@ -277,7 +277,14 @@ function View() {
           className="flex flex-col gap-2 mb-12 items-center sm:items-center justify-start"
         >
           {reviewsList.length === 0 ? (
-            <p>No reviews yet</p>
+            <section className="flex flex-col items-center justify-center">
+              <img
+              className="h-[100px] w-[100px] "
+              src="https://cdn3d.iconscout.com/3d/premium/thumb/empty-page-8662838-6894644.png?f=webp"
+                alt=""
+              />
+              <p>No reviews yet</p>
+            </section>
           ) : (
             reviewsList.map((rev, id) => {
               return <ReviewItem rev={rev} />;

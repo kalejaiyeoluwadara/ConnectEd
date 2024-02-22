@@ -133,7 +133,7 @@ function Connect() {
               </span>
             </p>
           </div>
-          <section className="mt-4 h-[50px] flex ">
+          <section className="mt-4 sm:visible hidden h-[50px] flex ">
             <div
               onClick={() => {
                 setView(!view);
@@ -156,7 +156,14 @@ function Connect() {
         <div className="w-full flex mb-40  sm:flex-row sm:gap-8 items-center justify-center  gap-4 mt-0 my-8 px flex-col">
           {/* Logs through posts */}
           {posts.length === 0 ? (
-            <p>No posts found</p>
+            <div className="flex sm:-translate-x-[125px] flex-col items-center justify-center">
+              <img
+                className="h-[100px] w-[100px] "
+                src="https://cdn3d.iconscout.com/3d/premium/thumb/empty-box-6219421-5102419.png?f=webp"
+                alt=""
+              />
+              <p>No courses found for selected category.</p>
+            </div>
           ) : (
             <div className="w-full flex mb-40  sm:flex-row sm:gap-8 items-center justify-center gap-4 sm:justify-start my-8 px flex-col">
               {posts.map((post, id) => {

@@ -57,7 +57,7 @@ textarea{
 }
 *{
  padding: 0px;
- user-select: none;
+ /* user-select: none; */
  margin: 0px;
  font-family: 'Rubik', sans-serif;
 }
@@ -87,5 +87,8 @@ textarea{
     font-weight: 600;
 }
 @media (max-width: 640px){
+    *{
+        user-select: none;       
+    }
   
 }
