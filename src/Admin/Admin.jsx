@@ -51,7 +51,7 @@ function Admin() {
     <div className="text-white relative ">
       <AnimatePresence>
         {/* <> */}
-        <Modal />
+        {/* <Modal /> */}
         {board1 && <Board1 />}
         {board2 && <Board2 />}
         {signup && !userDetails && <Signup />}
