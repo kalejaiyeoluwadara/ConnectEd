@@ -87,7 +87,7 @@ function Listings() {
   return (
     <motion.div
       layout
-      className="w-full cursor-pointer flex sm:flex-row sm:gap-12 flex-col gap-4 sm:mt-8 items-center sm:justify-start justify-center"
+      className="w-full cursor-pointer flex sm:flex-row sm:gap-12 flex-col gap-4 sm:mt-8 items-center sm:flex-wrap sm:justify-start justify-center"
     >
       {courses.map((course, id) => (
         <div
