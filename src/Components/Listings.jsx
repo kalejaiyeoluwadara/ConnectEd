@@ -72,7 +72,14 @@ function Listings() {
   if (courses.length === 0) {
     return (
       <div className="w-full mt-12 h-full flex items-center justify-center ">
-        No courses found for selected category.
+        <div className="flex sm:-translate-x-[125px] flex-col items-center justify-center">
+          <img
+          className="h-[100px] w-[100px] "
+            src="https://cdn3d.iconscout.com/3d/premium/thumb/empty-box-6219421-5102419.png?f=webp"
+            alt=""
+          />
+          <p>No courses found for selected category.</p>
+        </div>
       </div>
     );
   }
