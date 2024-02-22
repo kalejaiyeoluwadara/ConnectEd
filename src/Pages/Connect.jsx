@@ -133,7 +133,7 @@ function Connect() {
               </span>
             </p>
           </div>
-          <section className="mt-4 sm:visible hidden h-[50px] ">
+          <section className="mt-4 sm:visible flex opacity-1 h-[0px] sm:opacity-1  sm:h-[50px] ">
             <div
               onClick={() => {
                 setView(!view);

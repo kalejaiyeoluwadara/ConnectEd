@@ -3,21 +3,21 @@ import { motion } from "framer-motion";
 import { AiOutlineCheckCircle, AiOutlineCloseCircle } from "react-icons/ai";
 
 function Modal({ msg, success, showModal }) {
-  const [modal, setModal] = useState(false);
+  const [modal, setModal] = useState(true);
 
-  useEffect(() => {
-    // When showModal prop changes to true, set modal state to true
-    if (showModal) {
-      setModal(true);
-      // Set a timer to close the modal after 3 seconds
-      const timer = setTimeout(() => {
-        setModal(false);
-      }, 3000);
+  // useEffect(() => {
+  //   // When showModal prop changes to true, set modal state to true
+  //   if (showModal) {
+  //     setModal(true);
+  //     // Set a timer to close the modal after 3 seconds
+  //     const timer = setTimeout(() => {
+  //       setModal(false);
+  //     }, 3000);
 
-      // Clear the timer when component unmounts or when modal becomes false before the timer expires
-      return () => clearTimeout(timer);
-    }
-  }, [showModal]);
+  //     // Clear the timer when component unmounts or when modal becomes false before the timer expires
+  //     return () => clearTimeout(timer);
+  //   }
+  // }, [showModal]);
 
   return (
     <>
