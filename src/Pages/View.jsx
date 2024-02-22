@@ -23,7 +23,17 @@ const ReviewItem = ({ rev }) => {
   const [rep, setRep] = useState(false);
 
   return (
-    <div className="w-[95%] sm:w-[40%] rounded-[12px] px-5 py-2 gap-2 flex flex-col">
+    <motion.div
+    initial={{
+      y:'100px'
+    }}
+    transition={{
+      duration:0.6
+    }}
+    whileInView={{
+      y:0
+    }}
+     className="w-[95%] sm:w-[40%] rounded-[12px] px-5 py-2 gap-2 flex flex-col">
       <section className="flex justify-between w-full items-center">
         <div className="flex justify-between w-full items-center">
           <div className="flex gap-1 justify-center items-center">
@@ -53,7 +63,7 @@ const ReviewItem = ({ rev }) => {
         </div>
       </section>
       <p className="text-start pl-6 text-[16px] text-gray-300">{rev.review}</p>
-    </div>
+    </motion.div>
   );
 };
 
