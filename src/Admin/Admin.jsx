@@ -15,6 +15,7 @@ import EditProfile from "../Pages/EditProfile";
 import Modal from '../Components/Modal'
 import Connect from "../Pages/Connect";
 import { motion,AnimatePresence } from "framer-motion";
+import Banner from "../Components/Banner";
 function Admin() {
   const {
     setPage,
@@ -53,6 +54,7 @@ function Admin() {
         {/* <> */}
         {/* <Modal /> */}
         {board1 && <Board1 />}
+        <Banner/>
         {board2 && <Board2 />}
         {signup && !userDetails && <Signup />}
         {login && <Login />}
