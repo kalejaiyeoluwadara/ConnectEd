@@ -4,7 +4,15 @@ import { motion,AnimatePresence } from 'framer-motion';
 function Banner() {
     const [modal,setModal] = useState(true);
     const {setPage} = useGlobal();
-    
+    useEffect(()=>{
+        const check = localStorage.getItem('profile')
+        if(check){
+            setModal(false)
+        }
+        else{
+            setModal(true);
+        }
+    },[])
   return (
     <AnimatePresence>
       {modal && (
@@ -43,6 +51,7 @@ function Banner() {
             <section className="flex justify-center">
               <button
                 onClick={() => {
+                    setModal(false)
                   setPage("edit");
                 }}
                 className="px-4  py-1 border border-white rounded-[16px]  "

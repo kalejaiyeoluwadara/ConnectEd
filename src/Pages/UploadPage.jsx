@@ -45,6 +45,7 @@ function UploadPage() {
 
    try {
      // Upload image
+     setPage("home");
      const snapshot = await uploadBytes(storageRef, image);
 
      // Get image URL
@@ -65,7 +66,6 @@ function UploadPage() {
        hall: "Babcock ogun",
        posts: "",
      });
-     setPage("home");
      console.log("Course added successfully");
      // Redirect or do something else as needed
    } catch (error) {
