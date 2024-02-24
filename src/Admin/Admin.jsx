@@ -54,7 +54,7 @@ function Admin() {
         {/* <> */}
         {/* <Modal /> */}
         {board1 && <Board1 />}
-        <Banner/>
+        {home && <Banner/>}
         {board2 && <Board2 />}
         {signup && !userDetails && <Signup />}
         {login && <Login />}

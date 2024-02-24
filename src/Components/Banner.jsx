@@ -1,22 +1,23 @@
-import React, { useState, useEffect } from 'react';
-import { useGlobal } from '../context';
-import { motion, AnimatePresence } from 'framer-motion';
+import React, { useState, useEffect } from "react";
+import { useGlobal } from "../context";
+import { motion, AnimatePresence } from "framer-motion";
 
 function Banner() {
   const [modal, setModal] = useState(false); // Initialize modal as false initially
   const { setPage } = useGlobal();
 
   useEffect(() => {
-    const check = localStorage.getItem('profile');
-    if (!check) { // Check if profile is not available in local storage
+    const check = localStorage.getItem("profile");
+    if (!check) {
+      // Check if profile is not available in local storage
       setModal(true); // Set modal to true to show the banner
     }
   }, []);
 
   const handleEditProfile = () => {
-    localStorage.setItem('profile', 'true'); // Set profile to true in local storage
+    localStorage.setItem("profile", "true"); // Set profile to true in local storage
     setModal(false); // Hide the banner
-    setPage('edit'); // Set the page to 'edit'
+    setPage("edit"); // Set the page to 'edit'
   };
 
   return (
@@ -25,7 +26,7 @@ function Banner() {
         <motion.div
           initial={{
             opacity: 0,
-            y: '-20vh',
+            y: "-20vh",
           }}
           transition={{
             delay: 0.5,
@@ -37,7 +38,7 @@ function Banner() {
           }}
           exit={{
             opacity: 0,
-            y: '-20vh',
+            y: "-20vh",
           }}
           className="w-full z-50  fixed top-0 left-0 flex items-center justify-center"
         >
@@ -51,7 +52,8 @@ function Banner() {
               x
             </p>
             <p className="text-[16px]  w-[300px]">
-              Edit your profile, let others know more about you, include your social accounts and numbers.
+              Edit your profile, let others know more about you, include your
+              social accounts and numbers.
             </p>
             <section className="flex justify-center">
               <button
