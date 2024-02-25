@@ -25,6 +25,7 @@ function Login() {
         id: user.uid,
         whatsapp: "",
         linkedin: "",
+        // time:''
         hall: "Babcock, Ogun",
         posts: [],
       };
@@ -119,7 +120,7 @@ function Login() {
         </button>
       </div>
 
-      <div className="w-full sm:relative sm:bottom-0 sm:mt-8 mt-20 bottom-8 flex items-center justify-center">
+      <div className="w-full sm:relative sm:bottom-0 sm:mt-8 mt-20edit bottom-8 flex items-center justify-center">
         <p
           onClick={() => {
             setPage("signup");
