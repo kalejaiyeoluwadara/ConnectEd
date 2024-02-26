@@ -22,4 +22,4 @@ Thank you for considering ConnectEd. We look forward to welcoming you to our vib
 
 ---
 
-
+```@Team Connected```
