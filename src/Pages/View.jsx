@@ -21,7 +21,7 @@ import { motion } from "framer-motion"; // Import Framer Motion
 
 const ReviewItem = ({ rev }) => {
   const [rep, setRep] = useState(false);
-
+// TODO: ADD view count and time for each course
   return (
     <motion.div
     initial={{

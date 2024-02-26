@@ -7,6 +7,7 @@ import { LiaTimesSolid } from "react-icons/lia";
 import { FaCaretDown, FaBell } from "react-icons/fa";
 import { IoBookmark } from "react-icons/io5";
 import { motion } from "framer-motion";
+// FIXME: add message functionality fix create button to be on home screen then create should be a button that displays other options for appeal for course and create a course button
 function Nav() {
   const {
     setPage,page,
