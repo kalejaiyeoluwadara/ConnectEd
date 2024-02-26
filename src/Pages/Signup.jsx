@@ -102,7 +102,7 @@ function Signup() {
     } catch (error) {
       console.error("Signup error:", error.message);
       // Display error message to the user
-      alert(error.message);
+      alert("You already signed up with this email.");
     }
   };
 
