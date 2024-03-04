@@ -53,7 +53,7 @@ function Banner() {
             </p>
             <p className="text-[16px]  w-[300px]">
               Edit your profile, let others know more about you, include your
-              social accounts and numbers.
+              social accounts.
             </p>
             <section className="flex justify-center">
               <button

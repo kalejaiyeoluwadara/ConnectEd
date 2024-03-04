@@ -133,7 +133,7 @@ function Connect() {
               </span>
             </p>
           </div>
-          <section className="mt-4 sm:visible flex opacity-1 h-[0px] sm:opacity-1  sm:h-[50px] ">
+          <section className="mt-4 sm:visible sm:mb-1 sm:text-[12px] transition-all flex opacity-1 h-[0px] sm:opacity-1  sm:h-[50px] ">
             <div
               onClick={() => {
                 setView(!view);
@@ -144,10 +144,18 @@ function Connect() {
             {view && (
               <div className="flex ml-6 flex-col">
                 <p>
-                  Whatsapp Number: {existingUser ? existingUser.whatsapp : ""}{" "}
+                  Whatsapp Number:{" "}
+                  <span className="text-blue-500">
+                    {existingUser ? existingUser.whatsapp : ""}{" "}
+                  </span>
                 </p>
-                <p>Email: {existingUser ? existingUser.email : ""} </p>
-                <p>LinkedIn: {existingUser ? existingUser.linkedin : ""} </p>
+                <p>
+                  Email: <span className="text-blue-500">{existingUser ? existingUser.email : ""}</span>{" "}
+                </p>
+                <p>
+                  LinkedIn:{" "}
+                  <span className="text-blue-500">{existingUser ? existingUser.linkedin : ""}</span>{" "}
+                </p>
               </div>
             )}
           </section>
@@ -165,7 +173,7 @@ function Connect() {
               <p>No courses found for selected category.</p>
             </div>
           ) : (
-            <div className="w-full flex mb-40  sm:flex-row sm:gap-8 items-center justify-center gap-4 sm:justify-start my-8 px flex-col">
+            <div className="w-full flex mb-40  sm:flex-row sm:gap-8 items-center justify-center gap-4 sm:justify-start my-8 sm:px-4 flex-col">
               {posts.map((post, id) => {
                 return (
                   <div
