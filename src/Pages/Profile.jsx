@@ -179,7 +179,7 @@ function Profile() {
           </div>
         </div>
         {/* items */}
-        <div className="w-full sm:flex-row flex-wrap sm:gap-8 sm:w-full  flex mb-40  items-center justify-center gap-4  my-8 px flex-col">
+        <div className="w-full sm:flex-row sm:flex-wrap sm:justify-start sm:gap-8 sm:w-full  flex mb-40 sm:px-4 items-center justify-center gap-4   my-8   flex-col">
           {/* Logs through posts */}
           {posts.length === 0 ? (
             <p className="text-center mt-12 w-full">You haven't posted any course yet.</p>
