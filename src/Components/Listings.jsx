@@ -87,7 +87,7 @@ function Listings() {
   return (
     <motion.div
       layout
-      className="w-full cursor-pointer flex sm:flex-row sm:gap-12 flex-col gap-4 sm:mt-8 items-center sm:flex-wrap sm:justify-start justify-center"
+      className="w-full cursor-pointer flex sm:flex-row sm:gap-12 flex-col gap-4 sm:mt-8 items-center sm:flex-wrap sm:justify-center justify-center"
     >
       {courses.map((course, id) => (
         <div
@@ -96,7 +96,7 @@ function Listings() {
             setDetails({ ...course });
             setPage("view");
           }}
-          className="h-[300px] relative overflow-hidden rounded-[8px]  w-[90%] sm:w-[300px] bg-gray-800 py-12"
+          className="h-[300px] relative overflow-hidden rounded-[8px]  w-[90%] sm:w-[250px] bg-gray-800 py-12"
         >
           {course.isFree ? (
             <motion.div
@@ -145,7 +145,7 @@ function Listings() {
               alt=""
             />
             <section className="px-2">
-              <h4 className="font-bold text-[20px] ">{course.author}</h4>
+              <h4 className="font-bold text-[16px] ">{course.author}</h4>
               <p>{course.title}</p>
             </section>
           </div>
