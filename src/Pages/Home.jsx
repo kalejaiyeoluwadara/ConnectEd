@@ -15,15 +15,15 @@ function Home() {
         animate={{ opacity: 1, x: 0 }}
         exit={{ opacity: 0, x: "100vw" }}
         transition={{ duration: 0.5 }}
-        className="min-h-screen relative px-4 pb-40 w-screen bg-gray-900 flex flex-col "
+        className="min-h-screen relative sm:px-8 px-4 pb-40 sm:w-[70%] w-screen bg-gray-900 flex flex-col "
       >
         <Header />
         {/* <SearchComp /> */}
         <Categories />
         <Listings />
       </motion.div>
-        <Nav />
-        <SideBar/>
+      <Nav />
+      <SideBar />
     </>
   );
 }
