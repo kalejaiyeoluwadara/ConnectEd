@@ -10,7 +10,7 @@ function SearchComp() {
         // onClick={() => {
         //   setPage("search");
         // }}
-        className="bg-gray-700 text-white px-4 flex flex-row-reverse gap-2 items-center h-[50px] w-[100%] sm:w-[500px] rounded-[22px] "
+        className="bg-gray-700 text-white px-4 flex flex-row-reverse gap-2 items-center h-[40px] w-[100%] sm:w-[400px] rounded-[22px] "
       >
         <BsSearch size={25} />
         <input

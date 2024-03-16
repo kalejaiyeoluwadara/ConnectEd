@@ -5,6 +5,7 @@ import Categories from "../Components/Categories";
 import Listings from "../Components/Listings";
 import Nav from "../Components/Nav";
 import { motion } from "framer-motion";
+import SideBar from "../Components/SideBar";
 
 function Home() {
   return (
@@ -17,11 +18,12 @@ function Home() {
         className="min-h-screen relative px-4 pb-40 w-screen bg-gray-900 flex flex-col "
       >
         <Header />
-        <SearchComp />
+        {/* <SearchComp /> */}
         <Categories />
         <Listings />
       </motion.div>
         <Nav />
+        <SideBar/>
     </>
   );
 }
