@@ -6,7 +6,7 @@ function Categories() {
   return (
     <div className="flex sticky top-0  bg-gray-900 z-50 flex-col gap-2 py-4 ">
       <p className="text-[25px] font-[600] ">Categories</p>
-      <div className="flex gap-2 sm:gap-8 sb overflow-x-scroll  mt-1 h-full ">
+      <div className="flex gap-2 sm:gap-8 sb  overflow-x-scroll  mt-1 h-full ">
         {cats.map((cat, id) => {
           return (
             <div

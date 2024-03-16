@@ -94,7 +94,7 @@ function Profile() {
         animate={{ opacity: 1, x: 0 }}
         exit={{ opacity: 0, x: "100vw" }}
         transition={{ duration: 0.5 }}
-        className="min-h-screen w-screen bg-gray-900"
+        className="min-h-screen w-screen  bg-gray-900"
       >
         {/* Banner */}
         <div className="w-full flex relative   justify-between items-start px-3 py-0 bg-gray-800 h-[100px] ">

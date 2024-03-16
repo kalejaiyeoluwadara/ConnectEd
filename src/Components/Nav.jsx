@@ -22,7 +22,7 @@ function Nav() {
   } = useGlobal();
   const photoURL = img.img || face1;
   return (
-    <footer className="w-screen cursor-pointer flex  items-center px-4 justify-between bg-gray-800 z-50 fixed sm:top-0 sm:left-0 sm:h-screen sm:flex-col sm:py-6 sm:rounded-none rounded-r-none sm:w-[10%] bottom-0 h-[75px] rounded-t-[20px] left-0">
+    <footer className="w-screen cursor-pointer flex  items-center px-4 justify-between bg-gray-800 z-50 fixed sm:top-0 sm:left-0 sm:h-screen sm:flex-col sm:py-6 sm:rounded-none rounded-r-none sm:w-[9%] bottom-0 h-[75px] rounded-t-[20px] left-0">
       <motion.div
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}

@@ -72,7 +72,7 @@ function Listings() {
   if (courses.length === 0) {
     return (
       <div className="w-full mt-12 h-full flex items-center justify-center ">
-        <div className="flex sm:-translate-x-[125px] flex-col items-center justify-center">
+        <div className="flex  flex-col items-center justify-center">
           <img
           className="h-[100px] w-[100px] "
             src="https://cdn3d.iconscout.com/3d/premium/thumb/empty-box-6219421-5102419.png?f=webp"
