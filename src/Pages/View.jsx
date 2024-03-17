@@ -164,7 +164,7 @@ function View() {
       animate={{ opacity: 1, x: 0 }}
       exit={{ opacity: 0, x: "100vw" }}
       transition={{ duration: 0.5 }}
-      className="min-h-screen sm:absolute right-0 left-0 pb-20 w-[screen] bg-gray-900  "
+      className="min-h-screen  relative pb-20 w-[screen] sm:w-[70%]  bg-gray-900  "
     >
       {/* First section */}
       <div className="flex w-full relative bg-gray-900 rounded-b-[20px] h-[300px] ">

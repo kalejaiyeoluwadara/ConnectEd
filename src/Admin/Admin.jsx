@@ -58,9 +58,9 @@ function Admin() {
         {board2 && <Board2 />}
         {signup && !userDetails && <Signup />}
         {login && <Login />}
+          {view && <View />}
         <div className="text-white sm:px-[100px] bg-black">
           {home && <Home />}
-          {view && <View />}
           {profile && <Profile />}
           {bookmark && <Bookmark />}
           {notifications && <Notifications />}
