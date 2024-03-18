@@ -138,6 +138,7 @@ function Connect() {
               onClick={() => {
                 setView(!view);
               }}
+              className="hidden"
             >
               {view ? <FaEyeSlash /> : <FaEye />}
             </div>
@@ -173,7 +174,7 @@ function Connect() {
               <p>No courses found for selected category.</p>
             </div>
           ) : (
-            <div className="w-full flex mb-40  sm:flex-row sm:gap-8 items-center justify-center gap-4 sm:justify-start my-8 sm:px-4 flex-col">
+            <div className="w-full flex mb-40  sm:flex-row sm:gap-8 items-center justify-center gap-8 sm:justify-start my-8 sm:px-4 flex-col">
               {posts.map((post, id) => {
                 return (
                   <div

@@ -18,7 +18,7 @@ function Home() {
         className="min-h-screen relative sm:px-8 px-4 pb-40 sm:w-[70%] w-screen bg-gray-900 flex flex-col "
       >
         <Header />
-        {/* <SearchComp /> */}
+        <SearchComp />
         <Categories />
         <Listings />
       </motion.div>

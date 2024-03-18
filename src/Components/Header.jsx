@@ -38,7 +38,7 @@ function Header() {
           </p>
         </div>
       </section>
-      <section className="sm:absolute right-4 ">
+      <section className="sm:absolute sm:right-8 ">
         <BsBellFill
           onClick={() => {
             setPage("notifications");

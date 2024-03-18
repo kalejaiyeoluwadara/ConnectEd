@@ -2,7 +2,7 @@ import React from 'react'
 import SearchComp from './Search'
 function ViewBar() {
   return (
-    <div className=" invisible sm:visible z-40 sm:flex flex-col fixed px-6 right-0 top-0 bg-gray-900 h-screen w-[300px] ">
+    <div className=" invisible fixed top-0 right-0 border-gray-100 border-l-[1px] border-opacity-[0.1] sm:visible z-40 sm:flex flex-col  px-6   bg-gray-900 h-screen w-[30%] ">
       <SearchComp />
       <div className="bg-gray-800 px-4 py-2 rounded-[15px] ">
         <h1 className="font-[600] text-[20px]   ">Subscribe to Premium</h1>
